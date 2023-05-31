@@ -17,6 +17,7 @@
 		98D80BE52A2782B10003008C /* ItemListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BE42A2782B10003008C /* ItemListViewModel.swift */; };
 		98D80BE72A2782E40003008C /* ItemLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BE62A2782E40003008C /* ItemLoader.swift */; };
 		98D80BE92A2782FD0003008C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BE82A2782FD0003008C /* Item.swift */; };
+		98D80BEB2A2783130003008C /* ItemRequestCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BEA2A2783130003008C /* ItemRequestCondition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		98D80BE42A2782B10003008C /* ItemListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewModel.swift; sourceTree = "<group>"; };
 		98D80BE62A2782E40003008C /* ItemLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemLoader.swift; sourceTree = "<group>"; };
 		98D80BE82A2782FD0003008C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		98D80BEA2A2783130003008C /* ItemRequestCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRequestCondition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				98D80BE12A2776AA0003008C /* ItemListViewController.swift */,
+				98D80BEA2A2783130003008C /* ItemRequestCondition.swift */,
 				98D80BE82A2782FD0003008C /* Item.swift */,
 				98D80BE62A2782E40003008C /* ItemLoader.swift */,
 				98D80BE42A2782B10003008C /* ItemListViewModel.swift */,
@@ -218,6 +221,7 @@
 				98D80BE22A2776AA0003008C /* ItemListViewController.swift in Sources */,
 				98D80BE52A2782B10003008C /* ItemListViewModel.swift in Sources */,
 				98D80BB22A27430C0003008C /* AppDelegate.swift in Sources */,
+				98D80BEB2A2783130003008C /* ItemRequestCondition.swift in Sources */,
 				98D80BE92A2782FD0003008C /* Item.swift in Sources */,
 				98D80BB42A27430C0003008C /* SceneDelegate.swift in Sources */,
 				98D80BE72A2782E40003008C /* ItemLoader.swift in Sources */,

@@ -7,10 +7,6 @@
 
 import UIKit
 
-struct ItemRequestCondition {
-    let page: Int
-}
-
 final class ItemListCell: UICollectionViewCell {
     static let identifier = "\(ItemListCell.self)"
     
