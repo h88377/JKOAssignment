@@ -14,6 +14,7 @@
 		98D80BBE2A27430D0003008C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98D80BBC2A27430D0003008C /* LaunchScreen.storyboard */; };
 		98D80BC92A27430D0003008C /* JKOAssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BC82A27430D0003008C /* JKOAssignmentTests.swift */; };
 		98D80BE22A2776AA0003008C /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BE12A2776AA0003008C /* ItemListViewController.swift */; };
+		98D80BE52A2782B10003008C /* ItemListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BE42A2782B10003008C /* ItemListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		98D80BC42A27430D0003008C /* JKOAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JKOAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D80BC82A27430D0003008C /* JKOAssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKOAssignmentTests.swift; sourceTree = "<group>"; };
 		98D80BE12A2776AA0003008C /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
+		98D80BE42A2782B10003008C /* ItemListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				98D80BE12A2776AA0003008C /* ItemListViewController.swift */,
+				98D80BE42A2782B10003008C /* ItemListViewModel.swift */,
 			);
 			path = ItemList;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			files = (
 				98D80BB62A27430C0003008C /* ViewController.swift in Sources */,
 				98D80BE22A2776AA0003008C /* ItemListViewController.swift in Sources */,
+				98D80BE52A2782B10003008C /* ItemListViewModel.swift in Sources */,
 				98D80BB22A27430C0003008C /* AppDelegate.swift in Sources */,
 				98D80BB42A27430C0003008C /* SceneDelegate.swift in Sources */,
 			);

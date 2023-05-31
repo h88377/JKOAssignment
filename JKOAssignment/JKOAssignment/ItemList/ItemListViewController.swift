@@ -25,30 +25,7 @@ protocol ItemLoader {
     func load(with condition: ItemRequestCondition, completion: @escaping (Result) -> Void)
 }
 
-class ItemListViewModel {
-    var isItemsLoadingStateOnChanged: ((Bool) -> Void)?
-    var isItemsStateOnChanged: (([Item]) -> Void)?
-    
-    private let itemLoader: ItemLoader
-    
-    init(itemLoader: ItemLoader) {
-        self.itemLoader = itemLoader
-    }
-    
-    func loadItems() {
-        isItemsLoadingStateOnChanged?(true)
-        itemLoader.load(with: ItemRequestCondition(page: 0)) { [weak self] result in
-            switch result {
-            case let .success(items):
-                self?.isItemsStateOnChanged?(items)
-                
-            case .failure:
-                break
-            }
-            self?.isItemsLoadingStateOnChanged?(false)
-        }
-    }
-}
+
 
 final class ItemListCell: UICollectionViewCell {
     static let identifier = "\(ItemListCell.self)"
