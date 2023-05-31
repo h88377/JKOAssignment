@@ -19,14 +19,6 @@ struct ItemRequestCondition {
     let page: Int
 }
 
-protocol ItemLoader {
-    typealias Result = Swift.Result<[Item], Error>
-    
-    func load(with condition: ItemRequestCondition, completion: @escaping (Result) -> Void)
-}
-
-
-
 final class ItemListCell: UICollectionViewCell {
     static let identifier = "\(ItemListCell.self)"
     
