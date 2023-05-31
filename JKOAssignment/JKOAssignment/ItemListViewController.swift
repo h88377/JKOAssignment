@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Item {
+struct Item: Hashable {
     let name: String
     let description: String
     let price: Int
@@ -27,6 +27,7 @@ protocol ItemLoader {
 
 class ItemListViewModel {
     var isItemsLoadingStateOnChanged: ((Bool) -> Void)?
+    var isItemsStateOnChanged: (([Item]) -> Void)?
     
     private let itemLoader: ItemLoader
     
@@ -36,13 +37,43 @@ class ItemListViewModel {
     
     func loadItems() {
         isItemsLoadingStateOnChanged?(true)
-        itemLoader.load(with: ItemRequestCondition(page: 0)) { [weak self] _ in
+        itemLoader.load(with: ItemRequestCondition(page: 0)) { [weak self] result in
+            switch result {
+            case let .success(items):
+                self?.isItemsStateOnChanged?(items)
+                
+            case .failure:
+                break
+            }
             self?.isItemsLoadingStateOnChanged?(false)
         }
     }
 }
 
+final class ItemListCell: UICollectionViewCell {
+    static let identifier = "\(ItemListCell.self)"
+    
+    let nameLabel = UILabel()
+    let descriptionLabel = UILabel()
+    let priceLabel = UILabel()
+    let imageView = UIImageView()
+}
+
 class ItemListViewController: UICollectionViewController {
+    private lazy var dataSource: UICollectionViewDiffableDataSource<Int, Item> = {
+        .init(collectionView: collectionView) { collectionView, indexPath, item in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemListCell.identifier, for: indexPath) as? ItemListCell else { return UICollectionViewCell() }
+            
+            cell.nameLabel.text = item.name
+            cell.descriptionLabel.text = item.description
+            cell.priceLabel.text = String(item.price)
+            cell.imageView.image = UIImage(systemName: item.imageName)
+            return cell
+        }
+    }()
+    
+    private var itemsSection: Int { return 0 }
+    
     private let viewModel: ItemListViewModel
         
     init(viewModel: ItemListViewModel) {
@@ -57,8 +88,16 @@ class ItemListViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.refreshControl = binded(refreshView: UIRefreshControl())
+        setUpBindings()
         loadItems()
+    }
+    
+    private func setUpBindings() {
+        collectionView.refreshControl = binded(refreshView: UIRefreshControl())
+        
+        viewModel.isItemsStateOnChanged = { [weak self] items in
+            self?.set(items)
+        }
     }
     
     private func binded(refreshView: UIRefreshControl) -> UIRefreshControl {
@@ -76,5 +115,12 @@ class ItemListViewController: UICollectionViewController {
     
     @objc private func loadItems() {
         viewModel.loadItems()
+    }
+    
+    private func set(_ newItems: [Item]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, Item>()
+        snapshot.appendSections([itemsSection])
+        snapshot.appendItems(newItems, toSection: itemsSection)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
