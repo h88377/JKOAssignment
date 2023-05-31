@@ -13,19 +13,10 @@
 		98D80BBB2A27430D0003008C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98D80BBA2A27430D0003008C /* Assets.xcassets */; };
 		98D80BBE2A27430D0003008C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98D80BBC2A27430D0003008C /* LaunchScreen.storyboard */; };
 		98D80BC92A27430D0003008C /* JKOAssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BC82A27430D0003008C /* JKOAssignmentTests.swift */; };
-		98D80BD32A27430D0003008C /* JKOAssignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BD22A27430D0003008C /* JKOAssignmentUITests.swift */; };
-		98D80BD52A27430D0003008C /* JKOAssignmentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BD42A27430D0003008C /* JKOAssignmentUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		98D80BC52A27430D0003008C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 98D80BA62A27430C0003008C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 98D80BAD2A27430C0003008C;
-			remoteInfo = JKOAssignment;
-		};
-		98D80BCF2A27430D0003008C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 98D80BA62A27430C0003008C /* Project object */;
 			proxyType = 1;
@@ -44,9 +35,6 @@
 		98D80BBF2A27430D0003008C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98D80BC42A27430D0003008C /* JKOAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JKOAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D80BC82A27430D0003008C /* JKOAssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKOAssignmentTests.swift; sourceTree = "<group>"; };
-		98D80BCE2A27430D0003008C /* JKOAssignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JKOAssignmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		98D80BD22A27430D0003008C /* JKOAssignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKOAssignmentUITests.swift; sourceTree = "<group>"; };
-		98D80BD42A27430D0003008C /* JKOAssignmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKOAssignmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,13 +52,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		98D80BCB2A27430D0003008C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -79,7 +60,6 @@
 			children = (
 				98D80BB02A27430C0003008C /* JKOAssignment */,
 				98D80BC72A27430D0003008C /* JKOAssignmentTests */,
-				98D80BD12A27430D0003008C /* JKOAssignmentUITests */,
 				98D80BAF2A27430C0003008C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,7 +69,6 @@
 			children = (
 				98D80BAE2A27430C0003008C /* JKOAssignment.app */,
 				98D80BC42A27430D0003008C /* JKOAssignmentTests.xctest */,
-				98D80BCE2A27430D0003008C /* JKOAssignmentUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,15 +92,6 @@
 				98D80BC82A27430D0003008C /* JKOAssignmentTests.swift */,
 			);
 			path = JKOAssignmentTests;
-			sourceTree = "<group>";
-		};
-		98D80BD12A27430D0003008C /* JKOAssignmentUITests */ = {
-			isa = PBXGroup;
-			children = (
-				98D80BD22A27430D0003008C /* JKOAssignmentUITests.swift */,
-				98D80BD42A27430D0003008C /* JKOAssignmentUITestsLaunchTests.swift */,
-			);
-			path = JKOAssignmentUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,24 +132,6 @@
 			productReference = 98D80BC42A27430D0003008C /* JKOAssignmentTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		98D80BCD2A27430D0003008C /* JKOAssignmentUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 98D80BDE2A27430D0003008C /* Build configuration list for PBXNativeTarget "JKOAssignmentUITests" */;
-			buildPhases = (
-				98D80BCA2A27430D0003008C /* Sources */,
-				98D80BCB2A27430D0003008C /* Frameworks */,
-				98D80BCC2A27430D0003008C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				98D80BD02A27430D0003008C /* PBXTargetDependency */,
-			);
-			name = JKOAssignmentUITests;
-			productName = JKOAssignmentUITests;
-			productReference = 98D80BCE2A27430D0003008C /* JKOAssignmentUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -194,10 +146,6 @@
 						CreatedOnToolsVersion = 14.2;
 					};
 					98D80BC32A27430D0003008C = {
-						CreatedOnToolsVersion = 14.2;
-						TestTargetID = 98D80BAD2A27430C0003008C;
-					};
-					98D80BCD2A27430D0003008C = {
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 98D80BAD2A27430C0003008C;
 					};
@@ -218,7 +166,6 @@
 			targets = (
 				98D80BAD2A27430C0003008C /* JKOAssignment */,
 				98D80BC32A27430D0003008C /* JKOAssignmentTests */,
-				98D80BCD2A27430D0003008C /* JKOAssignmentUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -234,13 +181,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		98D80BC22A27430D0003008C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		98D80BCC2A27430D0003008C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -268,15 +208,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		98D80BCA2A27430D0003008C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				98D80BD52A27430D0003008C /* JKOAssignmentUITestsLaunchTests.swift in Sources */,
-				98D80BD32A27430D0003008C /* JKOAssignmentUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -284,11 +215,6 @@
 			isa = PBXTargetDependency;
 			target = 98D80BAD2A27430C0003008C /* JKOAssignment */;
 			targetProxy = 98D80BC52A27430D0003008C /* PBXContainerItemProxy */;
-		};
-		98D80BD02A27430D0003008C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 98D80BAD2A27430C0003008C /* JKOAssignment */;
-			targetProxy = 98D80BCF2A27430D0003008C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -512,42 +438,6 @@
 			};
 			name = Release;
 		};
-		98D80BDF2A27430D0003008C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6D8CRTN6K7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.waynecheng.JKOAssignmentUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = JKOAssignment;
-			};
-			name = Debug;
-		};
-		98D80BE02A27430D0003008C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6D8CRTN6K7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.waynecheng.JKOAssignmentUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = JKOAssignment;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -574,15 +464,6 @@
 			buildConfigurations = (
 				98D80BDC2A27430D0003008C /* Debug */,
 				98D80BDD2A27430D0003008C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		98D80BDE2A27430D0003008C /* Build configuration list for PBXNativeTarget "JKOAssignmentUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				98D80BDF2A27430D0003008C /* Debug */,
-				98D80BE02A27430D0003008C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
