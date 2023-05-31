@@ -26,10 +26,19 @@ protocol ItemLoader {
 }
 
 class ItemListViewModel {
+    var isItemsLoadingStateOnChanged: ((Bool) -> Void)?
+    
     private let itemLoader: ItemLoader
     
     init(itemLoader: ItemLoader) {
         self.itemLoader = itemLoader
+    }
+    
+    func loadItems() {
+        isItemsLoadingStateOnChanged?(true)
+        itemLoader.load(with: ItemRequestCondition(page: 0)) { [weak self] _ in
+            self?.isItemsLoadingStateOnChanged?(false)
+        }
     }
 }
 
@@ -43,5 +52,29 @@ class ItemListViewController: UICollectionViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        collectionView.refreshControl = binded(refreshView: UIRefreshControl())
+        loadItems()
+    }
+    
+    private func binded(refreshView: UIRefreshControl) -> UIRefreshControl {
+        viewModel.isItemsLoadingStateOnChanged = { [weak self] isLoading in
+            if isLoading {
+                self?.collectionView.refreshControl?.beginRefreshing()
+            } else {
+                self?.collectionView.refreshControl?.endRefreshing()
+            }
+        }
+        refreshView.addTarget(self, action: #selector(loadItems), for: .valueChanged)
+        
+        return refreshView
+    }
+    
+    @objc private func loadItems() {
+        viewModel.loadItems()
     }
 }
