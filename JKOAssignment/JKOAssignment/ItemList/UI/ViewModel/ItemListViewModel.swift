@@ -8,8 +8,8 @@
 import Foundation
 
 final class ItemListViewModel {
-    var isItemsLoadingStateOnChanged: ((Bool) -> Void)?
-    var isItemsStateOnChanged: (([Item]) -> Void)?
+    var isItemsRefreshLoadingStateOnChanged: ((Bool) -> Void)?
+    var isItemsRefreshingStateOnChanged: (([Item]) -> Void)?
     
     private let itemLoader: ItemLoader
     
@@ -18,16 +18,16 @@ final class ItemListViewModel {
     }
     
     func loadItems() {
-        isItemsLoadingStateOnChanged?(true)
+        isItemsRefreshLoadingStateOnChanged?(true)
         itemLoader.load(with: ItemRequestCondition(page: 0)) { [weak self] result in
             switch result {
             case let .success(items):
-                self?.isItemsStateOnChanged?(items)
+                self?.isItemsRefreshingStateOnChanged?(items)
                 
             case .failure:
                 break
             }
-            self?.isItemsLoadingStateOnChanged?(false)
+            self?.isItemsRefreshLoadingStateOnChanged?(false)
         }
     }
 }

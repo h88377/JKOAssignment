@@ -43,13 +43,13 @@ class ItemListViewController: UICollectionViewController {
     private func setUpBindings() {
         collectionView.refreshControl = binded(refreshView: UIRefreshControl())
         
-        viewModel.isItemsStateOnChanged = { [weak self] items in
+        viewModel.isItemsRefreshingStateOnChanged = { [weak self] items in
             self?.set(items)
         }
     }
     
     private func binded(refreshView: UIRefreshControl) -> UIRefreshControl {
-        viewModel.isItemsLoadingStateOnChanged = { [weak self] isLoading in
+        viewModel.isItemsRefreshLoadingStateOnChanged = { [weak self] isLoading in
             if isLoading {
                 self?.collectionView.refreshControl?.beginRefreshing()
             } else {
