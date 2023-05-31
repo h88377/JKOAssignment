@@ -110,10 +110,8 @@
 		98D80BE32A2782930003008C /* ItemList */ = {
 			isa = PBXGroup;
 			children = (
+				98D80BF22A27839F0003008C /* Feature */,
 				98D80BEE2A2783500003008C /* UI */,
-				98D80BEA2A2783130003008C /* ItemRequestCondition.swift */,
-				98D80BE82A2782FD0003008C /* Item.swift */,
-				98D80BE62A2782E40003008C /* ItemLoader.swift */,
 			);
 			path = ItemList;
 			sourceTree = "<group>";
@@ -150,6 +148,16 @@
 				98D80BE42A2782B10003008C /* ItemListViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		98D80BF22A27839F0003008C /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				98D80BEA2A2783130003008C /* ItemRequestCondition.swift */,
+				98D80BE82A2782FD0003008C /* Item.swift */,
+				98D80BE62A2782E40003008C /* ItemLoader.swift */,
+			);
+			path = Feature;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
