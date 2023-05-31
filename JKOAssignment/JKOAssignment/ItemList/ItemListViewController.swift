@@ -7,15 +7,6 @@
 
 import UIKit
 
-final class ItemListCell: UICollectionViewCell {
-    static let identifier = "\(ItemListCell.self)"
-    
-    let nameLabel = UILabel()
-    let descriptionLabel = UILabel()
-    let priceLabel = UILabel()
-    let imageView = UIImageView()
-}
-
 class ItemListViewController: UICollectionViewController {
     private lazy var dataSource: UICollectionViewDiffableDataSource<Int, Item> = {
         .init(collectionView: collectionView) { collectionView, indexPath, item in
