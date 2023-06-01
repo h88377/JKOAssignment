@@ -22,7 +22,6 @@ final class ItemListViewController: UICollectionViewController {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemListCell.identifier, for: indexPath) as? ItemListCell else { return UICollectionViewCell() }
             
             cell.nameLabel.text = viewModel.nameText
-            cell.descriptionLabel.text = viewModel.descriptionText
             cell.priceLabel.text = viewModel.priceText
             cell.imageView.image = UIImage(systemName: viewModel.imageName)
             return cell
