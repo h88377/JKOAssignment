@@ -12,7 +12,7 @@ final class ItemListPaginationViewModel {
     
     var isItemsPaginationLoadingStateOnChange: Observable<Bool>?
     var isItemsPaginationStateOnChange: Observable<[Item]>?
-    var isItemsPaginationErrorStateOnChange: Observable<String?>?
+    var isItemsPaginationErrorStateOnChange: Observable<String>?
     
     private var currentPage = 0
     private let itemLoader: ItemLoader
