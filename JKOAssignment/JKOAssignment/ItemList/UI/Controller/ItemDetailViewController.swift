@@ -73,7 +73,7 @@ final class ItemDetailViewModel {
     func addToCart() {
         cartSaver.save(item: item) { [weak self] error in
             guard error == nil else {
-                self?.isCartSavingErrorStateOnChanged?(ErrorMessage.addToCart.rawValue)
+                self?.isCartSavingErrorStateOnChanged?(ItemListErrorMessage.addToCart.rawValue)
                 return
             }
             self?.isCartSavingStateOnChanged?(())

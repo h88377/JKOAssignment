@@ -26,7 +26,7 @@ final class ItemListViewModel {
                 self?.isItemsRefreshingStateOnChanged?(items)
                 
             case .failure:
-                self?.isItemsRefreshingErrorStateOnChange?(ErrorMessage.loadItems.rawValue)
+                self?.isItemsRefreshingErrorStateOnChange?(ItemListErrorMessage.loadItems.rawValue)
             }
             self?.isItemsRefreshLoadingStateOnChanged?(false)
         }
