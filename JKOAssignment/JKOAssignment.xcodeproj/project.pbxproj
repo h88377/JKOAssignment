@@ -29,6 +29,7 @@
 		98D80C0A2A28790F0003008C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C092A28790F0003008C /* Constants.swift */; };
 		98D80C0C2A28794B0003008C /* ItemDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C0B2A28794B0003008C /* ItemDetailCell.swift */; };
 		98D80C0E2A2879690003008C /* CartSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C0D2A2879690003008C /* CartSaver.swift */; };
+		98D80C102A28798D0003008C /* ItemDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C0F2A28798D0003008C /* ItemDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		98D80C092A28790F0003008C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		98D80C0B2A28794B0003008C /* ItemDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailCell.swift; sourceTree = "<group>"; };
 		98D80C0D2A2879690003008C /* CartSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartSaver.swift; sourceTree = "<group>"; };
+		98D80C0F2A28798D0003008C /* ItemDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				98D80BE42A2782B10003008C /* ItemListViewModel.swift */,
 				98D80BF52A28397D0003008C /* ItemListCellViewModel.swift */,
 				98D80BF72A2840EE0003008C /* ItemListPaginationViewModel.swift */,
+				98D80C0F2A28798D0003008C /* ItemDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				98D80C082A286AEE0003008C /* UIView+Extension.swift in Sources */,
 				98D80BE22A2776AA0003008C /* ItemListViewController.swift in Sources */,
 				98D80C002A2862EF0003008C /* MainThreadDispatchDecorator.swift in Sources */,
+				98D80C102A28798D0003008C /* ItemDetailViewModel.swift in Sources */,
 				98D80C0E2A2879690003008C /* CartSaver.swift in Sources */,
 				98D80BE52A2782B10003008C /* ItemListViewModel.swift in Sources */,
 				98D80C0C2A28794B0003008C /* ItemDetailCell.swift in Sources */,
