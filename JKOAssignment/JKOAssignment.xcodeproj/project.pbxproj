@@ -31,6 +31,7 @@
 		98D80C0E2A2879690003008C /* CartSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C0D2A2879690003008C /* CartSaver.swift */; };
 		98D80C102A28798D0003008C /* ItemDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C0F2A28798D0003008C /* ItemDetailViewModel.swift */; };
 		98D80C122A287EED0003008C /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C112A287EED0003008C /* Observable.swift */; };
+		98D80C172A28956B0003008C /* LocalCartSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C162A28956B0003008C /* LocalCartSaver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		98D80C0D2A2879690003008C /* CartSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartSaver.swift; sourceTree = "<group>"; };
 		98D80C0F2A28798D0003008C /* ItemDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewModel.swift; sourceTree = "<group>"; };
 		98D80C112A287EED0003008C /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		98D80C162A28956B0003008C /* LocalCartSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCartSaver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 		98D80BE32A2782930003008C /* ItemList */ = {
 			isa = PBXGroup;
 			children = (
+				98D80C152A2895610003008C /* Local */,
 				98D80BFB2A284F340003008C /* Stub */,
 				98D80BF22A27839F0003008C /* Feature */,
 				98D80BEE2A2783500003008C /* UI */,
@@ -226,6 +229,14 @@
 				98D80C112A287EED0003008C /* Observable.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		98D80C152A2895610003008C /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				98D80C162A28956B0003008C /* LocalCartSaver.swift */,
+			);
+			path = Local;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +348,7 @@
 				98D80C102A28798D0003008C /* ItemDetailViewModel.swift in Sources */,
 				98D80C0E2A2879690003008C /* CartSaver.swift in Sources */,
 				98D80BE52A2782B10003008C /* ItemListViewModel.swift in Sources */,
+				98D80C172A28956B0003008C /* LocalCartSaver.swift in Sources */,
 				98D80C0C2A28794B0003008C /* ItemDetailCell.swift in Sources */,
 				98D80C122A287EED0003008C /* Observable.swift in Sources */,
 				98D80C052A2867060003008C /* ItemDetailViewController.swift in Sources */,
