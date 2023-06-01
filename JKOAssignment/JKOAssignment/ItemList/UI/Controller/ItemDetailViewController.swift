@@ -18,6 +18,13 @@ final class ItemDetailViewController: UIViewController {
         return tableView
     }()
     
+    let fadingView: FadingMessageView = {
+        let view = FadingMessageView()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private(set) lazy var addToCartButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemGray3
@@ -70,6 +77,7 @@ final class ItemDetailViewController: UIViewController {
         super.viewDidLoad()
         
         setUpUI()
+        setUpBindings()
         configureTableView()
         configureSnapshot()
     }
@@ -117,11 +125,92 @@ final class ItemDetailViewController: UIViewController {
         tableView.tableHeaderView = imageView
     }
     
+    private func setUpBindings() {
+        viewModel.isItemSavingStateOnChanged = { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.fadingView.show(ItemListSuccessMessage.addToCart.rawValue, on: self.view)
+        }
+    }
+    
     @objc private func didTapAddToCart() {
         viewModel.addToCart()
     }
     
     @objc private func didTapCheckout() {
         viewModel.goToCheckout()
+    }
+}
+
+final class FadingMessageView: UIView {
+    let messageLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = .white
+        
+        return label
+    }()
+    
+    var isVisible: Bool {
+        return alpha > 0
+    }
+    
+    private var message: String? {
+        didSet { messageLabel.text = message }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setUpUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func show(_ message: String?, on view: UIView) {
+        guard superview == nil else { return }
+        
+        self.message = message
+        
+        view.addSubview(self)
+        NSLayoutConstraint.activate([
+            centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.35),
+            heightAnchor.constraint(equalTo: widthAnchor)
+        ])
+        
+        UIView.animate(
+            withDuration: 1,
+            animations: { self.alpha = 1 },
+            completion: { isCompleted in
+                if isCompleted { self.hide() }
+            })
+    }
+    
+    private func hide() {
+        UIView.animate(
+            withDuration: 1,
+            animations: { self.alpha = 0},
+            completion: { isCompleted in
+                self.message = nil
+                self.removeFromSuperview()
+            })
+    }
+    
+    private func setUpUI() {
+        backgroundColor = .darkGray
+        
+        addSubview(messageLabel)
+        NSLayoutConstraint.activate([
+            messageLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            messageLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+        ])
     }
 }
