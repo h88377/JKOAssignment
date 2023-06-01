@@ -8,14 +8,8 @@
 import UIKit
 
 final class ItemListViewController: UICollectionViewController {
-    private let viewModel: ItemListViewModel
-    private let paginationController: ItemListPaginationViewController
-        
-    init(viewModel: ItemListViewModel, paginationController: ItemListPaginationViewController) {
-        self.viewModel = viewModel
-        self.paginationController = paginationController
-        super.init(collectionViewLayout: .init())
-    }
+    
+    // MARK: - Property
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Int, ItemListCellViewModel> = {
         .init(collectionView: collectionView) { collectionView, indexPath, viewModel in
@@ -30,6 +24,18 @@ final class ItemListViewController: UICollectionViewController {
     
     private var itemsSection: Int { return 0 }
     
+    private let viewModel: ItemListViewModel
+    private let paginationController: ItemListPaginationViewController
+        
+    
+    // MARK: - Life cycle
+    
+    init(viewModel: ItemListViewModel, paginationController: ItemListPaginationViewController) {
+        self.viewModel = viewModel
+        self.paginationController = paginationController
+        super.init(collectionViewLayout: .init())
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -40,6 +46,8 @@ final class ItemListViewController: UICollectionViewController {
         configureCollectionView()
         loadItems()
     }
+    
+    // MARK: - Method
     
     func set(_ newItems: [ItemListCellViewModel]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, ItemListCellViewModel>()
