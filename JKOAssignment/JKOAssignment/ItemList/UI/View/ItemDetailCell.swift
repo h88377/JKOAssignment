@@ -44,6 +44,7 @@ final class ItemDetailCell: UITableViewCell {
     }
     
     private func setUpUI() {
+        selectionStyle = .none
         contentView.addSubviews([nameLabel, descriptionLabel, priceLabel])
         
         let descriptionBottomConstraint = descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
