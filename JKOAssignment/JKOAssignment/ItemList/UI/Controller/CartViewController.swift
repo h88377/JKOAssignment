@@ -26,6 +26,14 @@ final class CartViewController: UIViewController {
         return view
     }()
     
+    let noItemsReminder: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private(set) lazy var loadingIndicator: UIRefreshControl = {
         let indicator = UIRefreshControl()
         indicator.addTarget(self, action: #selector(loadCartItems), for: .valueChanged)
@@ -95,12 +103,16 @@ final class CartViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubviews([tableView, checkoutButton])
+        view.insertSubview(noItemsReminder, belowSubview: tableView)
         tableView.addSubview(loadingIndicator)
         
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            
+            noItemsReminder.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noItemsReminder.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
             checkoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             checkoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -121,6 +133,10 @@ final class CartViewController: UIViewController {
             guard let self = self else { return }
             
             self.errorView.show(message, on: self.view)
+        }
+        
+        viewModel.isNoItemsReminderStateOnChanged = { [weak self] message in
+            self?.noItemsReminder.text = message
         }
     }
     
