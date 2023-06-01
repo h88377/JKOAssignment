@@ -131,6 +131,12 @@ final class ItemDetailViewController: UIViewController {
             
             self.fadingView.show(ItemListSuccessMessage.addToCart.rawValue, on: self.view)
         }
+        
+        viewModel.isItemSavingErrorStateOnChanged = { [weak self] message in
+            guard let self = self else { return }
+            
+            self.fadingView.show(message, on: self.view)
+        }
     }
     
     @objc private func didTapAddToCart() {
