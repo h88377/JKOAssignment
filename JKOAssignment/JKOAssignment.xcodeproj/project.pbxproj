@@ -32,7 +32,7 @@
 		98D80C102A28798D0003008C /* ItemDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C0F2A28798D0003008C /* ItemDetailViewModel.swift */; };
 		98D80C122A287EED0003008C /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C112A287EED0003008C /* Observable.swift */; };
 		98D80C172A28956B0003008C /* LocalCartItemSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C162A28956B0003008C /* LocalCartItemSaver.swift */; };
-		98D80C192A2899CB0003008C /* ItemStoreSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C182A2899CB0003008C /* ItemStoreSaver.swift */; };
+		98D80C192A2899CB0003008C /* CartItemStoreSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C182A2899CB0003008C /* CartItemStoreSaver.swift */; };
 		98D80C1C2A289A1E0003008C /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C1B2A289A1E0003008C /* CoreDataStore.swift */; };
 		98D80C202A289C860003008C /* JKOStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C1E2A289C860003008C /* JKOStore.xcdatamodeld */; };
 		98D80C222A28C2700003008C /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C212A28C2700003008C /* LoadingIndicator.swift */; };
@@ -78,7 +78,7 @@
 		98D80C0F2A28798D0003008C /* ItemDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewModel.swift; sourceTree = "<group>"; };
 		98D80C112A287EED0003008C /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		98D80C162A28956B0003008C /* LocalCartItemSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCartItemSaver.swift; sourceTree = "<group>"; };
-		98D80C182A2899CB0003008C /* ItemStoreSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStoreSaver.swift; sourceTree = "<group>"; };
+		98D80C182A2899CB0003008C /* CartItemStoreSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemStoreSaver.swift; sourceTree = "<group>"; };
 		98D80C1B2A289A1E0003008C /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		98D80C1F2A289C860003008C /* JKOStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JKOStore.xcdatamodel; sourceTree = "<group>"; };
 		98D80C212A28C2700003008C /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
@@ -247,7 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				98D80C162A28956B0003008C /* LocalCartItemSaver.swift */,
-				98D80C182A2899CB0003008C /* ItemStoreSaver.swift */,
+				98D80C182A2899CB0003008C /* CartItemStoreSaver.swift */,
 				98D80C1B2A289A1E0003008C /* CoreDataStore.swift */,
 				98D80C1E2A289C860003008C /* JKOStore.xcdatamodeld */,
 			);
@@ -359,7 +359,7 @@
 				98D80BF62A28397D0003008C /* ItemListCellViewModel.swift in Sources */,
 				98D80C082A286AEE0003008C /* UIView+Extension.swift in Sources */,
 				98D80BE22A2776AA0003008C /* ItemListViewController.swift in Sources */,
-				98D80C192A2899CB0003008C /* ItemStoreSaver.swift in Sources */,
+				98D80C192A2899CB0003008C /* CartItemStoreSaver.swift in Sources */,
 				98D80C1C2A289A1E0003008C /* CoreDataStore.swift in Sources */,
 				98D80C002A2862EF0003008C /* MainThreadDispatchDecorator.swift in Sources */,
 				98D80C102A28798D0003008C /* ItemDetailViewModel.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import CoreData
 
-final class CoreDataStore: ItemStoreSaver {
+final class CoreDataStore: CartItemStoreSaver {
     private let container: NSPersistentContainer
     private let context: NSManagedObjectContext
     
@@ -16,7 +16,7 @@ final class CoreDataStore: ItemStoreSaver {
         context = container.newBackgroundContext()
     }
     
-    func insert(_ item: Item, completion: @escaping (ItemStoreSaver.Result) -> Void) {
+    func insert(_ item: Item, completion: @escaping (CartItemStoreSaver.Result) -> Void) {
         let context = context
         context.perform {
             do {

@@ -12,9 +12,9 @@ final class LocalCartItemSaver: CartItemSaver {
         case failed
     }
     
-    private let storeSaver: ItemStoreSaver
+    private let storeSaver: CartItemStoreSaver
     
-    init(storeSaver: ItemStoreSaver) {
+    init(storeSaver: CartItemStoreSaver) {
         self.storeSaver = storeSaver
     }
     

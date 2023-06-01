@@ -45,8 +45,8 @@ private extension SceneDelegate {
     }
 }
 
-private final class NullStoreSaver: ItemStoreSaver {
-    func insert(_ item: Item, completion: @escaping (ItemStoreSaver.Result) -> Void) {
+private final class NullStoreSaver: CartItemStoreSaver {
+    func insert(_ item: Item, completion: @escaping (CartItemStoreSaver.Result) -> Void) {
         return
     }
 }
