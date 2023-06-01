@@ -94,8 +94,7 @@
 		98D80BB02A27430C0003008C /* JKOAssignment */ = {
 			isa = PBXGroup;
 			children = (
-				98D80BB12A27430C0003008C /* AppDelegate.swift */,
-				98D80BB32A27430C0003008C /* SceneDelegate.swift */,
+				98D80BFE2A2862C50003008C /* Composition */,
 				98D80BE32A2782930003008C /* ItemList */,
 				98D80BBA2A27430D0003008C /* Assets.xcassets */,
 				98D80BBC2A27430D0003008C /* LaunchScreen.storyboard */,
@@ -175,6 +174,15 @@
 				98D80BFC2A284F500003008C /* StubbedDataItemLoader.swift */,
 			);
 			path = Stub;
+			sourceTree = "<group>";
+		};
+		98D80BFE2A2862C50003008C /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				98D80BB12A27430C0003008C /* AppDelegate.swift */,
+				98D80BB32A27430C0003008C /* SceneDelegate.swift */,
+			);
+			path = Composition;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
