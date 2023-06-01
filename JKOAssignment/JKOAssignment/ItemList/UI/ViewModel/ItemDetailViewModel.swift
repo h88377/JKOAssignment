@@ -16,9 +16,9 @@ final class ItemDetailViewModel {
     
     private let id = UUID()
     private let item: Item
-    private let cartSaver: CartSaver
+    private let cartSaver: ItemSaver
     
-    init(item: Item, cartSaver: CartSaver) {
+    init(item: Item, cartSaver: ItemSaver) {
         self.item = item
         self.cartSaver = cartSaver
     }

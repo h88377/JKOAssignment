@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CartSaver {
+protocol ItemSaver {
     typealias Result = Error?
     
     func save(item: Item, completion: @escaping (Result) -> Void)

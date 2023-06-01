@@ -7,9 +7,9 @@
 
 import Foundation
 
-final class LocalItemSaver: CartSaver {
+final class LocalItemSaver: ItemSaver {
     
-    func save(item: Item, completion: @escaping (CartSaver.Result) -> Void) {
+    func save(item: Item, completion: @escaping (ItemSaver.Result) -> Void) {
         
     }
 }
