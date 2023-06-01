@@ -35,6 +35,7 @@
 		98D80C192A2899CB0003008C /* ItemStoreSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C182A2899CB0003008C /* ItemStoreSaver.swift */; };
 		98D80C1C2A289A1E0003008C /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C1B2A289A1E0003008C /* CoreDataStore.swift */; };
 		98D80C202A289C860003008C /* JKOStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C1E2A289C860003008C /* JKOStore.xcdatamodeld */; };
+		98D80C222A28C2700003008C /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C212A28C2700003008C /* LoadingIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		98D80C182A2899CB0003008C /* ItemStoreSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStoreSaver.swift; sourceTree = "<group>"; };
 		98D80C1B2A289A1E0003008C /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		98D80C1F2A289C860003008C /* JKOStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JKOStore.xcdatamodel; sourceTree = "<group>"; };
+		98D80C212A28C2700003008C /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 			children = (
 				98D80BEC2A27832B0003008C /* ItemListCell.swift */,
 				98D80C0B2A28794B0003008C /* ItemDetailCell.swift */,
+				98D80C212A28C2700003008C /* LoadingIndicator.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				98D80BEB2A2783130003008C /* ItemRequestCondition.swift in Sources */,
 				98D80BE92A2782FD0003008C /* Item.swift in Sources */,
 				98D80BFA2A28410B0003008C /* ItemListPaginationViewController.swift in Sources */,
+				98D80C222A28C2700003008C /* LoadingIndicator.swift in Sources */,
 				98D80BB42A27430C0003008C /* SceneDelegate.swift in Sources */,
 				98D80BE72A2782E40003008C /* ItemLoader.swift in Sources */,
 			);
