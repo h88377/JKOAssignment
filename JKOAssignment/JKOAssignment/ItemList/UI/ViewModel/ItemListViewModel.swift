@@ -8,9 +8,11 @@
 import Foundation
 
 final class ItemListViewModel {
-    var isItemsRefreshLoadingStateOnChanged: ((Bool) -> Void)?
-    var isItemsRefreshingStateOnChanged: (([Item]) -> Void)?
-    var isItemsRefreshingErrorStateOnChange: ((String) -> Void)?
+    typealias Observable<T> = ((T) -> Void)
+    
+    var isItemsRefreshLoadingStateOnChanged: Observable<Bool>?
+    var isItemsRefreshingStateOnChanged: Observable<[Item]>?
+    var isItemsRefreshingErrorStateOnChange: Observable<String>?
     
     private let itemLoader: ItemLoader
     
