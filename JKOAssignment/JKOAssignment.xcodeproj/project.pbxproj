@@ -24,6 +24,7 @@
 		98D80BFD2A284F500003008C /* StubbedDataItemLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BFC2A284F500003008C /* StubbedDataItemLoader.swift */; };
 		98D80C002A2862EF0003008C /* MainThreadDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BFF2A2862EF0003008C /* MainThreadDispatchDecorator.swift */; };
 		98D80C032A2863AC0003008C /* ItemListUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C022A2863AC0003008C /* ItemListUIComposer.swift */; };
+		98D80C052A2867060003008C /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C042A2867060003008C /* ItemDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		98D80BFC2A284F500003008C /* StubbedDataItemLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubbedDataItemLoader.swift; sourceTree = "<group>"; };
 		98D80BFF2A2862EF0003008C /* MainThreadDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThreadDispatchDecorator.swift; sourceTree = "<group>"; };
 		98D80C022A2863AC0003008C /* ItemListUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListUIComposer.swift; sourceTree = "<group>"; };
+		98D80C042A2867060003008C /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			children = (
 				98D80BE12A2776AA0003008C /* ItemListViewController.swift */,
 				98D80BF92A28410B0003008C /* ItemListPaginationViewController.swift */,
+				98D80C042A2867060003008C /* ItemDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				98D80BE22A2776AA0003008C /* ItemListViewController.swift in Sources */,
 				98D80C002A2862EF0003008C /* MainThreadDispatchDecorator.swift in Sources */,
 				98D80BE52A2782B10003008C /* ItemListViewModel.swift in Sources */,
+				98D80C052A2867060003008C /* ItemDetailViewController.swift in Sources */,
 				98D80BF82A2840EE0003008C /* ItemListPaginationViewModel.swift in Sources */,
 				98D80BED2A27832B0003008C /* ItemListCell.swift in Sources */,
 				98D80BB22A27430C0003008C /* AppDelegate.swift in Sources */,
