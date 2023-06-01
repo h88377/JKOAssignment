@@ -32,6 +32,29 @@ final class ItemDetailViewModel {
 }
 
 final class ItemDetailViewController: UIViewController {
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
+    let addToCartButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("加入購物車", for: .normal)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let checkoutButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("立刻購買", for: .normal)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private let viewModel: ItemDetailViewModel
     
     init(viewModel: ItemDetailViewModel) {
@@ -41,5 +64,28 @@ final class ItemDetailViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setUpUI()
+    }
+    
+    private func setUpUI() {
+        view.addSubviews([tableView, addToCartButton, checkoutButton])
+        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            
+            addToCartButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            addToCartButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            checkoutButton.leadingAnchor.constraint(equalTo: addToCartButton.trailingAnchor),
+            checkoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            checkoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 }
