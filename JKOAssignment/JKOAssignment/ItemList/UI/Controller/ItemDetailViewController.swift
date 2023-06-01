@@ -8,6 +8,9 @@
 import UIKit
 
 final class ItemDetailViewController: UIViewController {
+    
+    // MARK: - Property
+    
     let tableView: UITableView = {
         let tableView = UITableView()
         
@@ -48,6 +51,8 @@ final class ItemDetailViewController: UIViewController {
     
     private let viewModel: ItemDetailViewModel
     
+    // MARK: - Life cycle
+    
     init(viewModel: ItemDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -63,6 +68,8 @@ final class ItemDetailViewController: UIViewController {
         setUpUI()
         configureTableView()
     }
+    
+    // MARK: - Method
     
     func set(_ newItem: ItemDetailViewModel) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, ItemDetailViewModel>()
