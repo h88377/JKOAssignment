@@ -14,6 +14,8 @@ final class ItemDetailViewModel {
     var isCartSavingStateOnChanged: Observable<Void>?
     var isCartSavingErrorStateOnChanged: Observable<String>?
     
+    var checkoutHandler: Observable<Void>?
+    
     private let id = UUID()
     private let item: Item
     private let cartSaver: CartSaver
@@ -50,6 +52,10 @@ final class ItemDetailViewModel {
             }
             self?.isCartSavingStateOnChanged?(())
         }
+    }
+    
+    func goToCheckout() {
+        checkoutHandler?(())
     }
 }
 

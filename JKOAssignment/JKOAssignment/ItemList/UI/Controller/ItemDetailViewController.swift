@@ -24,9 +24,10 @@ final class ItemDetailViewController: UIViewController {
         return button
     }()
     
-    let checkoutButton: UIButton = {
+    private(set) lazy var checkoutButton: UIButton = {
         let button = UIButton()
         button.setTitle("立刻購買", for: .normal)
+        button.addTarget(self, action: #selector(didTapCheckout), for: .touchUpInside)
         
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -94,5 +95,9 @@ final class ItemDetailViewController: UIViewController {
     
     @objc private func didTapAddToCart() {
         viewModel.addToCart()
+    }
+    
+    @objc private func didTapCheckout() {
+        viewModel.goToCheckout()
     }
 }
