@@ -22,6 +22,7 @@
 		98D80BF82A2840EE0003008C /* ItemListPaginationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BF72A2840EE0003008C /* ItemListPaginationViewModel.swift */; };
 		98D80BFA2A28410B0003008C /* ItemListPaginationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BF92A28410B0003008C /* ItemListPaginationViewController.swift */; };
 		98D80BFD2A284F500003008C /* StubbedDataItemLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BFC2A284F500003008C /* StubbedDataItemLoader.swift */; };
+		98D80C002A2862EF0003008C /* MainThreadDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BFF2A2862EF0003008C /* MainThreadDispatchDecorator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		98D80BF72A2840EE0003008C /* ItemListPaginationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListPaginationViewModel.swift; sourceTree = "<group>"; };
 		98D80BF92A28410B0003008C /* ItemListPaginationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListPaginationViewController.swift; sourceTree = "<group>"; };
 		98D80BFC2A284F500003008C /* StubbedDataItemLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubbedDataItemLoader.swift; sourceTree = "<group>"; };
+		98D80BFF2A2862EF0003008C /* MainThreadDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThreadDispatchDecorator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			children = (
 				98D80BB12A27430C0003008C /* AppDelegate.swift */,
 				98D80BB32A27430C0003008C /* SceneDelegate.swift */,
+				98D80BFF2A2862EF0003008C /* MainThreadDispatchDecorator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			files = (
 				98D80BF62A28397D0003008C /* ItemListCellViewModel.swift in Sources */,
 				98D80BE22A2776AA0003008C /* ItemListViewController.swift in Sources */,
+				98D80C002A2862EF0003008C /* MainThreadDispatchDecorator.swift in Sources */,
 				98D80BE52A2782B10003008C /* ItemListViewModel.swift in Sources */,
 				98D80BF82A2840EE0003008C /* ItemListPaginationViewModel.swift in Sources */,
 				98D80BED2A27832B0003008C /* ItemListCell.swift in Sources */,
