@@ -10,6 +10,7 @@ import Foundation
 final class ItemDetailViewModel {
     typealias Observable<T> = ((T) -> Void)
     
+    var isCartSaveLoadingStateOnChanged: Observable<Bool>?
     var isCartSavingStateOnChanged: Observable<Void>?
     var isCartSavingErrorStateOnChanged: Observable<String>?
     
@@ -39,7 +40,10 @@ final class ItemDetailViewModel {
     }
     
     func addToCart() {
+        isCartSaveLoadingStateOnChanged?(true)
         cartSaver.save(item: item) { [weak self] error in
+            self?.isCartSaveLoadingStateOnChanged?(false)
+            
             guard error == nil else {
                 self?.isCartSavingErrorStateOnChanged?(ItemListErrorMessage.addToCart.rawValue)
                 return
