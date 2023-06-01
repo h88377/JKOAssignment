@@ -29,6 +29,20 @@ final class CartViewController: UIViewController {
         return button
     }()
     
+    private lazy var dataSource: UITableViewDiffableDataSource<Int, CartCellViewModel> = {
+        .init(tableView: tableView) { tableView, indexPath, viewModel in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CartCell.identifier, for: indexPath) as? CartCell else { return UITableViewCell() }
+            
+            cell.nameLabel.text = viewModel.nameText
+            cell.priceLabel.text = viewModel.priceText
+            cell.itemImageView.image = UIImage(systemName: viewModel.imageName)
+            cell.checkButton.isSelected = viewModel.isSelected
+            return cell
+        }
+    }()
+    
+    private var cartSection: Int { return 0 }
+    
     private let viewModel: CartViewModel
     
     // MARK: - Life cycle
@@ -47,9 +61,17 @@ final class CartViewController: UIViewController {
         
         setUpUI()
         loadCartItems()
+        tableView.dataSource = self.dataSource
     }
     
     // MARK: - Method
+    
+    func set(_ newItems: [CartCellViewModel]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, CartCellViewModel>()
+        snapshot.appendSections([cartSection])
+        snapshot.appendItems(newItems, toSection: cartSection)
+        dataSource.apply(snapshot, animatingDifferences: false)
+    }
     
     private func setUpUI() {
         view.backgroundColor = .white

@@ -37,7 +37,6 @@ final class CartCell: UITableViewCell {
         let button = UIButton()
         button.setImage(UIImage(systemName: "square"), for: .normal)
         button.setImage(UIImage(systemName: "checkmark.square"), for: .selected)
-        button.isSelected = true
         
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
