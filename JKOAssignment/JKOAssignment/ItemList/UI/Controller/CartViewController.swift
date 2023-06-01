@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol CartItemsLoader {
-    typealias Result = Swift.Result<[Item], Error>
-    
-    func loadItems(completion: @escaping (Result) -> Void)
-}
-
 final class CartViewController: UIViewController {
     let tableView: UITableView = {
         let tableView = UITableView()

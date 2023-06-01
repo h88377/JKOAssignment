@@ -40,6 +40,7 @@
 		98D80C262A28C6F10003008C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C252A28C6F10003008C /* CartViewController.swift */; };
 		98D80C282A28D1600003008C /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C272A28D1600003008C /* CartCell.swift */; };
 		98D80C2A2A28D1800003008C /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C292A28D1800003008C /* CartViewModel.swift */; };
+		98D80C2C2A28D1B60003008C /* CartItemsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C2B2A28D1B60003008C /* CartItemsLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		98D80C252A28C6F10003008C /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		98D80C272A28D1600003008C /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 		98D80C292A28D1800003008C /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		98D80C2B2A28D1B60003008C /* CartItemsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemsLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 				98D80BE82A2782FD0003008C /* Item.swift */,
 				98D80BE62A2782E40003008C /* ItemLoader.swift */,
 				98D80C0D2A2879690003008C /* CartItemSaver.swift */,
+				98D80C2B2A28D1B60003008C /* CartItemsLoader.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				98D80BB22A27430C0003008C /* AppDelegate.swift in Sources */,
 				98D80BFD2A284F500003008C /* StubbedDataItemLoader.swift in Sources */,
 				98D80C202A289C860003008C /* JKOStore.xcdatamodeld in Sources */,
+				98D80C2C2A28D1B60003008C /* CartItemsLoader.swift in Sources */,
 				98D80BEB2A2783130003008C /* ItemRequestCondition.swift in Sources */,
 				98D80C282A28D1600003008C /* CartCell.swift in Sources */,
 				98D80BE92A2782FD0003008C /* Item.swift in Sources */,
