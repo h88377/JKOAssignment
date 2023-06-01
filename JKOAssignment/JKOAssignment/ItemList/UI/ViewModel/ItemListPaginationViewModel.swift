@@ -8,8 +8,6 @@
 import Foundation
 
 final class ItemListPaginationViewModel {
-    typealias Observable<T> = ((T) -> Void)
-    
     var isItemsPaginationLoadingStateOnChange: Observable<Bool>?
     var isItemsPaginationStateOnChange: Observable<[Item]>?
     var isItemsPaginationErrorStateOnChange: Observable<String>?

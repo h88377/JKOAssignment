@@ -8,8 +8,6 @@
 import Foundation
 
 final class ItemDetailViewModel {
-    typealias Observable<T> = ((T) -> Void)
-    
     var isCartSaveLoadingStateOnChanged: Observable<Bool>?
     var isCartSavingStateOnChanged: Observable<Void>?
     var isCartSavingErrorStateOnChanged: Observable<String>?

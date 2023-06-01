@@ -8,8 +8,6 @@
 import Foundation
 
 final class ItemListViewModel {
-    typealias Observable<T> = ((T) -> Void)
-    
     var isItemsRefreshLoadingStateOnChanged: Observable<Bool>?
     var isItemsRefreshingStateOnChanged: Observable<[Item]>?
     var isItemsRefreshingErrorStateOnChange: Observable<String>?

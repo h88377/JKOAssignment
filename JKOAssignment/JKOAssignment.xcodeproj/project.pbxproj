@@ -30,6 +30,7 @@
 		98D80C0C2A28794B0003008C /* ItemDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C0B2A28794B0003008C /* ItemDetailCell.swift */; };
 		98D80C0E2A2879690003008C /* CartSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C0D2A2879690003008C /* CartSaver.swift */; };
 		98D80C102A28798D0003008C /* ItemDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C0F2A28798D0003008C /* ItemDetailViewModel.swift */; };
+		98D80C122A287EED0003008C /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C112A287EED0003008C /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		98D80C0B2A28794B0003008C /* ItemDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailCell.swift; sourceTree = "<group>"; };
 		98D80C0D2A2879690003008C /* CartSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartSaver.swift; sourceTree = "<group>"; };
 		98D80C0F2A28798D0003008C /* ItemDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewModel.swift; sourceTree = "<group>"; };
+		98D80C112A287EED0003008C /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 			children = (
 				98D80C072A286AEE0003008C /* UIView+Extension.swift */,
 				98D80C092A28790F0003008C /* Constants.swift */,
+				98D80C112A287EED0003008C /* Observable.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				98D80C0E2A2879690003008C /* CartSaver.swift in Sources */,
 				98D80BE52A2782B10003008C /* ItemListViewModel.swift in Sources */,
 				98D80C0C2A28794B0003008C /* ItemDetailCell.swift in Sources */,
+				98D80C122A287EED0003008C /* Observable.swift in Sources */,
 				98D80C052A2867060003008C /* ItemDetailViewController.swift in Sources */,
 				98D80BF82A2840EE0003008C /* ItemListPaginationViewModel.swift in Sources */,
 				98D80BED2A27832B0003008C /* ItemListCell.swift in Sources */,
