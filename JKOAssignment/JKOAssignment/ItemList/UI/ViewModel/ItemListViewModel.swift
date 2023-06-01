@@ -9,6 +9,7 @@ import Foundation
 
 enum ErrorMessage: String {
     case loadItems = "無法連接至伺服器"
+    case reachEndItemsPage = "沒有更多商品囉"
 }
 
 final class ItemListViewModel {

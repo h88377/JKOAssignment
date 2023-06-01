@@ -7,11 +7,86 @@
 
 import UIKit
 
+final class ItemListPaginationViewModel {
+    typealias Observable<T> = ((T) -> Void)
+    
+    var isItemsPaginationLoadingStateOnChange: Observable<Bool>?
+    var isItemsPaginationStateOnChange: Observable<[Item]>?
+    var isItemsPaginationErrorStateOnChange: Observable<String?>?
+    
+    private var currentPage = 0
+    private let itemLoader: ItemLoader
+    
+    init(petLoader: ItemLoader) {
+        self.itemLoader = petLoader
+    }
+    
+    func resetPage() {
+        currentPage = 0
+    }
+    
+    func loadNextPage() {
+        currentPage += 1
+        isItemsPaginationLoadingStateOnChange?(true)
+        itemLoader.load(with: ItemRequestCondition(page: currentPage)) { [weak self] result in
+            switch result {
+            case let .success(items) where items.isEmpty:
+                self?.currentPage -= 1
+                self?.isItemsPaginationErrorStateOnChange?(ErrorMessage.reachEndItemsPage.rawValue)
+                
+            case let .success(items):
+                self?.isItemsPaginationStateOnChange?(items)
+                
+            case .failure:
+                self?.currentPage -= 1
+                self?.isItemsPaginationErrorStateOnChange?(ErrorMessage.loadItems.rawValue)
+                
+            }
+            self?.isItemsPaginationLoadingStateOnChange?(false)
+        }
+    }
+}
+
+final class ItemListPaginationViewController {
+    private(set) var isPaginating = false
+    
+    private let viewModel: ItemListPaginationViewModel
+    
+    init(viewModel: ItemListPaginationViewModel) {
+        self.viewModel = viewModel
+        self.setUpBinding()
+    }
+    
+    func resetPage() {
+        viewModel.resetPage()
+    }
+     
+    func paginate(on scrollView: UIScrollView) {
+        guard !isPaginating else { return }
+        
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let frameHeight = scrollView.frame.height
+        
+        if offsetY > (contentHeight - frameHeight) {
+            viewModel.loadNextPage()
+        }
+    }
+    
+    private func setUpBinding() {
+        viewModel.isItemsPaginationLoadingStateOnChange = { [weak self] isPaginating in
+            self?.isPaginating = isPaginating
+        }
+    }
+}
+
 final class ItemListViewController: UICollectionViewController {
     private let viewModel: ItemListViewModel
+    private let paginationController: ItemListPaginationViewController
         
-    init(viewModel: ItemListViewModel) {
+    init(viewModel: ItemListViewModel, paginationController: ItemListPaginationViewController) {
         self.viewModel = viewModel
+        self.paginationController = paginationController
         super.init(collectionViewLayout: .init())
     }
     
@@ -84,6 +159,20 @@ final class ItemListViewController: UICollectionViewController {
     }
     
     @objc private func loadItems() {
+        guard !paginationController.isPaginating else { return }
+        
+        paginationController.resetPage()
         viewModel.loadItems()
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension ItemListViewController {
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let snapshot = dataSource.snapshot()
+        guard collectionView.refreshControl?.isRefreshing != true, !snapshot.itemIdentifiers.isEmpty else { return }
+            
+        paginationController.paginate(on: scrollView)
     }
 }
