@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ItemListViewController: UICollectionViewController {
+final class ItemListViewController: UICollectionViewController {
     private lazy var dataSource: UICollectionViewDiffableDataSource<Int, Item> = {
         .init(collectionView: collectionView) { collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemListCell.identifier, for: indexPath) as? ItemListCell else { return UICollectionViewCell() }
