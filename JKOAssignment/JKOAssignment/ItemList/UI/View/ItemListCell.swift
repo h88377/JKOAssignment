@@ -44,6 +44,7 @@ final class ItemListCell: UICollectionViewCell {
     }
     
     private func setUpUI() {
+        contentView.backgroundColor = .white
         contentView.addSubviews([nameLabel, priceLabel, imageView])
         
         NSLayoutConstraint.activate([
