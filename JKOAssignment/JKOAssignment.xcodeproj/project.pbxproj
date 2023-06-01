@@ -26,6 +26,7 @@
 		98D80C032A2863AC0003008C /* ItemListUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C022A2863AC0003008C /* ItemListUIComposer.swift */; };
 		98D80C052A2867060003008C /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C042A2867060003008C /* ItemDetailViewController.swift */; };
 		98D80C082A286AEE0003008C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C072A286AEE0003008C /* UIView+Extension.swift */; };
+		98D80C0A2A28790F0003008C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C092A28790F0003008C /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		98D80C022A2863AC0003008C /* ItemListUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListUIComposer.swift; sourceTree = "<group>"; };
 		98D80C042A2867060003008C /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		98D80C072A286AEE0003008C /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		98D80C092A28790F0003008C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				98D80C072A286AEE0003008C /* UIView+Extension.swift */,
+				98D80C092A28790F0003008C /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98D80C032A2863AC0003008C /* ItemListUIComposer.swift in Sources */,
+				98D80C0A2A28790F0003008C /* Constants.swift in Sources */,
 				98D80BF62A28397D0003008C /* ItemListCellViewModel.swift in Sources */,
 				98D80C082A286AEE0003008C /* UIView+Extension.swift in Sources */,
 				98D80BE22A2776AA0003008C /* ItemListViewController.swift in Sources */,
