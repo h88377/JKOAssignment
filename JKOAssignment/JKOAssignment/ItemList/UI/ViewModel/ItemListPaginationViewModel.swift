@@ -8,8 +8,6 @@
 import Foundation
 
 final class ItemListPaginationViewModel {
-    typealias Observable<T> = ((T) -> Void)
-    
     var isItemsPaginationLoadingStateOnChange: Observable<Bool>?
     var isItemsPaginationStateOnChange: Observable<[Item]>?
     var isItemsPaginationErrorStateOnChange: Observable<String>?
@@ -32,14 +30,14 @@ final class ItemListPaginationViewModel {
             switch result {
             case let .success(items) where items.isEmpty:
                 self?.currentPage -= 1
-                self?.isItemsPaginationErrorStateOnChange?(ErrorMessage.reachEndItemsPage.rawValue)
+                self?.isItemsPaginationErrorStateOnChange?(ItemListErrorMessage.reachEndItemsPage.rawValue)
                 
             case let .success(items):
                 self?.isItemsPaginationStateOnChange?(items)
                 
             case .failure:
                 self?.currentPage -= 1
-                self?.isItemsPaginationErrorStateOnChange?(ErrorMessage.loadItems.rawValue)
+                self?.isItemsPaginationErrorStateOnChange?(ItemListErrorMessage.loadItems.rawValue)
                 
             }
             self?.isItemsPaginationLoadingStateOnChange?(false)

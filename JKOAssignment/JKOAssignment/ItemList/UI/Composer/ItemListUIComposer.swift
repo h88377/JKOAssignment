@@ -10,7 +10,7 @@ import UIKit
 final class ItemListUIComposer {
     private init() {}
     
-    static func composedItemList(with itemLoader: ItemLoader) -> ItemListViewController {
+    static func composedItemList(with itemLoader: ItemLoader, select: @escaping (Item) -> Void) -> ItemListViewController {
         let mainThreadItemLoader = MainThreadDispatchDecorator(decoratee: itemLoader)
         
         let paginationVM = ItemListPaginationViewModel(itemLoader: mainThreadItemLoader)
@@ -20,30 +20,42 @@ final class ItemListUIComposer {
         let itemListVC = ItemListViewController(viewModel: itemListVM, paginationController: paginationVC)
         
         paginationVM.isItemsPaginationStateOnChange = { [weak itemListVC] items in
-            let cellVMs = items.map(ItemListCellViewModel.init)
+            let cellVMs = items.map { item in
+                let viewModel = ItemListCellViewModel(item: item)
+                viewModel.selectHandler = select
+                return viewModel
+            }
             itemListVC?.append(cellVMs)
         }
         
         paginationVM.isItemsPaginationErrorStateOnChange = { [weak itemListVC] message in
-            itemListVC?.present(alert(with: message), animated: true)
+            guard let itemListVC = itemListVC else { return }
+            
+            itemListVC.errorView.show(message, on: itemListVC.view)
         }
         
         itemListVM.isItemsRefreshingStateOnChanged = { [weak itemListVC] items in
-            let cellVMs = items.map(ItemListCellViewModel.init)
+            let cellVMs = items.map { item in
+                let viewModel = ItemListCellViewModel(item: item)
+                viewModel.selectHandler = select
+                return viewModel
+            }
             itemListVC?.set(cellVMs)
         }
         
         itemListVM.isItemsRefreshingErrorStateOnChange = { [weak itemListVC] message in
-            itemListVC?.present(alert(with: message), animated: true)
+            guard let itemListVC = itemListVC else { return }
+            
+            itemListVC.errorView.show(message, on: itemListVC.view)
         }
         
         return itemListVC
     }
     
-    private static func alert(with message: String?) -> UIAlertController {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "確定", style: .default)
-        alert.addAction(action)
-        return alert
+    static func composedItemDetail(with item: Item, itemSaver: CartItemSaver) -> ItemDetailViewController {
+        let mainThreadItemSaver = MainThreadDispatchDecorator(decoratee: itemSaver)
+        let itemDetailVM = ItemDetailViewModel(item: item, itemSaver: mainThreadItemSaver)
+        let itemDetailVC = ItemDetailViewController(viewModel: itemDetailVM)
+        return itemDetailVC
     }
 }

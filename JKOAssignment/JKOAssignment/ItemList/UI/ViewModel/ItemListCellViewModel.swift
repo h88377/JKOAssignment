@@ -8,8 +8,6 @@
 import Foundation
 
 final class ItemListCellViewModel {
-    typealias Observable<T> = ((T) -> Void)
-    
     var selectHandler: Observable<Item>?
     
     private let id = UUID()

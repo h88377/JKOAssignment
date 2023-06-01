@@ -7,15 +7,10 @@
 
 import Foundation
 
-enum ErrorMessage: String {
-    case loadItems = "無法連接至伺服器"
-    case reachEndItemsPage = "沒有更多商品囉"
-}
-
 final class ItemListViewModel {
-    var isItemsRefreshLoadingStateOnChanged: ((Bool) -> Void)?
-    var isItemsRefreshingStateOnChanged: (([Item]) -> Void)?
-    var isItemsRefreshingErrorStateOnChange: ((String) -> Void)?
+    var isItemsRefreshLoadingStateOnChanged: Observable<Bool>?
+    var isItemsRefreshingStateOnChanged: Observable<[Item]>?
+    var isItemsRefreshingErrorStateOnChange: Observable<String>?
     
     private let itemLoader: ItemLoader
     
@@ -31,7 +26,7 @@ final class ItemListViewModel {
                 self?.isItemsRefreshingStateOnChanged?(items)
                 
             case .failure:
-                self?.isItemsRefreshingErrorStateOnChange?(ErrorMessage.loadItems.rawValue)
+                self?.isItemsRefreshingErrorStateOnChange?(ItemListErrorMessage.loadItems.rawValue)
             }
             self?.isItemsRefreshLoadingStateOnChanged?(false)
         }

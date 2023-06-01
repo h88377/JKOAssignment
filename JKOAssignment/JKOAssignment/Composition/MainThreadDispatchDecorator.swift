@@ -30,3 +30,11 @@ extension MainThreadDispatchDecorator: ItemLoader where T == ItemLoader {
         }
     }
 }
+
+extension MainThreadDispatchDecorator: CartItemSaver where T == CartItemSaver {
+    func save(item: Item, completion: @escaping (CartItemSaver.Result) -> Void) {
+        decoratee.save(item: item) { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}

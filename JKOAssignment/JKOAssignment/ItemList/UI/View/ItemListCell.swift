@@ -27,7 +27,7 @@ final class ItemListCell: UICollectionViewCell {
     
     let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -61,11 +61,5 @@ final class ItemListCell: UICollectionViewCell {
             priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             priceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
-    }
-}
-
-extension UIView {
-    func addSubviews(_ views: [UIView]) {
-        views.forEach(addSubview)
     }
 }
