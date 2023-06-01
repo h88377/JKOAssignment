@@ -32,7 +32,7 @@ private extension SceneDelegate {
         let itemListVC = ItemListUIComposer.composedItemList(with: itemLoader, select: { [weak self] selectedItem in
             guard let self = self else { return }
             
-            let localItemSaver = LocalItemSaver(storeSaver: self.configureCoreDataStore() ?? NullStoreSaver())
+            let localItemSaver = LocalCartItemSaver(storeSaver: self.configureCoreDataStore() ?? NullStoreSaver())
             let itemDetailVC = ItemListUIComposer.composedItemDetail(with: selectedItem, itemSaver: localItemSaver)
             self.navigationController.pushViewController(itemDetailVC, animated: true)
         })

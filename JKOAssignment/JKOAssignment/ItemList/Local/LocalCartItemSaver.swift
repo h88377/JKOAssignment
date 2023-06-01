@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class LocalItemSaver: ItemSaver {
+final class LocalCartItemSaver: ItemSaver {
     enum SaveError: Error {
         case failed
     }
