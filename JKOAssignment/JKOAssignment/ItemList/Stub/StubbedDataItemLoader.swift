@@ -9,12 +9,27 @@ import Foundation
 
 final class StubbedDataItemLoader: ItemLoader {
     
-    
     func load(with condition: ItemRequestCondition, completion: @escaping (ItemLoader.Result) -> Void) {
+        let stubbedItems: [Item]
         
+        switch condition.page {
+        case 0:
+            stubbedItems = page0
+            
+        case 1:
+            stubbedItems = page1
+            
+        case 2:
+            stubbedItems = page2
+            
+        default:
+            stubbedItems = []
+        }
+        
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.75) {
+            completion(.success(stubbedItems))
+        }
     }
-    
-    
 }
 
 private extension StubbedDataItemLoader {
