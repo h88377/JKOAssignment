@@ -19,6 +19,13 @@ final class CartViewController: UIViewController {
         return tableView
     }()
     
+    let errorView: FadingMessageView = {
+        let view = FadingMessageView()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private(set) lazy var loadingIndicator: UIRefreshControl = {
         let indicator = UIRefreshControl()
         indicator.addTarget(self, action: #selector(loadCartItems), for: .valueChanged)
@@ -108,6 +115,12 @@ final class CartViewController: UIViewController {
             } else {
                 self?.loadingIndicator.endRefreshing()
             }
+        }
+        
+        viewModel.isItemsErrorStateOnChange = { [weak self] message in
+            guard let self = self else { return }
+            
+            self.errorView.show(message, on: self.view)
         }
     }
     
