@@ -19,6 +19,13 @@ final class CartViewController: UIViewController {
         return tableView
     }()
     
+    private(set) lazy var loadingIndicator: UIRefreshControl = {
+        let indicator = UIRefreshControl()
+        indicator.addTarget(self, action: #selector(loadCartItems), for: .valueChanged)
+        
+        return indicator
+    }()
+    
     private(set) lazy var checkoutButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemGray6
@@ -63,8 +70,9 @@ final class CartViewController: UIViewController {
         super.viewDidLoad()
         
         setUpUI()
-        loadCartItems()
+        setUpBindings()
         tableView.dataSource = self.dataSource
+        loadCartItems()
     }
     
     // MARK: - Method
@@ -80,6 +88,7 @@ final class CartViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubviews([tableView, checkoutButton])
+        tableView.addSubview(loadingIndicator)
         
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -92,7 +101,17 @@ final class CartViewController: UIViewController {
         ])
     }
     
-    private func loadCartItems() {
+    private func setUpBindings() {
+        viewModel.isItemsLoadingStateOnChanged = { [weak self] isLoading in
+            if isLoading {
+                self?.loadingIndicator.beginRefreshing()
+            } else {
+                self?.loadingIndicator.endRefreshing()
+            }
+        }
+    }
+    
+    @objc private func loadCartItems() {
         viewModel.loadCartItems()
     }
 }
