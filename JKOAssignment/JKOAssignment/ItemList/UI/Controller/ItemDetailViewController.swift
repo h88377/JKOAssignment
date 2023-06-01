@@ -67,18 +67,20 @@ final class ItemDetailViewController: UIViewController {
         
         setUpUI()
         configureTableView()
+        configureSnapshot()
     }
     
     // MARK: - Method
     
-    func set(_ newItem: ItemDetailViewModel) {
+    private func configureSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Int, ItemDetailViewModel>()
         snapshot.appendSections([itemSection])
-        snapshot.appendItems([newItem], toSection: itemSection)
+        snapshot.appendItems([viewModel], toSection: itemSection)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
     private func setUpUI() {
+        view.backgroundColor = .white
         view.addSubviews([tableView, addToCartButton, checkoutButton])
         
         NSLayoutConstraint.activate([
@@ -86,6 +88,7 @@ final class ItemDetailViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             
+            addToCartButton.topAnchor.constraint(equalTo: tableView.bottomAnchor),
             addToCartButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             addToCartButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
