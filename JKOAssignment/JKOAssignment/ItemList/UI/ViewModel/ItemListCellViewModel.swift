@@ -19,12 +19,8 @@ final class ItemListCellViewModel {
         return item.name
     }
     
-    var descriptionText: String {
-        return item.description
-    }
-    
     var priceText: String {
-        return String(item.price)
+        return "$ \(item.price)"
     }
     
     var imageName: String {
