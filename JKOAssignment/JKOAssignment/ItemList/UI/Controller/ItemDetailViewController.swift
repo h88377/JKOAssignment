@@ -33,12 +33,25 @@ final class ItemDetailCell: UITableViewCell {
     }()
 }
 
+protocol CartSaver {
+    typealias Result = Error?
+    
+    func save(item: Item, completion: @escaping (Result) -> Void)
+}
+
 final class ItemDetailViewModel {
+    typealias Observable<T> = ((T) -> Void)
+    
+    var isCartSavingStateOnChanged: Observable<Void>?
+    var isCartSavingErrorStateOnChanged: Observable<String>?
+    
     private let id = UUID()
     private let item: Item
+    private let cartSaver: CartSaver
     
-    init(item: Item) {
+    init(item: Item, cartSaver: CartSaver) {
         self.item = item
+        self.cartSaver = cartSaver
     }
     
     var nameText: String {
@@ -55,6 +68,16 @@ final class ItemDetailViewModel {
     
     var imageName: String {
         return item.imageName
+    }
+    
+    func addToCart() {
+        cartSaver.save(item: item) { [weak self] error in
+            guard error == nil else {
+                self?.isCartSavingErrorStateOnChanged?(ErrorMessage.addToCart.rawValue)
+                return
+            }
+            self?.isCartSavingStateOnChanged?(())
+        }
     }
 }
 
@@ -76,9 +99,10 @@ final class ItemDetailViewController: UIViewController {
         return tableView
     }()
     
-    let addToCartButton: UIButton = {
+    private(set) lazy var addToCartButton: UIButton = {
         let button = UIButton()
         button.setTitle("加入購物車", for: .normal)
+        button.addTarget(self, action: #selector(didTapAddToCart), for: .touchUpInside)
         
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -150,5 +174,9 @@ final class ItemDetailViewController: UIViewController {
     private func configureTableView() {
         tableView.dataSource = self.dataSource
         tableView.register(ItemDetailCell.self, forCellReuseIdentifier: ItemDetailCell.identifier)
+    }
+    
+    @objc private func didTapAddToCart() {
+        viewModel.addToCart()
     }
 }
