@@ -15,10 +15,81 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = ViewController()
+        window.rootViewController = makeItemListViewController()
         
         self.window = window
         window.makeKeyAndVisible()
     }
 }
 
+private extension SceneDelegate {
+    func makeItemListViewController() -> ItemListViewController {
+        let itemLoader = StubbedDataItemLoader()
+        return ItemListUIComposer.composedItemList(with: itemLoader)
+    }
+}
+
+final class MainThreadDispatchDecorator<T> {
+    private let decoratee: T
+    
+    init(decoratee: T) {
+        self.decoratee = decoratee
+    }
+    
+    func dispatch(completion: @escaping () -> Void) {
+        guard Thread.isMainThread else {
+            return DispatchQueue.main.async { completion() }
+        }
+        
+        completion()
+    }
+}
+
+extension MainThreadDispatchDecorator: ItemLoader where T == ItemLoader {
+    func load(with condition: ItemRequestCondition, completion: @escaping (ItemLoader.Result) -> Void) {
+        decoratee.load(with: condition) { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}
+
+final class ItemListUIComposer {
+    private init() {}
+    
+    static func composedItemList(with itemLoader: ItemLoader) -> ItemListViewController {
+        let mainThreadItemLoader = MainThreadDispatchDecorator(decoratee: itemLoader)
+        
+        let paginationVM = ItemListPaginationViewModel(itemLoader: mainThreadItemLoader)
+        let paginationVC = ItemListPaginationViewController(viewModel: paginationVM)
+        
+        let itemListVM = ItemListViewModel(itemLoader: mainThreadItemLoader)
+        let itemListVC = ItemListViewController(viewModel: itemListVM, paginationController: paginationVC)
+        
+        paginationVM.isItemsPaginationStateOnChange = { [weak itemListVC] items in
+            let cellVMs = items.map(ItemListCellViewModel.init)
+            itemListVC?.append(cellVMs)
+        }
+        
+        paginationVM.isItemsPaginationErrorStateOnChange = { [weak itemListVC] message in
+            itemListVC?.present(alert(with: message), animated: true)
+        }
+        
+        itemListVM.isItemsRefreshingStateOnChanged = { [weak itemListVC] items in
+            let cellVMs = items.map(ItemListCellViewModel.init)
+            itemListVC?.set(cellVMs)
+        }
+        
+        itemListVM.isItemsRefreshingErrorStateOnChange = { [weak itemListVC] message in
+            itemListVC?.present(alert(with: message), animated: true)
+        }
+        
+        return itemListVC
+    }
+    
+    private static func alert(with message: String?) -> UIAlertController {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "確定", style: .default)
+        alert.addAction(action)
+        return alert
+    }
+}
