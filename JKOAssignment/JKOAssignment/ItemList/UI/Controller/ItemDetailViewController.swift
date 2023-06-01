@@ -104,6 +104,15 @@ final class ItemDetailViewController: UIViewController {
     private func configureTableView() {
         tableView.dataSource = self.dataSource
         tableView.register(ItemDetailCell.self, forCellReuseIdentifier: ItemDetailCell.identifier)
+        configureTableHeaderView()
+    }
+    
+    private func configureTableHeaderView() {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(systemName: viewModel.imageName)
+        
+        tableView.tableHeaderView = imageView
     }
     
     @objc private func didTapAddToCart() {
