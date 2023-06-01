@@ -7,15 +7,50 @@
 
 import UIKit
 
+final class ItemListCellViewModel {
+    private let id = UUID()
+    private let item: Item
+    
+    init(item: Item) {
+        self.item = item
+    }
+    
+    var nameText: String {
+        return item.name
+    }
+    
+    var descriptionText: String {
+        return item.description
+    }
+    
+    var priceText: String {
+        return String(item.price)
+    }
+    
+    var imageName: String {
+        return item.imageName
+    }
+}
+
+extension ItemListCellViewModel: Hashable {
+    static func == (lhs: ItemListCellViewModel, rhs: ItemListCellViewModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
 final class ItemListViewController: UICollectionViewController {
-    private lazy var dataSource: UICollectionViewDiffableDataSource<Int, Item> = {
-        .init(collectionView: collectionView) { collectionView, indexPath, item in
+    private lazy var dataSource: UICollectionViewDiffableDataSource<Int, ItemListCellViewModel> = {
+        .init(collectionView: collectionView) { collectionView, indexPath, viewModel in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemListCell.identifier, for: indexPath) as? ItemListCell else { return UICollectionViewCell() }
             
-            cell.nameLabel.text = item.name
-            cell.descriptionLabel.text = item.description
-            cell.priceLabel.text = String(item.price)
-            cell.imageView.image = UIImage(systemName: item.imageName)
+            cell.nameLabel.text = viewModel.nameText
+            cell.descriptionLabel.text = viewModel.descriptionText
+            cell.priceLabel.text = viewModel.priceText
+            cell.imageView.image = UIImage(systemName: viewModel.imageName)
             return cell
         }
     }()
@@ -36,16 +71,15 @@ final class ItemListViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpBindings()
+        collectionView.refreshControl = binded(refreshView: UIRefreshControl())
         loadItems()
     }
     
-    private func setUpBindings() {
-        collectionView.refreshControl = binded(refreshView: UIRefreshControl())
-        
-        viewModel.isItemsRefreshingStateOnChanged = { [weak self] items in
-            self?.set(items)
-        }
+    func set(_ newItems: [ItemListCellViewModel]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, ItemListCellViewModel>()
+        snapshot.appendSections([itemsSection])
+        snapshot.appendItems(newItems, toSection: itemsSection)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
     
     private func binded(refreshView: UIRefreshControl) -> UIRefreshControl {
@@ -63,12 +97,5 @@ final class ItemListViewController: UICollectionViewController {
     
     @objc private func loadItems() {
         viewModel.loadItems()
-    }
-    
-    private func set(_ newItems: [Item]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, Item>()
-        snapshot.appendSections([itemsSection])
-        snapshot.appendItems(newItems, toSection: itemsSection)
-        dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
