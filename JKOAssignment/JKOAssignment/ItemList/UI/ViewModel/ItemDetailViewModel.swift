@@ -8,19 +8,19 @@
 import Foundation
 
 final class ItemDetailViewModel {
-    var isCartSaveLoadingStateOnChanged: Observable<Bool>?
-    var isCartSavingStateOnChanged: Observable<Void>?
-    var isCartSavingErrorStateOnChanged: Observable<String>?
+    var isItemSaveLoadingStateOnChanged: Observable<Bool>?
+    var isItemSavingStateOnChanged: Observable<Void>?
+    var isItemSavingErrorStateOnChanged: Observable<String>?
     
     var checkoutHandler: Observable<Void>?
     
     private let id = UUID()
     private let item: Item
-    private let cartSaver: ItemSaver
+    private let itemSaver: ItemSaver
     
-    init(item: Item, cartSaver: ItemSaver) {
+    init(item: Item, itemSaver: ItemSaver) {
         self.item = item
-        self.cartSaver = cartSaver
+        self.itemSaver = itemSaver
     }
     
     var nameText: String {
@@ -40,15 +40,15 @@ final class ItemDetailViewModel {
     }
     
     func addToCart() {
-        isCartSaveLoadingStateOnChanged?(true)
-        cartSaver.save(item: item) { [weak self] error in
-            self?.isCartSaveLoadingStateOnChanged?(false)
+        isItemSaveLoadingStateOnChanged?(true)
+        itemSaver.save(item: item) { [weak self] error in
+            self?.isItemSaveLoadingStateOnChanged?(false)
             
             guard error == nil else {
-                self?.isCartSavingErrorStateOnChanged?(ItemListErrorMessage.addToCart.rawValue)
+                self?.isItemSavingErrorStateOnChanged?(ItemListErrorMessage.addToCart.rawValue)
                 return
             }
-            self?.isCartSavingStateOnChanged?(())
+            self?.isItemSavingStateOnChanged?(())
         }
     }
     
