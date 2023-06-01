@@ -10,12 +10,15 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    private lazy var navigationController = UINavigationController()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = makeItemListViewController()
+        window.rootViewController = navigationController
+        navigationController.setViewControllers([makeItemListViewController()], animated: false)
         
         self.window = window
         window.makeKeyAndVisible()
@@ -25,6 +28,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 private extension SceneDelegate {
     func makeItemListViewController() -> ItemListViewController {
         let itemLoader = StubbedDataItemLoader()
-        return ItemListUIComposer.composedItemList(with: itemLoader)
+        let itemListVC = ItemListUIComposer.composedItemList(with: itemLoader) { [weak self] selectedItem in
+            let itemDetailVC = ItemListUIComposer.composedItemDetail(with: selectedItem, itemSaver: NullItemSaver())
+            self?.navigationController.pushViewController(itemDetailVC, animated: true)
+        }
+        return itemListVC
+    }
+}
+
+final class NullItemSaver: ItemSaver {
+    func save(item: Item, completion: @escaping (ItemSaver.Result) -> Void) {
+        return
     }
 }

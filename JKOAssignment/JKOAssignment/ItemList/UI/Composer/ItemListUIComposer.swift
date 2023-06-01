@@ -10,7 +10,7 @@ import UIKit
 final class ItemListUIComposer {
     private init() {}
     
-    static func composedItemList(with itemLoader: ItemLoader) -> ItemListViewController {
+    static func composedItemList(with itemLoader: ItemLoader, select: @escaping (Item) -> Void) -> ItemListViewController {
         let mainThreadItemLoader = MainThreadDispatchDecorator(decoratee: itemLoader)
         
         let paginationVM = ItemListPaginationViewModel(itemLoader: mainThreadItemLoader)
@@ -29,7 +29,11 @@ final class ItemListUIComposer {
         }
         
         itemListVM.isItemsRefreshingStateOnChanged = { [weak itemListVC] items in
-            let cellVMs = items.map(ItemListCellViewModel.init)
+            let cellVMs = items.map { item in
+                let viewModel = ItemListCellViewModel(item: item)
+                viewModel.selectHandler = select
+                return viewModel
+            }
             itemListVC?.set(cellVMs)
         }
         
@@ -38,6 +42,12 @@ final class ItemListUIComposer {
         }
         
         return itemListVC
+    }
+    
+    static func composedItemDetail(with item: Item, itemSaver: ItemSaver) -> ItemDetailViewController {
+        let itemDetailVM = ItemDetailViewModel(item: item, itemSaver: itemSaver)
+        let itemDetailVC = ItemDetailViewController(viewModel: itemDetailVM)
+        return itemDetailVC
     }
     
     private static func alert(with message: String?) -> UIAlertController {
