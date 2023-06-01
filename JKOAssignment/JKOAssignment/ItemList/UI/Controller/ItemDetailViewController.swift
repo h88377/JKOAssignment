@@ -7,7 +7,8 @@
 
 import UIKit
 
-final class ItemDetailViewModel {
+final class ItemDetailCellViewModel {
+    private let id = UUID()
     private let item: Item
     
     init(item: Item) {
@@ -29,6 +30,46 @@ final class ItemDetailViewModel {
     var imageName: String {
         return item.imageName
     }
+}
+
+extension ItemDetailCellViewModel: Hashable {
+    static func == (lhs: ItemDetailCellViewModel, rhs: ItemDetailCellViewModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
+final class ItemDetailCell: UITableViewCell {
+    static let identifier = "\(ItemDetailCell.self)"
+    
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let descriptionLabel: UILabel = {
+        let label = UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let priceLabel: UILabel = {
+        let label = UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+}
+
+final class ItemDetailViewModel {
+    
 }
 
 final class ItemDetailViewController: UIViewController {
@@ -62,6 +103,19 @@ final class ItemDetailViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    private lazy var dataSource: UITableViewDiffableDataSource<Int, ItemDetailCellViewModel> = {
+        .init(tableView: tableView) { tableView, indexPath, viewModel in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemDetailCell.identifier, for: indexPath) as? ItemDetailCell else { return UITableViewCell() }
+            
+            cell.nameLabel.text = viewModel.nameText
+            cell.descriptionLabel.text = viewModel.descriptionText
+            cell.priceLabel.text = viewModel.priceText
+            return cell
+        }
+    }()
+    
+    private var itemSection: Int { return 0 }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -70,6 +124,14 @@ final class ItemDetailViewController: UIViewController {
         super.viewDidLoad()
         
         setUpUI()
+        configureTableView()
+    }
+    
+    func set(_ newItem: ItemDetailCellViewModel) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, ItemDetailCellViewModel>()
+        snapshot.appendSections([itemSection])
+        snapshot.appendItems([newItem], toSection: itemSection)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
     
     private func setUpUI() {
@@ -87,5 +149,10 @@ final class ItemDetailViewController: UIViewController {
             checkoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             checkoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    private func configureTableView() {
+        tableView.dataSource = self.dataSource
+        tableView.register(ItemDetailCell.self, forCellReuseIdentifier: ItemDetailCell.identifier)
     }
 }
