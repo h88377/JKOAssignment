@@ -33,14 +33,17 @@ final class CartCell: UITableViewCell {
         return imageView
     }()
     
-    let checkButton: UIButton = {
+    private(set) lazy var checkButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "square"), for: .normal)
         button.setImage(UIImage(systemName: "checkmark.square"), for: .selected)
+        button.addTarget(self, action: #selector(check), for: .touchUpInside)
         
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    var didCheckHandler: Observable<Bool>?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -50,6 +53,12 @@ final class CartCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        didCheckHandler = nil
     }
     
     private func setUpUI() {
@@ -73,5 +82,10 @@ final class CartCell: UITableViewCell {
             priceLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
             priceLabel.bottomAnchor.constraint(equalTo: itemImageView.bottomAnchor)
         ])
+    }
+    
+    @objc private func check() {
+        checkButton.isSelected = !checkButton.isSelected
+        didCheckHandler?(checkButton.isSelected)
     }
 }

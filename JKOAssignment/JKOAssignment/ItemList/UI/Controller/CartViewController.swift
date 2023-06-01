@@ -37,6 +37,9 @@ final class CartViewController: UIViewController {
             cell.priceLabel.text = viewModel.priceText
             cell.itemImageView.image = UIImage(systemName: viewModel.imageName)
             cell.checkButton.isSelected = viewModel.isSelected
+            cell.didCheckHandler = { isSelected in
+                viewModel.isSelected = isSelected
+            }
             return cell
         }
     }()
