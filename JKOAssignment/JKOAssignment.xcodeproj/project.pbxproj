@@ -21,6 +21,7 @@
 		98D80BED2A27832B0003008C /* ItemListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BEC2A27832B0003008C /* ItemListCell.swift */; };
 		98D80BF62A28397D0003008C /* ItemListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BF52A28397D0003008C /* ItemListCellViewModel.swift */; };
 		98D80BF82A2840EE0003008C /* ItemListPaginationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BF72A2840EE0003008C /* ItemListPaginationViewModel.swift */; };
+		98D80BFA2A28410B0003008C /* ItemListPaginationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BF92A28410B0003008C /* ItemListPaginationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		98D80BEC2A27832B0003008C /* ItemListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListCell.swift; sourceTree = "<group>"; };
 		98D80BF52A28397D0003008C /* ItemListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListCellViewModel.swift; sourceTree = "<group>"; };
 		98D80BF72A2840EE0003008C /* ItemListPaginationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListPaginationViewModel.swift; sourceTree = "<group>"; };
+		98D80BF92A28410B0003008C /* ItemListPaginationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListPaginationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				98D80BE12A2776AA0003008C /* ItemListViewController.swift */,
+				98D80BF92A28410B0003008C /* ItemListPaginationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				98D80BB22A27430C0003008C /* AppDelegate.swift in Sources */,
 				98D80BEB2A2783130003008C /* ItemRequestCondition.swift in Sources */,
 				98D80BE92A2782FD0003008C /* Item.swift in Sources */,
+				98D80BFA2A28410B0003008C /* ItemListPaginationViewController.swift in Sources */,
 				98D80BB42A27430C0003008C /* SceneDelegate.swift in Sources */,
 				98D80BE72A2782E40003008C /* ItemLoader.swift in Sources */,
 			);

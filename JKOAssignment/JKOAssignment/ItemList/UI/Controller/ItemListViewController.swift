@@ -7,39 +7,6 @@
 
 import UIKit
 
-final class ItemListPaginationViewController {
-    private(set) var isPaginating = false
-    
-    private let viewModel: ItemListPaginationViewModel
-    
-    init(viewModel: ItemListPaginationViewModel) {
-        self.viewModel = viewModel
-        self.setUpBinding()
-    }
-    
-    func resetPage() {
-        viewModel.resetPage()
-    }
-     
-    func paginate(on scrollView: UIScrollView) {
-        guard !isPaginating else { return }
-        
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        let frameHeight = scrollView.frame.height
-        
-        if offsetY > (contentHeight - frameHeight) {
-            viewModel.loadNextPage()
-        }
-    }
-    
-    private func setUpBinding() {
-        viewModel.isItemsPaginationLoadingStateOnChange = { [weak self] isPaginating in
-            self?.isPaginating = isPaginating
-        }
-    }
-}
-
 final class ItemListViewController: UICollectionViewController {
     private let viewModel: ItemListViewModel
     private let paginationController: ItemListPaginationViewController
@@ -80,6 +47,12 @@ final class ItemListViewController: UICollectionViewController {
         snapshot.appendSections([itemsSection])
         snapshot.appendItems(newItems, toSection: itemsSection)
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    func append(_ newItems: [ItemListCellViewModel]) {
+        var snapshot = dataSource.snapshot()
+        snapshot.appendItems(newItems, toSection: itemsSection)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     private func configureCollectionView() {
