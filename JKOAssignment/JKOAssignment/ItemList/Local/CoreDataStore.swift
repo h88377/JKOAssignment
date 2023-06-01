@@ -12,7 +12,7 @@ final class CoreDataStore: ItemStoreSaver {
     private let context: NSManagedObjectContext
     
     init(bundle: Bundle = .main, storeURL: URL) throws {
-        container = try NSPersistentContainer.load(modelName: "PetStore", in: bundle, storeURL: storeURL)
+        container = try NSPersistentContainer.load(modelName: "JKOStore", in: bundle, storeURL: storeURL)
         context = container.newBackgroundContext()
     }
     

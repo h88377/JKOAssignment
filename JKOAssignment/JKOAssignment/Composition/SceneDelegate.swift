@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -28,16 +29,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 private extension SceneDelegate {
     func makeItemListViewController() -> ItemListViewController {
         let itemLoader = StubbedDataItemLoader()
-        let itemListVC = ItemListUIComposer.composedItemList(with: itemLoader) { [weak self] selectedItem in
-            let itemDetailVC = ItemListUIComposer.composedItemDetail(with: selectedItem, itemSaver: NullItemSaver())
-            self?.navigationController.pushViewController(itemDetailVC, animated: true)
-        }
+        let itemListVC = ItemListUIComposer.composedItemList(with: itemLoader, select: { [weak self] selectedItem in
+            guard let self = self else { return }
+            
+            let localItemSaver = LocalItemSaver(storeSaver: self.configureCoreDataStore() ?? NullStoreSaver())
+            let itemDetailVC = ItemListUIComposer.composedItemDetail(with: selectedItem, itemSaver: localItemSaver)
+            self.navigationController.pushViewController(itemDetailVC, animated: true)
+        })
         return itemListVC
+    }
+    
+    private func configureCoreDataStore() -> CoreDataStore? {
+        let coreDataStore = try? CoreDataStore(storeURL: NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("JKOStore.sqlite"))
+        return coreDataStore
     }
 }
 
 final class NullItemSaver: ItemSaver {
     func save(item: Item, completion: @escaping (ItemSaver.Result) -> Void) {
+        return
+    }
+}
+
+private final class NullStoreSaver: ItemStoreSaver {
+    func insert(_ item: Item, completion: @escaping (ItemStoreSaver.Result) -> Void) {
         return
     }
 }
