@@ -20,6 +20,7 @@ final class ItemDetailViewController: UIViewController {
     
     private(set) lazy var addToCartButton: UIButton = {
         let button = UIButton()
+        button.backgroundColor = .systemGray3
         button.setTitle("加入購物車", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.addTarget(self, action: #selector(didTapAddToCart), for: .touchUpInside)
@@ -30,6 +31,7 @@ final class ItemDetailViewController: UIViewController {
     
     private(set) lazy var checkoutButton: UIButton = {
         let button = UIButton()
+        button.backgroundColor = .systemGray6
         button.setTitle("立刻購買", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.addTarget(self, action: #selector(didTapCheckout), for: .touchUpInside)
