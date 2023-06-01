@@ -15,10 +15,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = ViewController()
+        window.rootViewController = makeItemListViewController()
         
         self.window = window
         window.makeKeyAndVisible()
     }
 }
 
+private extension SceneDelegate {
+    func makeItemListViewController() -> ItemListViewController {
+        let itemLoader = StubbedDataItemLoader()
+        return ItemListUIComposer.composedItemList(with: itemLoader)
+    }
+}
