@@ -44,6 +44,23 @@ final class CartViewModel {
 }
 
 final class CartViewController: UIViewController {
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
+    private(set) lazy var checkoutButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemGray6
+        button.setTitle("結算", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private let viewModel: CartViewModel
     
     init(viewModel: CartViewModel) {
@@ -58,7 +75,24 @@ final class CartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpUI()
         loadCartItems()
+    }
+    
+    private func setUpUI() {
+        view.backgroundColor = .white
+        
+        view.addSubviews([tableView, checkoutButton])
+        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            
+            checkoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            checkoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            checkoutButton.topAnchor.constraint(equalTo: tableView.bottomAnchor)
+        ])
     }
     
     private func loadCartItems() {
