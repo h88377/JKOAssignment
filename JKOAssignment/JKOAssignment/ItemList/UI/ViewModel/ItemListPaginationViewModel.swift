@@ -17,8 +17,8 @@ final class ItemListPaginationViewModel {
     private var currentPage = 0
     private let itemLoader: ItemLoader
     
-    init(petLoader: ItemLoader) {
-        self.itemLoader = petLoader
+    init(itemLoader: ItemLoader) {
+        self.itemLoader = itemLoader
     }
     
     func resetPage() {
