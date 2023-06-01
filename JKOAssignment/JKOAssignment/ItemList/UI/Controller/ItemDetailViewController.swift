@@ -25,6 +25,13 @@ final class ItemDetailViewController: UIViewController {
         return view
     }()
     
+    let indicator: LoadingIndicator = {
+        let indicator = LoadingIndicator()
+        
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+    
     private(set) lazy var addToCartButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemGray3
@@ -126,6 +133,16 @@ final class ItemDetailViewController: UIViewController {
     }
     
     private func setUpBindings() {
+        viewModel.isItemSaveLoadingStateOnChanged = { [weak self] isSaving in
+            guard let self = self else { return }
+            
+            if isSaving {
+                self.indicator.show(on: self.view)
+            } else {
+                self.indicator.hide()
+            }
+        }
+        
         viewModel.isItemSavingStateOnChanged = { [weak self] _ in
             guard let self = self else { return }
             
@@ -145,6 +162,56 @@ final class ItemDetailViewController: UIViewController {
     
     @objc private func didTapCheckout() {
         viewModel.goToCheckout()
+    }
+}
+
+final class LoadingIndicator: UIView {
+    let indicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.style = .large
+        indicator.color = .white
+        
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setUpUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setUpUI() {
+        backgroundColor = .black
+        alpha = 0.9
+        
+        addSubview(indicator)
+        NSLayoutConstraint.activate([
+            indicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
+    }
+    
+    func show(on view: UIView) {
+        guard superview == nil else { return }
+        
+        view.addSubview(self)
+        NSLayoutConstraint.activate([
+            centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.35),
+            heightAnchor.constraint(equalTo: widthAnchor)
+        ])
+        indicator.startAnimating()
+    }
+    
+    func hide() {
+        indicator.stopAnimating()
+        removeFromSuperview()
     }
 }
 
