@@ -11,6 +11,13 @@ final class ItemListViewController: UICollectionViewController {
     
     // MARK: - Property
     
+    let errorView: FadingMessageView = {
+        let view = FadingMessageView()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var dataSource: UICollectionViewDiffableDataSource<Int, ItemListCellViewModel> = {
         .init(collectionView: collectionView) { collectionView, indexPath, viewModel in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemListCell.identifier, for: indexPath) as? ItemListCell else { return UICollectionViewCell() }

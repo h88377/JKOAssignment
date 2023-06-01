@@ -25,7 +25,9 @@ final class ItemListUIComposer {
         }
         
         paginationVM.isItemsPaginationErrorStateOnChange = { [weak itemListVC] message in
-            itemListVC?.present(alert(with: message), animated: true)
+            guard let itemListVC = itemListVC else { return }
+            
+            itemListVC.errorView.show(message, on: itemListVC.view)
         }
         
         itemListVM.isItemsRefreshingStateOnChanged = { [weak itemListVC] items in
@@ -38,7 +40,9 @@ final class ItemListUIComposer {
         }
         
         itemListVM.isItemsRefreshingErrorStateOnChange = { [weak itemListVC] message in
-            itemListVC?.present(alert(with: message), animated: true)
+            guard let itemListVC = itemListVC else { return }
+            
+            itemListVC.errorView.show(message, on: itemListVC.view)
         }
         
         return itemListVC
@@ -49,12 +53,5 @@ final class ItemListUIComposer {
         let itemDetailVM = ItemDetailViewModel(item: item, itemSaver: mainThreadItemSaver)
         let itemDetailVC = ItemDetailViewController(viewModel: itemDetailVM)
         return itemDetailVC
-    }
-    
-    private static func alert(with message: String?) -> UIAlertController {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "確定", style: .default)
-        alert.addAction(action)
-        return alert
     }
 }
