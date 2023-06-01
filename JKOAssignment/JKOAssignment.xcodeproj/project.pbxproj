@@ -38,6 +38,7 @@
 		98D80C222A28C2700003008C /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C212A28C2700003008C /* LoadingIndicator.swift */; };
 		98D80C242A28C2980003008C /* FadingMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C232A28C2980003008C /* FadingMessageView.swift */; };
 		98D80C262A28C6F10003008C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C252A28C6F10003008C /* CartViewController.swift */; };
+		98D80C282A28D1600003008C /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C272A28D1600003008C /* CartCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		98D80C212A28C2700003008C /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		98D80C232A28C2980003008C /* FadingMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingMessageView.swift; sourceTree = "<group>"; };
 		98D80C252A28C6F10003008C /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		98D80C272A28D1600003008C /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 			children = (
 				98D80BEC2A27832B0003008C /* ItemListCell.swift */,
 				98D80C0B2A28794B0003008C /* ItemDetailCell.swift */,
+				98D80C272A28D1600003008C /* CartCell.swift */,
 				98D80C212A28C2700003008C /* LoadingIndicator.swift */,
 				98D80C232A28C2980003008C /* FadingMessageView.swift */,
 			);
@@ -380,6 +383,7 @@
 				98D80BFD2A284F500003008C /* StubbedDataItemLoader.swift in Sources */,
 				98D80C202A289C860003008C /* JKOStore.xcdatamodeld in Sources */,
 				98D80BEB2A2783130003008C /* ItemRequestCondition.swift in Sources */,
+				98D80C282A28D1600003008C /* CartCell.swift in Sources */,
 				98D80BE92A2782FD0003008C /* Item.swift in Sources */,
 				98D80BFA2A28410B0003008C /* ItemListPaginationViewController.swift in Sources */,
 				98D80C222A28C2700003008C /* LoadingIndicator.swift in Sources */,
