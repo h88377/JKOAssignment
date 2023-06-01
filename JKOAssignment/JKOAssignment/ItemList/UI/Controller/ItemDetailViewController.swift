@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol CartSaver {
-    typealias Result = Error?
-    
-    func save(item: Item, completion: @escaping (Result) -> Void)
-}
-
 final class ItemDetailViewModel {
     typealias Observable<T> = ((T) -> Void)
     
