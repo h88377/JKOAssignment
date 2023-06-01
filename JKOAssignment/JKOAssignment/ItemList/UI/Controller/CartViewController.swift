@@ -8,6 +8,9 @@
 import UIKit
 
 final class CartViewController: UIViewController {
+    
+    // MARK: - Property
+    
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(CartCell.self, forCellReuseIdentifier: CartCell.identifier)
@@ -28,6 +31,8 @@ final class CartViewController: UIViewController {
     
     private let viewModel: CartViewModel
     
+    // MARK: - Life cycle
+    
     init(viewModel: CartViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -43,6 +48,8 @@ final class CartViewController: UIViewController {
         setUpUI()
         loadCartItems()
     }
+    
+    // MARK: - Method
     
     private func setUpUI() {
         view.backgroundColor = .white
