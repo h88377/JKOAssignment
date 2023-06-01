@@ -20,7 +20,11 @@ final class ItemListUIComposer {
         let itemListVC = ItemListViewController(viewModel: itemListVM, paginationController: paginationVC)
         
         paginationVM.isItemsPaginationStateOnChange = { [weak itemListVC] items in
-            let cellVMs = items.map(ItemListCellViewModel.init)
+            let cellVMs = items.map { item in
+                let viewModel = ItemListCellViewModel(item: item)
+                viewModel.selectHandler = select
+                return viewModel
+            }
             itemListVC?.append(cellVMs)
         }
         
