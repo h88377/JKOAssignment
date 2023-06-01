@@ -7,41 +7,6 @@
 
 import UIKit
 
-final class ItemDetailCellViewModel {
-    private let id = UUID()
-    private let item: Item
-    
-    init(item: Item) {
-        self.item = item
-    }
-    
-    var nameText: String {
-        return item.name
-    }
-    
-    var descriptionText: String {
-        return item.description
-    }
-    
-    var priceText: String {
-        return "$ \(item.price)"
-    }
-    
-    var imageName: String {
-        return item.imageName
-    }
-}
-
-extension ItemDetailCellViewModel: Hashable {
-    static func == (lhs: ItemDetailCellViewModel, rhs: ItemDetailCellViewModel) -> Bool {
-        return lhs.id == rhs.id
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}
-
 final class ItemDetailCell: UITableViewCell {
     static let identifier = "\(ItemDetailCell.self)"
     
@@ -69,7 +34,38 @@ final class ItemDetailCell: UITableViewCell {
 }
 
 final class ItemDetailViewModel {
+    private let id = UUID()
+    private let item: Item
     
+    init(item: Item) {
+        self.item = item
+    }
+    
+    var nameText: String {
+        return item.name
+    }
+    
+    var descriptionText: String {
+        return item.description
+    }
+    
+    var priceText: String {
+        return "$ \(item.price)"
+    }
+    
+    var imageName: String {
+        return item.imageName
+    }
+}
+
+extension ItemDetailViewModel: Hashable {
+    static func == (lhs: ItemDetailViewModel, rhs: ItemDetailViewModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
 final class ItemDetailViewController: UIViewController {
@@ -96,14 +92,7 @@ final class ItemDetailViewController: UIViewController {
         return button
     }()
     
-    private let viewModel: ItemDetailViewModel
-    
-    init(viewModel: ItemDetailViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    private lazy var dataSource: UITableViewDiffableDataSource<Int, ItemDetailCellViewModel> = {
+    private lazy var dataSource: UITableViewDiffableDataSource<Int, ItemDetailViewModel> = {
         .init(tableView: tableView) { tableView, indexPath, viewModel in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemDetailCell.identifier, for: indexPath) as? ItemDetailCell else { return UITableViewCell() }
             
@@ -116,6 +105,13 @@ final class ItemDetailViewController: UIViewController {
     
     private var itemSection: Int { return 0 }
     
+    private let viewModel: ItemDetailViewModel
+    
+    init(viewModel: ItemDetailViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -127,8 +123,8 @@ final class ItemDetailViewController: UIViewController {
         configureTableView()
     }
     
-    func set(_ newItem: ItemDetailCellViewModel) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, ItemDetailCellViewModel>()
+    func set(_ newItem: ItemDetailViewModel) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, ItemDetailViewModel>()
         snapshot.appendSections([itemSection])
         snapshot.appendItems([newItem], toSection: itemSection)
         dataSource.apply(snapshot, animatingDifferences: false)
