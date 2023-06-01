@@ -96,6 +96,18 @@ final class ItemListViewController: UICollectionViewController {
         paginationController.resetPage()
         viewModel.loadItems()
     }
+    
+    private func cellViewModel(at indexPath: IndexPath) -> ItemListCellViewModel? {
+        return dataSource.itemIdentifier(for: indexPath)
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension ItemListViewController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        cellViewModel(at: indexPath)?.didSelect()
+    }
 }
 
 // MARK: - UIScrollViewDelegate

@@ -8,6 +8,10 @@
 import Foundation
 
 final class ItemListCellViewModel {
+    typealias Observable<T> = ((T) -> Void)
+    
+    var selectHandler: Observable<Item>?
+    
     private let id = UUID()
     private let item: Item
     
@@ -25,6 +29,10 @@ final class ItemListCellViewModel {
     
     var imageName: String {
         return item.imageName
+    }
+    
+    func didSelect() {
+        selectHandler?(item)
     }
 }
 
