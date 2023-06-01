@@ -45,7 +45,8 @@ final class ItemListUIComposer {
     }
     
     static func composedItemDetail(with item: Item, itemSaver: ItemSaver) -> ItemDetailViewController {
-        let itemDetailVM = ItemDetailViewModel(item: item, itemSaver: itemSaver)
+        let mainThreadItemSaver = MainThreadDispatchDecorator(decoratee: itemSaver)
+        let itemDetailVM = ItemDetailViewModel(item: item, itemSaver: mainThreadItemSaver)
         let itemDetailVC = ItemDetailViewController(viewModel: itemDetailVM)
         return itemDetailVC
     }
