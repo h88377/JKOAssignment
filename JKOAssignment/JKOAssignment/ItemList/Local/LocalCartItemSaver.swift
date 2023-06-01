@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class LocalCartItemSaver: ItemSaver {
+final class LocalCartItemSaver: CartItemSaver {
     enum SaveError: Error {
         case failed
     }
@@ -18,7 +18,7 @@ final class LocalCartItemSaver: ItemSaver {
         self.storeSaver = storeSaver
     }
     
-    func save(item: Item, completion: @escaping (ItemSaver.Result) -> Void) {
+    func save(item: Item, completion: @escaping (CartItemSaver.Result) -> Void) {
         storeSaver.insert(item) { error in
             guard error == nil else {
                 return completion(.some(SaveError.failed))
