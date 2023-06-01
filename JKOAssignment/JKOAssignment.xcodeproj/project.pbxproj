@@ -39,6 +39,7 @@
 		98D80C242A28C2980003008C /* FadingMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C232A28C2980003008C /* FadingMessageView.swift */; };
 		98D80C262A28C6F10003008C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C252A28C6F10003008C /* CartViewController.swift */; };
 		98D80C282A28D1600003008C /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C272A28D1600003008C /* CartCell.swift */; };
+		98D80C2A2A28D1800003008C /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C292A28D1800003008C /* CartViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		98D80C232A28C2980003008C /* FadingMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingMessageView.swift; sourceTree = "<group>"; };
 		98D80C252A28C6F10003008C /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		98D80C272A28D1600003008C /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
+		98D80C292A28D1800003008C /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				98D80BF52A28397D0003008C /* ItemListCellViewModel.swift */,
 				98D80BF72A2840EE0003008C /* ItemListPaginationViewModel.swift */,
 				98D80C0F2A28798D0003008C /* ItemDetailViewModel.swift */,
+				98D80C292A28D1800003008C /* CartViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				98D80C082A286AEE0003008C /* UIView+Extension.swift in Sources */,
 				98D80BE22A2776AA0003008C /* ItemListViewController.swift in Sources */,
 				98D80C192A2899CB0003008C /* CartItemStoreSaver.swift in Sources */,
+				98D80C2A2A28D1800003008C /* CartViewModel.swift in Sources */,
 				98D80C1C2A289A1E0003008C /* CoreDataStore.swift in Sources */,
 				98D80C002A2862EF0003008C /* MainThreadDispatchDecorator.swift in Sources */,
 				98D80C102A28798D0003008C /* ItemDetailViewModel.swift in Sources */,
