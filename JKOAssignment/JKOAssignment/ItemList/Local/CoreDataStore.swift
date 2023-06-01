@@ -17,8 +17,32 @@ final class CoreDataStore: ItemStoreSaver {
     }
     
     func insert(_ item: Item, completion: @escaping (ItemStoreSaver.Result) -> Void) {
-       
+        let context = context
+        context.perform {
+            do {
+                let managedItem = ManagedItem(context: context)
+                managedItem.name = item.name
+                managedItem.descriptionContent = item.description
+                managedItem.price = Int64(item.price)
+                managedItem.timestamp = item.timestamp
+                managedItem.imageName = item.imageName
+                
+                try context.save()
+                completion(.none)
+            } catch {
+                completion(.some(error))
+            }
+        }
     }
+}
+
+@objc(ManagedItem)
+class ManagedItem: NSManagedObject {
+    @NSManaged var name: String
+    @NSManaged var descriptionContent: String
+    @NSManaged var price: Int64
+    @NSManaged var timestamp: Date
+    @NSManaged var imageName: String
 }
 
 extension NSPersistentContainer {
