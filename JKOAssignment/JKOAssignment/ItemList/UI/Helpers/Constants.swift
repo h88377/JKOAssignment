@@ -12,3 +12,7 @@ enum ItemListErrorMessage: String {
     case reachEndItemsPage = "沒有更多商品囉"
     case addToCart = "加入購物車失敗"
 }
+
+enum ItemListSuccessMessage: String {
+    case addToCart = "加入成功"
+}
