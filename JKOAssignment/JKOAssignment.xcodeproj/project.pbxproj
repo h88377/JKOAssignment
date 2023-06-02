@@ -47,6 +47,7 @@
 		98D80C352A29ABB90003008C /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C342A29ABB90003008C /* NullStore.swift */; };
 		98D80C372A29AC730003008C /* Cell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C362A29AC730003008C /* Cell+Extension.swift */; };
 		98D80C3D2A29B25D0003008C /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C3C2A29B25D0003008C /* CheckoutViewModel.swift */; };
+		98D80C402A29B3A80003008C /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C3F2A29B3A80003008C /* Order.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		98D80C342A29ABB90003008C /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
 		98D80C362A29AC730003008C /* Cell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Extension.swift"; sourceTree = "<group>"; };
 		98D80C3C2A29B25D0003008C /* CheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewModel.swift; sourceTree = "<group>"; };
+		98D80C3F2A29B3A80003008C /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +289,7 @@
 		98D80C382A29B1810003008C /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				98D80C3E2A29B39F0003008C /* Feature */,
 				98D80C392A29B1940003008C /* UI */,
 			);
 			path = Order;
@@ -298,6 +301,14 @@
 				98D80C3C2A29B25D0003008C /* CheckoutViewModel.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		98D80C3E2A29B39F0003008C /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				98D80C3F2A29B3A80003008C /* Order.swift */,
+			);
+			path = Feature;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,6 +433,7 @@
 				98D80C122A287EED0003008C /* Observable.swift in Sources */,
 				98D80C052A2867060003008C /* ItemDetailViewController.swift in Sources */,
 				98D80C262A28C6F10003008C /* CartViewController.swift in Sources */,
+				98D80C402A29B3A80003008C /* Order.swift in Sources */,
 				98D80BF82A2840EE0003008C /* ItemListPaginationViewModel.swift in Sources */,
 				98D80BED2A27832B0003008C /* ItemListCell.swift in Sources */,
 				98D80BB22A27430C0003008C /* AppDelegate.swift in Sources */,

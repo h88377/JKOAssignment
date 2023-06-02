@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct Order {
-    let items: [Item]
-    let price: Int
-    let timestamp: Date
-}
-
 protocol OrderSaver {
     typealias Result = Error?
     
