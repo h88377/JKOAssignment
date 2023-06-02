@@ -61,6 +61,32 @@ extension CoreDataStore: CartItemsStoreLoader {
     }
 }
 
+extension CoreDataStore: OrderStoreSaver {
+    func insert(order: Order, completion: @escaping (OrderStoreSaver.Result) -> Void) {
+        let context = context
+        context.perform {
+            do {
+                let managedOrder = ManagedOrder(context: context)
+                managedOrder.items = NSOrderedSet(array: order.items.map {
+                    let managedItem = ManagedItem(context: context)
+                    managedItem.name = $0.name
+                    managedItem.descriptionContent = $0.description
+                    managedItem.price = Int16($0.price)
+                    managedItem.timestamp = $0.timestamp
+                    managedItem.imageName = $0.imageName
+                    return managedItem
+                })
+                managedOrder.price = Int16(order.price)
+                managedOrder.timestamp = order.timestamp
+                try context.save()
+                completion(.none)
+            } catch {
+                completion(.some(error))
+            }
+        }
+    }
+}
+
 extension NSPersistentContainer {
     enum LoadingError: Error {
         case modelNotFound
