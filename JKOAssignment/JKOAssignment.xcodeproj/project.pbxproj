@@ -305,8 +305,6 @@
 			children = (
 				98D80C4B2A29C12E0003008C /* Helpers */,
 				98D80C4E2A29C21B0003008C /* Local */,
-				98D80C482A29BA3C0003008C /* View */,
-				98D80C452A29B6AF0003008C /* ViewModel */,
 				98D80C3E2A29B39F0003008C /* Feature */,
 				98D80C392A29B1940003008C /* UI */,
 			);
@@ -316,7 +314,9 @@
 		98D80C392A29B1940003008C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				98D80C432A29B3F20003008C /* CheckoutViewController.swift */,
+				98D80C452A29B6AF0003008C /* ViewModel */,
+				98D80C482A29BA3C0003008C /* View */,
+				98D80C532A29C3E00003008C /* Controller */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -362,6 +362,14 @@
 				98D80C512A29C3AF0003008C /* OrderStoreSaver.swift */,
 			);
 			path = Local;
+			sourceTree = "<group>";
+		};
+		98D80C532A29C3E00003008C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				98D80C432A29B3F20003008C /* CheckoutViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
