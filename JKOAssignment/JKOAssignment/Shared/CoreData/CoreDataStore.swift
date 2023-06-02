@@ -61,15 +61,6 @@ extension CoreDataStore: CartItemsStoreLoader {
     }
 }
 
-@objc(ManagedItem)
-class ManagedItem: NSManagedObject {
-    @NSManaged var name: String
-    @NSManaged var descriptionContent: String
-    @NSManaged var price: Int16
-    @NSManaged var timestamp: Date
-    @NSManaged var imageName: String
-}
-
 extension NSPersistentContainer {
     enum LoadingError: Error {
         case modelNotFound
