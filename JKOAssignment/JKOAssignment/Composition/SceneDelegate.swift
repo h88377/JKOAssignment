@@ -53,7 +53,19 @@ private extension SceneDelegate {
     func makeCartViewController() -> CartViewController {
         let cartLoader: CartItemsLoader = LocalCartItemsLoader(storeLoader: coreDataStore ?? NullStore())
         let mainThreadCartLoader = MainThreadDispatchDecorator(decoratee: cartLoader)
-        return ItemListUIComposer.composedCart(with: mainThreadCartLoader)
+        let cartVC = ItemListUIComposer.composedCart(with: mainThreadCartLoader, checkout: { [weak self] items in
+            guard let self = self else { return }
+            
+            let checkoutVC = self.makeCheckoutViewController(with: items)
+            self.navigationController.pushViewController(checkoutVC, animated: true)
+        })
+        return cartVC
+    }
+    
+    func makeCheckoutViewController(with items: [Item]) -> CheckoutViewController {
+        let orderSaver: OrderSaver = LocalOrderSaver(storeSaver: coreDataStore ?? NullStore())
+        let mainThreadOrderSaver = MainThreadDispatchDecorator(decoratee: orderSaver)
+        return OrderUIComposer.composedCheckout(with: items, orderSaver: mainThreadOrderSaver)
     }
     
     func configureCartNavigationItem(for controller: UIViewController) {

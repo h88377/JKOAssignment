@@ -49,7 +49,7 @@ final class ItemListUIComposer {
         return itemDetailVC
     }
     
-    static func composedCart(with cartLoader: CartItemsLoader) -> CartViewController {
+    static func composedCart(with cartLoader: CartItemsLoader, checkout: @escaping ([Item]) -> Void) -> CartViewController {
         let cartVM = CartViewModel(cartLoader: cartLoader)
         let cartVC = CartViewController(viewModel: cartVM)
         
@@ -57,6 +57,7 @@ final class ItemListUIComposer {
             let cartCellVMs = items.map { CartCellViewModel(item: $0) }
             cartVC?.set(cartCellVMs)
         }
+        cartVM.checkoutHandler = checkout
         return cartVC
     }
 }
