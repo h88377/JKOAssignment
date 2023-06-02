@@ -58,4 +58,15 @@ final class ItemListUIComposer {
         let itemDetailVC = ItemDetailViewController(viewModel: itemDetailVM)
         return itemDetailVC
     }
+    
+    static func composedCart(with cartLoader: CartItemsLoader) -> CartViewController {
+        let cartVM = CartViewModel(cartLoader: cartLoader)
+        let cartVC = CartViewController(viewModel: cartVM)
+        
+        cartVM.isItemsStateOnChanged = { [weak cartVC] items in
+            let cartCellVMs = items.map { CartCellViewModel(item: $0) }
+            cartVC?.set(cartCellVMs)
+        }
+        return cartVC
+    }
 }

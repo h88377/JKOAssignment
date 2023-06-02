@@ -13,13 +13,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     private lazy var navigationController = UINavigationController()
+    private lazy var coreDataStore = configureCoreDataStore()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = navigationController
-        navigationController.setViewControllers([makeItemListViewController()], animated: false)
+        
+        let itemListViewController = makeItemListViewController()
+        navigationController.setViewControllers([itemListViewController], animated: false)
+        configureCartNavigationItem(for: itemListViewController)
         
         self.window = window
         window.makeKeyAndVisible()
@@ -32,11 +36,29 @@ private extension SceneDelegate {
         let itemListVC = ItemListUIComposer.composedItemList(with: itemLoader, select: { [weak self] selectedItem in
             guard let self = self else { return }
             
-            let localItemSaver = LocalCartItemSaver(storeSaver: self.configureCoreDataStore() ?? NullStoreSaver())
+            let localItemSaver = LocalCartItemSaver(storeSaver: self.coreDataStore ?? NullStoreSaver())
             let itemDetailVC = ItemListUIComposer.composedItemDetail(with: selectedItem, itemSaver: localItemSaver)
             self.navigationController.pushViewController(itemDetailVC, animated: true)
         })
         return itemListVC
+    }
+    
+    func makeCartViewController() -> CartViewController {
+        let cartLoader: CartItemsLoader = LocalCartItemsLoader(storeLoader: coreDataStore ?? NullStoreLoader())
+        let decoratedCartLoader = MainThreadDispatchDecorator(decoratee: cartLoader)
+        return ItemListUIComposer.composedCart(with: decoratedCartLoader)
+    }
+    
+    func configureCartNavigationItem(for controller: UIViewController) {
+        controller.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "購物車",
+            style: .done,
+            target: self,
+            action: #selector(goToCart))
+    }
+    
+    @objc private func goToCart() {
+        navigationController.pushViewController(makeCartViewController(), animated: true)
     }
     
     private func configureCoreDataStore() -> CoreDataStore? {
@@ -47,6 +69,12 @@ private extension SceneDelegate {
 
 private final class NullStoreSaver: CartItemStoreSaver {
     func insert(_ item: Item, completion: @escaping (CartItemStoreSaver.Result) -> Void) {
+        return
+    }
+}
+
+private final class NullStoreLoader: CartItemsStoreLoader {
+    func retrieve(completion: @escaping (CartItemsStoreLoader.Result) -> Void) {
         return
     }
 }
