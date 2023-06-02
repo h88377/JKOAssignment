@@ -8,8 +8,6 @@
 import UIKit
 
 final class ItemDetailCell: UITableViewCell {
-    static let identifier = "\(ItemDetailCell.self)"
-    
     let nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2

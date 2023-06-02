@@ -8,8 +8,6 @@
 import UIKit
 
 final class CartCell: UITableViewCell {
-    static let identifier = "\(CartCell.self)"
-    
     let nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
