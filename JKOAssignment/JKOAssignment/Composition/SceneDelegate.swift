@@ -44,14 +44,14 @@ private extension SceneDelegate {
     }
     
     func makeItemDetailController(with selectedItem: Item) -> ItemDetailViewController {
-        let localItemSaver: CartItemSaver = LocalCartItemSaver(storeSaver: self.coreDataStore ?? NullStoreSaver())
+        let localItemSaver: CartItemSaver = LocalCartItemSaver(storeSaver: coreDataStore ?? NullStore())
         let mainThreadLocalItemSaver = MainThreadDispatchDecorator(decoratee: localItemSaver)
         let itemDetailVC = ItemListUIComposer.composedItemDetail(with: selectedItem, itemSaver: mainThreadLocalItemSaver)
         return itemDetailVC
     }
     
     func makeCartViewController() -> CartViewController {
-        let cartLoader: CartItemsLoader = LocalCartItemsLoader(storeLoader: coreDataStore ?? NullStoreLoader())
+        let cartLoader: CartItemsLoader = LocalCartItemsLoader(storeLoader: coreDataStore ?? NullStore())
         let mainThreadCartLoader = MainThreadDispatchDecorator(decoratee: cartLoader)
         return ItemListUIComposer.composedCart(with: mainThreadCartLoader)
     }
@@ -71,17 +71,5 @@ private extension SceneDelegate {
     private func configureCoreDataStore() -> CoreDataStore? {
         let coreDataStore = try? CoreDataStore(storeURL: NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("JKOStore.sqlite"))
         return coreDataStore
-    }
-}
-
-private final class NullStoreSaver: CartItemStoreSaver {
-    func insert(_ item: Item, completion: @escaping (CartItemStoreSaver.Result) -> Void) {
-        return
-    }
-}
-
-private final class NullStoreLoader: CartItemsStoreLoader {
-    func retrieve(completion: @escaping (CartItemsStoreLoader.Result) -> Void) {
-        return
     }
 }
