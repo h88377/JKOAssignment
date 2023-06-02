@@ -62,10 +62,13 @@ private extension SceneDelegate {
             style: .done,
             target: self,
             action: #selector(goToCart))
+        controller.title = "商品列表"
     }
     
     @objc private func goToCart() {
-        navigationController.pushViewController(makeCartViewController(), animated: true)
+        let cartVC = makeCartViewController()
+        cartVC.title = "購物車"
+        navigationController.pushViewController(cartVC, animated: true)
     }
     
     private func configureCoreDataStore() -> CoreDataStore? {
