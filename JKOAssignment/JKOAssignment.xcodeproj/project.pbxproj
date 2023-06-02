@@ -51,6 +51,7 @@
 		98D80C422A29B3BF0003008C /* OrderSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C412A29B3BF0003008C /* OrderSaver.swift */; };
 		98D80C442A29B3F20003008C /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C432A29B3F20003008C /* CheckoutViewController.swift */; };
 		98D80C472A29B6B80003008C /* CheckoutCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C462A29B6B80003008C /* CheckoutCellViewModel.swift */; };
+		98D80C4A2A29BA400003008C /* CheckoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C492A29BA400003008C /* CheckoutCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		98D80C412A29B3BF0003008C /* OrderSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSaver.swift; sourceTree = "<group>"; };
 		98D80C432A29B3F20003008C /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		98D80C462A29B6B80003008C /* CheckoutCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutCellViewModel.swift; sourceTree = "<group>"; };
+		98D80C492A29BA400003008C /* CheckoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +297,7 @@
 		98D80C382A29B1810003008C /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				98D80C482A29BA3C0003008C /* View */,
 				98D80C452A29B6AF0003008C /* ViewModel */,
 				98D80C3E2A29B39F0003008C /* Feature */,
 				98D80C392A29B1940003008C /* UI */,
@@ -326,6 +329,14 @@
 				98D80C462A29B6B80003008C /* CheckoutCellViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		98D80C482A29BA3C0003008C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				98D80C492A29BA400003008C /* CheckoutCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -459,6 +470,7 @@
 				98D80C202A289C860003008C /* JKOStore.xcdatamodeld in Sources */,
 				98D80C442A29B3F20003008C /* CheckoutViewController.swift in Sources */,
 				98D80C422A29B3BF0003008C /* OrderSaver.swift in Sources */,
+				98D80C4A2A29BA400003008C /* CheckoutCell.swift in Sources */,
 				98D80C2C2A28D1B60003008C /* CartItemsLoader.swift in Sources */,
 				98D80BEB2A2783130003008C /* ItemRequestCondition.swift in Sources */,
 				98D80C282A28D1600003008C /* CartCell.swift in Sources */,
