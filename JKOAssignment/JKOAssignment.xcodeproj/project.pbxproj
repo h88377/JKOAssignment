@@ -53,6 +53,7 @@
 		98D80C472A29B6B80003008C /* CheckoutCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C462A29B6B80003008C /* CheckoutCellViewModel.swift */; };
 		98D80C4A2A29BA400003008C /* CheckoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C492A29BA400003008C /* CheckoutCell.swift */; };
 		98D80C4D2A29C1450003008C /* OrderConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C4C2A29C1440003008C /* OrderConstants.swift */; };
+		98D80C502A29C2320003008C /* LocalOrderSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C4F2A29C2320003008C /* LocalOrderSaver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		98D80C462A29B6B80003008C /* CheckoutCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutCellViewModel.swift; sourceTree = "<group>"; };
 		98D80C492A29BA400003008C /* CheckoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutCell.swift; sourceTree = "<group>"; };
 		98D80C4C2A29C1440003008C /* OrderConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConstants.swift; sourceTree = "<group>"; };
+		98D80C4F2A29C2320003008C /* LocalOrderSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalOrderSaver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				98D80C4B2A29C12E0003008C /* Helpers */,
+				98D80C4E2A29C21B0003008C /* Local */,
 				98D80C482A29BA3C0003008C /* View */,
 				98D80C452A29B6AF0003008C /* ViewModel */,
 				98D80C3E2A29B39F0003008C /* Feature */,
@@ -348,6 +351,14 @@
 				98D80C4C2A29C1440003008C /* OrderConstants.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		98D80C4E2A29C21B0003008C /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				98D80C4F2A29C2320003008C /* LocalOrderSaver.swift */,
+			);
+			path = Local;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -462,6 +473,7 @@
 				98D80C1C2A289A1E0003008C /* CoreDataStore.swift in Sources */,
 				98D80C2E2A28D30E0003008C /* CartCellViewModel.swift in Sources */,
 				98D80C002A2862EF0003008C /* MainThreadDispatchDecorator.swift in Sources */,
+				98D80C502A29C2320003008C /* LocalOrderSaver.swift in Sources */,
 				98D80C102A28798D0003008C /* ItemDetailViewModel.swift in Sources */,
 				98D80C0E2A2879690003008C /* CartItemSaver.swift in Sources */,
 				98D80C242A28C2980003008C /* FadingMessageView.swift in Sources */,
