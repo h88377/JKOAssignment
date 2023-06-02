@@ -10,3 +10,7 @@ import Foundation
 enum OrderErrorMessage: String {
     case checkout = "結帳失敗"
 }
+
+enum OrderSuccessMessage: String {
+    case checkout = "結帳成功"
+}
