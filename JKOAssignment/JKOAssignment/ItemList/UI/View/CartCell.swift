@@ -49,6 +49,7 @@ final class CartCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setUpUI()
+        selectionStyle = .none
     }
     
     required init?(coder: NSCoder) {
@@ -64,6 +65,10 @@ final class CartCell: UITableViewCell {
     private func setUpUI() {
         contentView.addSubviews([checkButton, itemImageView, nameLabel, priceLabel])
         
+        let imageHightConstraint = itemImageView.heightAnchor.constraint(equalToConstant: 100)
+        imageHightConstraint.priority = .defaultHigh
+        checkButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        
         NSLayoutConstraint.activate([
             checkButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             checkButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
@@ -72,7 +77,7 @@ final class CartCell: UITableViewCell {
             itemImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             itemImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             itemImageView.widthAnchor.constraint(equalTo: itemImageView.heightAnchor),
-            itemImageView.heightAnchor.constraint(equalToConstant: 100),
+            imageHightConstraint,
             
             nameLabel.topAnchor.constraint(equalTo: itemImageView.topAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: itemImageView.trailingAnchor, constant: 8),
