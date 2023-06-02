@@ -23,7 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let itemListViewController = makeItemListViewController()
         navigationController.setViewControllers([itemListViewController], animated: false)
-        configureCartNavigationItem(for: itemListViewController)
         
         self.window = window
         window.makeKeyAndVisible()
@@ -41,6 +40,7 @@ private extension SceneDelegate {
             self.navigationController.pushViewController(itemDetailVC, animated: true)
         })
         itemListVC.title = "商品列表"
+        configureCartNavigationItem(for: itemListVC)
         return itemListVC
     }
     
@@ -84,7 +84,7 @@ private extension SceneDelegate {
         return checkoutVC
     }
     
-    func configureCartNavigationItem(for controller: UIViewController) {
+    private func configureCartNavigationItem(for controller: UIViewController) {
         controller.navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "購物車",
             style: .done,
