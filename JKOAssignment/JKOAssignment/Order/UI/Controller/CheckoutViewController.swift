@@ -13,6 +13,7 @@ final class CheckoutViewController: UIViewController {
     
     let tableView: UITableView = {
         let tableView = UITableView()
+        tableView.register(CheckoutCell.self, forCellReuseIdentifier: CheckoutCell.identifier)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
