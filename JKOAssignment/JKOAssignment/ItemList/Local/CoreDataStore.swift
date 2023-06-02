@@ -25,7 +25,7 @@ extension CoreDataStore: CartItemStoreSaver {
                 let managedItem = ManagedItem(context: context)
                 managedItem.name = item.name
                 managedItem.descriptionContent = item.description
-                managedItem.price = Int64(item.price)
+                managedItem.price = Int16(item.price)
                 managedItem.timestamp = item.timestamp
                 managedItem.imageName = item.imageName
                 
@@ -38,8 +38,8 @@ extension CoreDataStore: CartItemStoreSaver {
     }
 }
 
-extension CoreDataStore: CartItemsLoader {
-    func loadItems(completion: @escaping (CartItemsLoader.Result) -> Void) {
+extension CoreDataStore: CartItemsStoreLoader {
+    func retrieve(completion: @escaping (CartItemsStoreLoader.Result) -> Void) {
         let context = context
         context.perform {
             guard let entityName = ManagedItem.entity().name else { return }
@@ -65,7 +65,7 @@ extension CoreDataStore: CartItemsLoader {
 class ManagedItem: NSManagedObject {
     @NSManaged var name: String
     @NSManaged var descriptionContent: String
-    @NSManaged var price: Int64
+    @NSManaged var price: Int16
     @NSManaged var timestamp: Date
     @NSManaged var imageName: String
 }
