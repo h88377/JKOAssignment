@@ -40,6 +40,7 @@ private extension SceneDelegate {
             let itemDetailVC = self.makeItemDetailController(with: selectedItem)
             self.navigationController.pushViewController(itemDetailVC, animated: true)
         })
+        itemListVC.title = "商品列表"
         return itemListVC
     }
     
@@ -47,6 +48,7 @@ private extension SceneDelegate {
         let localItemSaver: CartItemSaver = LocalCartItemSaver(storeSaver: coreDataStore ?? NullStore())
         let mainThreadLocalItemSaver = MainThreadDispatchDecorator(decoratee: localItemSaver)
         let itemDetailVC = ItemListUIComposer.composedItemDetail(with: selectedItem, itemSaver: mainThreadLocalItemSaver)
+        itemDetailVC.title = "商品詳情"
         return itemDetailVC
     }
     
@@ -59,13 +61,16 @@ private extension SceneDelegate {
             let checkoutVC = self.makeCheckoutViewController(with: items)
             self.navigationController.pushViewController(checkoutVC, animated: true)
         })
+        cartVC.title = "購物車"
         return cartVC
     }
     
     func makeCheckoutViewController(with items: [Item]) -> CheckoutViewController {
         let orderSaver: OrderSaver = LocalOrderSaver(storeSaver: coreDataStore ?? NullStore())
         let mainThreadOrderSaver = MainThreadDispatchDecorator(decoratee: orderSaver)
-        return OrderUIComposer.composedCheckout(with: items, orderSaver: mainThreadOrderSaver)
+        let checkoutVC = OrderUIComposer.composedCheckout(with: items, orderSaver: mainThreadOrderSaver)
+        checkoutVC.title = "確認訂單"
+        return checkoutVC
     }
     
     func configureCartNavigationItem(for controller: UIViewController) {
@@ -74,12 +79,10 @@ private extension SceneDelegate {
             style: .done,
             target: self,
             action: #selector(goToCart))
-        controller.title = "商品列表"
     }
     
     @objc private func goToCart() {
         let cartVC = makeCartViewController()
-        cartVC.title = "購物車"
         navigationController.pushViewController(cartVC, animated: true)
     }
     
