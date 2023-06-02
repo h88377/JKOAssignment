@@ -161,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				98D80BFE2A2862C50003008C /* Composition */,
+				98D80C542A29C42E0003008C /* Shared */,
 				98D80BE32A2782930003008C /* ItemList */,
 				98D80C382A29B1810003008C /* Order */,
 				98D80BBA2A27430D0003008C /* Assets.xcassets */,
@@ -294,8 +295,6 @@
 				98D80C182A2899CB0003008C /* CartItemStoreSaver.swift */,
 				98D80C302A28DB980003008C /* LocalCartItemsLoader.swift */,
 				98D80C322A298D970003008C /* CartItemsStoreLoader.swift */,
-				98D80C1B2A289A1E0003008C /* CoreDataStore.swift */,
-				98D80C1E2A289C860003008C /* JKOStore.xcdatamodeld */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -370,6 +369,23 @@
 				98D80C432A29B3F20003008C /* CheckoutViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		98D80C542A29C42E0003008C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				98D80C552A29C44E0003008C /* CoreData */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		98D80C552A29C44E0003008C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				98D80C1B2A289A1E0003008C /* CoreDataStore.swift */,
+				98D80C1E2A289C860003008C /* JKOStore.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
