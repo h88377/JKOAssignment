@@ -43,6 +43,7 @@
 		98D80C2C2A28D1B60003008C /* CartItemsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C2B2A28D1B60003008C /* CartItemsLoader.swift */; };
 		98D80C2E2A28D30E0003008C /* CartCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C2D2A28D30E0003008C /* CartCellViewModel.swift */; };
 		98D80C312A28DB980003008C /* LocalCartItemsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C302A28DB980003008C /* LocalCartItemsLoader.swift */; };
+		98D80C332A298D970003008C /* CartItemsStoreLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C322A298D970003008C /* CartItemsStoreLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		98D80C2B2A28D1B60003008C /* CartItemsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemsLoader.swift; sourceTree = "<group>"; };
 		98D80C2D2A28D30E0003008C /* CartCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCellViewModel.swift; sourceTree = "<group>"; };
 		98D80C302A28DB980003008C /* LocalCartItemsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCartItemsLoader.swift; sourceTree = "<group>"; };
+		98D80C322A298D970003008C /* CartItemsStoreLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemsStoreLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +268,7 @@
 				98D80C162A28956B0003008C /* LocalCartItemSaver.swift */,
 				98D80C182A2899CB0003008C /* CartItemStoreSaver.swift */,
 				98D80C302A28DB980003008C /* LocalCartItemsLoader.swift */,
+				98D80C322A298D970003008C /* CartItemsStoreLoader.swift */,
 				98D80C1B2A289A1E0003008C /* CoreDataStore.swift */,
 				98D80C1E2A289C860003008C /* JKOStore.xcdatamodeld */,
 			);
@@ -379,6 +382,7 @@
 				98D80BE22A2776AA0003008C /* ItemListViewController.swift in Sources */,
 				98D80C192A2899CB0003008C /* CartItemStoreSaver.swift in Sources */,
 				98D80C2A2A28D1800003008C /* CartViewModel.swift in Sources */,
+				98D80C332A298D970003008C /* CartItemsStoreLoader.swift in Sources */,
 				98D80C312A28DB980003008C /* LocalCartItemsLoader.swift in Sources */,
 				98D80C1C2A289A1E0003008C /* CoreDataStore.swift in Sources */,
 				98D80C2E2A28D30E0003008C /* CartCellViewModel.swift in Sources */,

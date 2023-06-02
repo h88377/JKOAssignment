@@ -7,12 +7,6 @@
 
 import Foundation
 
-protocol CartItemsStoreLoader {
-    typealias Result = Swift.Result<[Item], Error>
-    
-    func retrieve(completion: @escaping (Result) -> Void)
-}
-
 final class LocalCartItemsLoader: CartItemsLoader {
     enum LoadError: Swift.Error {
         case failed
