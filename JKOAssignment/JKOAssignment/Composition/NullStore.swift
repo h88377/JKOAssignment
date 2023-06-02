@@ -7,7 +7,8 @@
 
 import Foundation
 
-final class NullStore: CartItemStoreSaver, CartItemsStoreLoader {
+final class NullStore: CartItemStoreSaver, CartItemsStoreLoader, OrderStoreSaver {
     func insert(_ item: Item, completion: @escaping (CartItemStoreSaver.Result) -> Void) {}
     func retrieve(completion: @escaping (CartItemsStoreLoader.Result) -> Void) {}
+    func insert(order: Order, completion: @escaping (OrderStoreSaver.Result) -> Void) {}
 }

@@ -12,7 +12,7 @@ final class ItemDetailViewModel {
     var isItemSavingStateOnChanged: Observable<Void>?
     var isItemSavingErrorStateOnChanged: Observable<String>?
     
-    var checkoutHandler: Observable<Void>?
+    var checkoutHandler: Observable<Item>?
     
     private let id = UUID()
     private let item: Item
@@ -53,7 +53,7 @@ final class ItemDetailViewModel {
     }
     
     func goToCheckout() {
-        checkoutHandler?(())
+        checkoutHandler?(item)
     }
 }
 

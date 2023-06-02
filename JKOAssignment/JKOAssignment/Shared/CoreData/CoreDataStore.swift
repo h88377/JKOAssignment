@@ -15,12 +15,16 @@ final class CoreDataStore {
         container = try NSPersistentContainer.load(modelName: "JKOStore", in: bundle, storeURL: storeURL)
         context = container.newBackgroundContext()
     }
+    
+    private func perform(_ action: @escaping (NSManagedObjectContext) -> Void) {
+        let context = context
+        context.perform { action(context) }
+    }
 }
 
 extension CoreDataStore: CartItemStoreSaver {
     func insert(_ item: Item, completion: @escaping (CartItemStoreSaver.Result) -> Void) {
-        let context = context
-        context.perform {
+        perform { context in
             do {
                 let managedItem = ManagedItem(context: context)
                 managedItem.name = item.name
@@ -40,8 +44,7 @@ extension CoreDataStore: CartItemStoreSaver {
 
 extension CoreDataStore: CartItemsStoreLoader {
     func retrieve(completion: @escaping (CartItemsStoreLoader.Result) -> Void) {
-        let context = context
-        context.perform {
+        perform { context in
             guard let entityName = ManagedItem.entity().name else { return }
             
             completion(Result {
@@ -61,13 +64,29 @@ extension CoreDataStore: CartItemsStoreLoader {
     }
 }
 
-@objc(ManagedItem)
-class ManagedItem: NSManagedObject {
-    @NSManaged var name: String
-    @NSManaged var descriptionContent: String
-    @NSManaged var price: Int16
-    @NSManaged var timestamp: Date
-    @NSManaged var imageName: String
+extension CoreDataStore: OrderStoreSaver {
+    func insert(order: Order, completion: @escaping (OrderStoreSaver.Result) -> Void) {
+        perform { context in
+            do {
+                let managedOrder = ManagedOrder(context: context)
+                managedOrder.items = NSOrderedSet(array: order.items.map {
+                    let managedItem = ManagedOrderItem(context: context)
+                    managedItem.name = $0.name
+                    managedItem.descriptionContent = $0.description
+                    managedItem.price = Int16($0.price)
+                    managedItem.timestamp = $0.timestamp
+                    managedItem.imageName = $0.imageName
+                    return managedItem
+                })
+                managedOrder.price = Int16(order.price)
+                managedOrder.timestamp = order.timestamp
+                try context.save()
+                completion(.none)
+            } catch {
+                completion(.some(error))
+            }
+        }
+    }
 }
 
 extension NSPersistentContainer {

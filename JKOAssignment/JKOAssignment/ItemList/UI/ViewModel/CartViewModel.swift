@@ -12,6 +12,9 @@ final class CartViewModel {
     var isItemsStateOnChanged: Observable<[Item]>?
     var isItemsErrorStateOnChange: Observable<String>?
     var isNoItemsReminderStateOnChanged: Observable<String>?
+    var isEmptyCartStateOnChanged: Observable<String>?
+    
+    var checkoutHandler: Observable<[Item]>?
     
     private let cartLoader: CartItemsLoader
     
@@ -34,5 +37,13 @@ final class CartViewModel {
             }
             self?.isItemsLoadingStateOnChanged?(false)
         }
+    }
+    
+    func goToCheckout(with cellViewModels: [CartCellViewModel]) {
+        if cellViewModels.isEmpty {
+            isEmptyCartStateOnChanged?(ItemListErrorMessage.noSelectedItemsInCart.rawValue)
+            return
+        }
+        checkoutHandler?(cellViewModels.map { $0.item })
     }
 }

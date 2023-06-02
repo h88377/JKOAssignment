@@ -43,13 +43,14 @@ final class ItemListUIComposer {
         return itemListVC
     }
     
-    static func composedItemDetail(with item: Item, itemSaver: CartItemSaver) -> ItemDetailViewController {
+    static func composedItemDetail(with item: Item, itemSaver: CartItemSaver, checkout: @escaping (Item) -> Void) -> ItemDetailViewController {
         let itemDetailVM = ItemDetailViewModel(item: item, itemSaver: itemSaver)
+        itemDetailVM.checkoutHandler = checkout
         let itemDetailVC = ItemDetailViewController(viewModel: itemDetailVM)
         return itemDetailVC
     }
     
-    static func composedCart(with cartLoader: CartItemsLoader) -> CartViewController {
+    static func composedCart(with cartLoader: CartItemsLoader, checkout: @escaping ([Item]) -> Void) -> CartViewController {
         let cartVM = CartViewModel(cartLoader: cartLoader)
         let cartVC = CartViewController(viewModel: cartVM)
         
@@ -57,6 +58,7 @@ final class ItemListUIComposer {
             let cartCellVMs = items.map { CartCellViewModel(item: $0) }
             cartVC?.set(cartCellVMs)
         }
+        cartVM.checkoutHandler = checkout
         return cartVC
     }
 }

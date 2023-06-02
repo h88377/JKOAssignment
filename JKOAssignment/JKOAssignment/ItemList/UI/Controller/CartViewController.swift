@@ -46,6 +46,7 @@ final class CartViewController: UIViewController {
         button.backgroundColor = .systemGray6
         button.setTitle("結算", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
+        button.addTarget(self, action: #selector(checkout), for: .touchUpInside)
         
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -138,10 +139,27 @@ final class CartViewController: UIViewController {
         
         viewModel.isNoItemsReminderStateOnChanged = { [weak self] message in
             self?.noItemsReminder.text = message
+            self?.tableView.isHidden = true
+            self?.checkoutButton.isHidden = true
+        }
+        
+        viewModel.isEmptyCartStateOnChanged = { [weak self] message in
+            guard let self = self else { return }
+            
+            self.errorView.show(message, on: self.view)
         }
     }
     
     @objc private func loadCartItems() {
         viewModel.loadCartItems()
+    }
+    
+    @objc private func checkout() {
+        let numberOfItemsInCart = dataSource.tableView(tableView, numberOfRowsInSection: cartSection)
+        let selectedCellVMs = (0..<numberOfItemsInCart)
+            .compactMap { dataSource.itemIdentifier(for: IndexPath(item: $0, section: cartSection)) }
+            .filter { $0.isSelected }
+        
+        viewModel.goToCheckout(with: selectedCellVMs)
     }
 }
