@@ -56,6 +56,7 @@
 		98D80C502A29C2320003008C /* LocalOrderSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C4F2A29C2320003008C /* LocalOrderSaver.swift */; };
 		98D80C522A29C3AF0003008C /* OrderStoreSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C512A29C3AF0003008C /* OrderStoreSaver.swift */; };
 		98D80C572A29C4890003008C /* ManagedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C562A29C4890003008C /* ManagedItem.swift */; };
+		98D80C592A29C5A00003008C /* ManagedOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C582A29C5A00003008C /* ManagedOrder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		98D80C4F2A29C2320003008C /* LocalOrderSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalOrderSaver.swift; sourceTree = "<group>"; };
 		98D80C512A29C3AF0003008C /* OrderStoreSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStoreSaver.swift; sourceTree = "<group>"; };
 		98D80C562A29C4890003008C /* ManagedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedItem.swift; sourceTree = "<group>"; };
+		98D80C582A29C5A00003008C /* ManagedOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedOrder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,6 +388,7 @@
 			children = (
 				98D80C1B2A289A1E0003008C /* CoreDataStore.swift */,
 				98D80C562A29C4890003008C /* ManagedItem.swift */,
+				98D80C582A29C5A00003008C /* ManagedOrder.swift */,
 				98D80C1E2A289C860003008C /* JKOStore.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -516,6 +519,7 @@
 				98D80C052A2867060003008C /* ItemDetailViewController.swift in Sources */,
 				98D80C262A28C6F10003008C /* CartViewController.swift in Sources */,
 				98D80C402A29B3A80003008C /* Order.swift in Sources */,
+				98D80C592A29C5A00003008C /* ManagedOrder.swift in Sources */,
 				98D80BF82A2840EE0003008C /* ItemListPaginationViewModel.swift in Sources */,
 				98D80C472A29B6B80003008C /* CheckoutCellViewModel.swift in Sources */,
 				98D80BED2A27832B0003008C /* ItemListCell.swift in Sources */,
