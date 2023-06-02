@@ -11,6 +11,14 @@ final class CheckoutViewController: UIViewController {
     
     // MARK: - Property
     
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(CheckoutCell.self, forCellReuseIdentifier: CheckoutCell.identifier)
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
     let indicator: LoadingIndicator = {
         let indicator = LoadingIndicator()
         
@@ -18,12 +26,11 @@ final class CheckoutViewController: UIViewController {
         return indicator
     }()
     
-    let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(CheckoutCell.self, forCellReuseIdentifier: CheckoutCell.identifier)
+    let fadingView: FadingMessageView = {
+        let view = FadingMessageView()
         
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     private(set) lazy var checkoutButton: UIButton = {
@@ -119,6 +126,12 @@ final class CheckoutViewController: UIViewController {
             } else {
                 self.indicator.hide()
             }
+        }
+        
+        viewModel.isOrderSavingErrorStateOnChanged = { [weak self] message in
+            guard let self = self else { return }
+            
+            self.fadingView.show(message, on: self.view)
         }
     }
     
