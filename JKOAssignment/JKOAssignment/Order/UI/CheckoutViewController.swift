@@ -7,15 +7,54 @@
 
 import UIKit
 
+final class CheckoutCellViewModel {
+    private let id = UUID()
+    private let item: Item
+    
+    init(item: Item) {
+        self.item = item
+    }
+    
+    var nameText: String {
+        return item.name
+    }
+    
+    var priceText: String {
+        return "$ \(item.price)"
+    }
+    
+    var imageName: String {
+        return item.imageName
+    }
+    
+    var price: Int {
+        return item.price
+    }
+}
+
+extension CheckoutCellViewModel: Hashable {
+    static func == (lhs: CheckoutCellViewModel, rhs: CheckoutCellViewModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
 final class CheckoutViewController: UIViewController {
     private let viewModel: CheckoutViewModel
+    private let cellViewModels: [CheckoutCellViewModel]
     
-    init(viewModel: CheckoutViewModel) {
+    init(viewModel: CheckoutViewModel, cellViewModels: [CheckoutCellViewModel]) {
         self.viewModel = viewModel
+        self.cellViewModels = cellViewModels
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
 }
