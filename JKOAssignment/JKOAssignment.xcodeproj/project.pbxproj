@@ -58,6 +58,7 @@
 		98D80C572A29C4890003008C /* ManagedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C562A29C4890003008C /* ManagedItem.swift */; };
 		98D80C592A29C5A00003008C /* ManagedOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C582A29C5A00003008C /* ManagedOrder.swift */; };
 		98D80C5B2A29CF4E0003008C /* ManagedOrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C5A2A29CF4E0003008C /* ManagedOrderItem.swift */; };
+		98D80C5E2A29CFAE0003008C /* OrderUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C5D2A29CFAE0003008C /* OrderUIComposer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		98D80C562A29C4890003008C /* ManagedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedItem.swift; sourceTree = "<group>"; };
 		98D80C582A29C5A00003008C /* ManagedOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedOrder.swift; sourceTree = "<group>"; };
 		98D80C5A2A29CF4E0003008C /* ManagedOrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedOrderItem.swift; sourceTree = "<group>"; };
+		98D80C5D2A29CFAE0003008C /* OrderUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderUIComposer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,6 +321,7 @@
 		98D80C392A29B1940003008C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				98D80C5C2A29CFA20003008C /* Composer */,
 				98D80C452A29B6AF0003008C /* ViewModel */,
 				98D80C482A29BA3C0003008C /* View */,
 				98D80C532A29C3E00003008C /* Controller */,
@@ -395,6 +398,14 @@
 				98D80C1E2A289C860003008C /* JKOStore.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		98D80C5C2A29CFA20003008C /* Composer */ = {
+			isa = PBXGroup;
+			children = (
+				98D80C5D2A29CFAE0003008C /* OrderUIComposer.swift */,
+			);
+			path = Composer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -504,6 +515,7 @@
 				98D80BE22A2776AA0003008C /* ItemListViewController.swift in Sources */,
 				98D80C192A2899CB0003008C /* CartItemStoreSaver.swift in Sources */,
 				98D80C2A2A28D1800003008C /* CartViewModel.swift in Sources */,
+				98D80C5E2A29CFAE0003008C /* OrderUIComposer.swift in Sources */,
 				98D80C332A298D970003008C /* CartItemsStoreLoader.swift in Sources */,
 				98D80C312A28DB980003008C /* LocalCartItemsLoader.swift in Sources */,
 				98D80C5B2A29CF4E0003008C /* ManagedOrderItem.swift in Sources */,
