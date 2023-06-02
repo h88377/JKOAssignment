@@ -40,13 +40,6 @@ final class ItemListUIComposer {
             }
             itemListVC?.set(cellVMs)
         }
-        
-        itemListVM.isItemsRefreshingErrorStateOnChange = { [weak itemListVC] message in
-            guard let itemListVC = itemListVC else { return }
-            
-            itemListVC.errorView.show(message, on: itemListVC.view)
-        }
-        
         return itemListVC
     }
     

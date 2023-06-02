@@ -51,6 +51,7 @@ final class ItemListViewController: UICollectionViewController {
         super.viewDidLoad()
         
         configureCollectionView()
+        setUpBindings()
         loadItems()
     }
     
@@ -90,6 +91,14 @@ final class ItemListViewController: UICollectionViewController {
         section.interGroupSpacing = 8
         
         return UICollectionViewCompositionalLayout(section: section)
+    }
+    
+    private func setUpBindings() {
+        viewModel.isItemsRefreshingErrorStateOnChange = { [weak self] message in
+            guard let self = self else { return }
+            
+            self.errorView.show(message, on: self.view)
+        }
     }
     
     private func binded(refreshView: UIRefreshControl) -> UIRefreshControl {
