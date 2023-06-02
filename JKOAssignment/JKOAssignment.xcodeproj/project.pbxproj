@@ -37,6 +37,15 @@
 		98D80C202A289C860003008C /* JKOStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C1E2A289C860003008C /* JKOStore.xcdatamodeld */; };
 		98D80C222A28C2700003008C /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C212A28C2700003008C /* LoadingIndicator.swift */; };
 		98D80C242A28C2980003008C /* FadingMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C232A28C2980003008C /* FadingMessageView.swift */; };
+		98D80C262A28C6F10003008C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C252A28C6F10003008C /* CartViewController.swift */; };
+		98D80C282A28D1600003008C /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C272A28D1600003008C /* CartCell.swift */; };
+		98D80C2A2A28D1800003008C /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C292A28D1800003008C /* CartViewModel.swift */; };
+		98D80C2C2A28D1B60003008C /* CartItemsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C2B2A28D1B60003008C /* CartItemsLoader.swift */; };
+		98D80C2E2A28D30E0003008C /* CartCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C2D2A28D30E0003008C /* CartCellViewModel.swift */; };
+		98D80C312A28DB980003008C /* LocalCartItemsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C302A28DB980003008C /* LocalCartItemsLoader.swift */; };
+		98D80C332A298D970003008C /* CartItemsStoreLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C322A298D970003008C /* CartItemsStoreLoader.swift */; };
+		98D80C352A29ABB90003008C /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C342A29ABB90003008C /* NullStore.swift */; };
+		98D80C372A29AC730003008C /* Cell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C362A29AC730003008C /* Cell+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +92,15 @@
 		98D80C1F2A289C860003008C /* JKOStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JKOStore.xcdatamodel; sourceTree = "<group>"; };
 		98D80C212A28C2700003008C /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		98D80C232A28C2980003008C /* FadingMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingMessageView.swift; sourceTree = "<group>"; };
+		98D80C252A28C6F10003008C /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		98D80C272A28D1600003008C /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
+		98D80C292A28D1800003008C /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		98D80C2B2A28D1B60003008C /* CartItemsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemsLoader.swift; sourceTree = "<group>"; };
+		98D80C2D2A28D30E0003008C /* CartCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCellViewModel.swift; sourceTree = "<group>"; };
+		98D80C302A28DB980003008C /* LocalCartItemsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCartItemsLoader.swift; sourceTree = "<group>"; };
+		98D80C322A298D970003008C /* CartItemsStoreLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemsStoreLoader.swift; sourceTree = "<group>"; };
+		98D80C342A29ABB90003008C /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
+		98D80C362A29AC730003008C /* Cell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +188,7 @@
 				98D80BE12A2776AA0003008C /* ItemListViewController.swift */,
 				98D80BF92A28410B0003008C /* ItemListPaginationViewController.swift */,
 				98D80C042A2867060003008C /* ItemDetailViewController.swift */,
+				98D80C252A28C6F10003008C /* CartViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -179,6 +198,7 @@
 			children = (
 				98D80BEC2A27832B0003008C /* ItemListCell.swift */,
 				98D80C0B2A28794B0003008C /* ItemDetailCell.swift */,
+				98D80C272A28D1600003008C /* CartCell.swift */,
 				98D80C212A28C2700003008C /* LoadingIndicator.swift */,
 				98D80C232A28C2980003008C /* FadingMessageView.swift */,
 			);
@@ -192,6 +212,8 @@
 				98D80BF52A28397D0003008C /* ItemListCellViewModel.swift */,
 				98D80BF72A2840EE0003008C /* ItemListPaginationViewModel.swift */,
 				98D80C0F2A28798D0003008C /* ItemDetailViewModel.swift */,
+				98D80C292A28D1800003008C /* CartViewModel.swift */,
+				98D80C2D2A28D30E0003008C /* CartCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -203,6 +225,7 @@
 				98D80BE82A2782FD0003008C /* Item.swift */,
 				98D80BE62A2782E40003008C /* ItemLoader.swift */,
 				98D80C0D2A2879690003008C /* CartItemSaver.swift */,
+				98D80C2B2A28D1B60003008C /* CartItemsLoader.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -221,6 +244,7 @@
 				98D80BB12A27430C0003008C /* AppDelegate.swift */,
 				98D80BB32A27430C0003008C /* SceneDelegate.swift */,
 				98D80BFF2A2862EF0003008C /* MainThreadDispatchDecorator.swift */,
+				98D80C342A29ABB90003008C /* NullStore.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -239,6 +263,7 @@
 				98D80C072A286AEE0003008C /* UIView+Extension.swift */,
 				98D80C092A28790F0003008C /* Constants.swift */,
 				98D80C112A287EED0003008C /* Observable.swift */,
+				98D80C362A29AC730003008C /* Cell+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -248,6 +273,8 @@
 			children = (
 				98D80C162A28956B0003008C /* LocalCartItemSaver.swift */,
 				98D80C182A2899CB0003008C /* CartItemStoreSaver.swift */,
+				98D80C302A28DB980003008C /* LocalCartItemsLoader.swift */,
+				98D80C322A298D970003008C /* CartItemsStoreLoader.swift */,
 				98D80C1B2A289A1E0003008C /* CoreDataStore.swift */,
 				98D80C1E2A289C860003008C /* JKOStore.xcdatamodeld */,
 			);
@@ -360,23 +387,32 @@
 				98D80C082A286AEE0003008C /* UIView+Extension.swift in Sources */,
 				98D80BE22A2776AA0003008C /* ItemListViewController.swift in Sources */,
 				98D80C192A2899CB0003008C /* CartItemStoreSaver.swift in Sources */,
+				98D80C2A2A28D1800003008C /* CartViewModel.swift in Sources */,
+				98D80C332A298D970003008C /* CartItemsStoreLoader.swift in Sources */,
+				98D80C312A28DB980003008C /* LocalCartItemsLoader.swift in Sources */,
 				98D80C1C2A289A1E0003008C /* CoreDataStore.swift in Sources */,
+				98D80C2E2A28D30E0003008C /* CartCellViewModel.swift in Sources */,
 				98D80C002A2862EF0003008C /* MainThreadDispatchDecorator.swift in Sources */,
 				98D80C102A28798D0003008C /* ItemDetailViewModel.swift in Sources */,
 				98D80C0E2A2879690003008C /* CartItemSaver.swift in Sources */,
 				98D80C242A28C2980003008C /* FadingMessageView.swift in Sources */,
 				98D80BE52A2782B10003008C /* ItemListViewModel.swift in Sources */,
 				98D80C172A28956B0003008C /* LocalCartItemSaver.swift in Sources */,
+				98D80C352A29ABB90003008C /* NullStore.swift in Sources */,
 				98D80C0C2A28794B0003008C /* ItemDetailCell.swift in Sources */,
 				98D80C122A287EED0003008C /* Observable.swift in Sources */,
 				98D80C052A2867060003008C /* ItemDetailViewController.swift in Sources */,
+				98D80C262A28C6F10003008C /* CartViewController.swift in Sources */,
 				98D80BF82A2840EE0003008C /* ItemListPaginationViewModel.swift in Sources */,
 				98D80BED2A27832B0003008C /* ItemListCell.swift in Sources */,
 				98D80BB22A27430C0003008C /* AppDelegate.swift in Sources */,
 				98D80BFD2A284F500003008C /* StubbedDataItemLoader.swift in Sources */,
 				98D80C202A289C860003008C /* JKOStore.xcdatamodeld in Sources */,
+				98D80C2C2A28D1B60003008C /* CartItemsLoader.swift in Sources */,
 				98D80BEB2A2783130003008C /* ItemRequestCondition.swift in Sources */,
+				98D80C282A28D1600003008C /* CartCell.swift in Sources */,
 				98D80BE92A2782FD0003008C /* Item.swift in Sources */,
+				98D80C372A29AC730003008C /* Cell+Extension.swift in Sources */,
 				98D80BFA2A28410B0003008C /* ItemListPaginationViewController.swift in Sources */,
 				98D80C222A28C2700003008C /* LoadingIndicator.swift in Sources */,
 				98D80BB42A27430C0003008C /* SceneDelegate.swift in Sources */,

@@ -8,8 +8,6 @@
 import UIKit
 
 final class ItemListCell: UICollectionViewCell {
-    static let identifier = "\(ItemListCell.self)"
-    
     let nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2

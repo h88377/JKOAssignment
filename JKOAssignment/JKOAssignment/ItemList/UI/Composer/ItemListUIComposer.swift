@@ -11,12 +11,10 @@ final class ItemListUIComposer {
     private init() {}
     
     static func composedItemList(with itemLoader: ItemLoader, select: @escaping (Item) -> Void) -> ItemListViewController {
-        let mainThreadItemLoader = MainThreadDispatchDecorator(decoratee: itemLoader)
-        
-        let paginationVM = ItemListPaginationViewModel(itemLoader: mainThreadItemLoader)
+        let paginationVM = ItemListPaginationViewModel(itemLoader: itemLoader)
         let paginationVC = ItemListPaginationViewController(viewModel: paginationVM)
         
-        let itemListVM = ItemListViewModel(itemLoader: mainThreadItemLoader)
+        let itemListVM = ItemListViewModel(itemLoader: itemLoader)
         let itemListVC = ItemListViewController(viewModel: itemListVM, paginationController: paginationVC)
         
         paginationVM.isItemsPaginationStateOnChange = { [weak itemListVC] items in
@@ -42,20 +40,23 @@ final class ItemListUIComposer {
             }
             itemListVC?.set(cellVMs)
         }
-        
-        itemListVM.isItemsRefreshingErrorStateOnChange = { [weak itemListVC] message in
-            guard let itemListVC = itemListVC else { return }
-            
-            itemListVC.errorView.show(message, on: itemListVC.view)
-        }
-        
         return itemListVC
     }
     
     static func composedItemDetail(with item: Item, itemSaver: CartItemSaver) -> ItemDetailViewController {
-        let mainThreadItemSaver = MainThreadDispatchDecorator(decoratee: itemSaver)
-        let itemDetailVM = ItemDetailViewModel(item: item, itemSaver: mainThreadItemSaver)
+        let itemDetailVM = ItemDetailViewModel(item: item, itemSaver: itemSaver)
         let itemDetailVC = ItemDetailViewController(viewModel: itemDetailVM)
         return itemDetailVC
+    }
+    
+    static func composedCart(with cartLoader: CartItemsLoader) -> CartViewController {
+        let cartVM = CartViewModel(cartLoader: cartLoader)
+        let cartVC = CartViewController(viewModel: cartVM)
+        
+        cartVM.isItemsStateOnChanged = { [weak cartVC] items in
+            let cartCellVMs = items.map { CartCellViewModel(item: $0) }
+            cartVC?.set(cartCellVMs)
+        }
+        return cartVC
     }
 }

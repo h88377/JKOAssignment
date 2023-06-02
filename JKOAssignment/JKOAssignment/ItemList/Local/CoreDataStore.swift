@@ -7,7 +7,7 @@
 
 import CoreData
 
-final class CoreDataStore: CartItemStoreSaver {
+final class CoreDataStore {
     private let container: NSPersistentContainer
     private let context: NSManagedObjectContext
     
@@ -15,7 +15,9 @@ final class CoreDataStore: CartItemStoreSaver {
         container = try NSPersistentContainer.load(modelName: "JKOStore", in: bundle, storeURL: storeURL)
         context = container.newBackgroundContext()
     }
-    
+}
+
+extension CoreDataStore: CartItemStoreSaver {
     func insert(_ item: Item, completion: @escaping (CartItemStoreSaver.Result) -> Void) {
         let context = context
         context.perform {
@@ -23,7 +25,7 @@ final class CoreDataStore: CartItemStoreSaver {
                 let managedItem = ManagedItem(context: context)
                 managedItem.name = item.name
                 managedItem.descriptionContent = item.description
-                managedItem.price = Int64(item.price)
+                managedItem.price = Int16(item.price)
                 managedItem.timestamp = item.timestamp
                 managedItem.imageName = item.imageName
                 
@@ -36,11 +38,34 @@ final class CoreDataStore: CartItemStoreSaver {
     }
 }
 
+extension CoreDataStore: CartItemsStoreLoader {
+    func retrieve(completion: @escaping (CartItemsStoreLoader.Result) -> Void) {
+        let context = context
+        context.perform {
+            guard let entityName = ManagedItem.entity().name else { return }
+            
+            completion(Result {
+                let request: NSFetchRequest<ManagedItem> = NSFetchRequest(entityName: entityName)
+                request.returnsObjectsAsFaults = false
+                let managedItems = try context.fetch(request)
+                return managedItems.map {
+                    Item(
+                        name: $0.name,
+                        description: $0.descriptionContent,
+                        price: Int($0.price),
+                        timestamp: $0.timestamp,
+                        imageName: $0.imageName)
+                }
+            })
+        }
+    }
+}
+
 @objc(ManagedItem)
 class ManagedItem: NSManagedObject {
     @NSManaged var name: String
     @NSManaged var descriptionContent: String
-    @NSManaged var price: Int64
+    @NSManaged var price: Int16
     @NSManaged var timestamp: Date
     @NSManaged var imageName: String
 }
