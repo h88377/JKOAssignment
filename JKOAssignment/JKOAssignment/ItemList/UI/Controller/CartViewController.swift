@@ -139,6 +139,8 @@ final class CartViewController: UIViewController {
         
         viewModel.isNoItemsReminderStateOnChanged = { [weak self] message in
             self?.noItemsReminder.text = message
+            self?.tableView.isHidden = true
+            self?.checkoutButton.isHidden = true
         }
     }
     
