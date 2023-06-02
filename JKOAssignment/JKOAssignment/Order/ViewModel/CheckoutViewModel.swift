@@ -7,10 +7,6 @@
 
 import Foundation
 
-enum OrderErrorMessage: String {
-    case checkout = "結帳失敗"
-}
-
 final class CheckoutViewModel {
     var isOrderSaveLoadingStateOnChanged: Observable<Bool>?
     var isOrderSavingStateOnChanged: Observable<Void>?

@@ -52,6 +52,7 @@
 		98D80C442A29B3F20003008C /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C432A29B3F20003008C /* CheckoutViewController.swift */; };
 		98D80C472A29B6B80003008C /* CheckoutCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C462A29B6B80003008C /* CheckoutCellViewModel.swift */; };
 		98D80C4A2A29BA400003008C /* CheckoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C492A29BA400003008C /* CheckoutCell.swift */; };
+		98D80C4D2A29C1450003008C /* OrderConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C4C2A29C1440003008C /* OrderConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		98D80C432A29B3F20003008C /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		98D80C462A29B6B80003008C /* CheckoutCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutCellViewModel.swift; sourceTree = "<group>"; };
 		98D80C492A29BA400003008C /* CheckoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutCell.swift; sourceTree = "<group>"; };
+		98D80C4C2A29C1440003008C /* OrderConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +299,7 @@
 		98D80C382A29B1810003008C /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				98D80C4B2A29C12E0003008C /* Helpers */,
 				98D80C482A29BA3C0003008C /* View */,
 				98D80C452A29B6AF0003008C /* ViewModel */,
 				98D80C3E2A29B39F0003008C /* Feature */,
@@ -337,6 +340,14 @@
 				98D80C492A29BA400003008C /* CheckoutCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		98D80C4B2A29C12E0003008C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				98D80C4C2A29C1440003008C /* OrderConstants.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -478,6 +489,7 @@
 				98D80C372A29AC730003008C /* Cell+Extension.swift in Sources */,
 				98D80BFA2A28410B0003008C /* ItemListPaginationViewController.swift in Sources */,
 				98D80C222A28C2700003008C /* LoadingIndicator.swift in Sources */,
+				98D80C4D2A29C1450003008C /* OrderConstants.swift in Sources */,
 				98D80BB42A27430C0003008C /* SceneDelegate.swift in Sources */,
 				98D80BE72A2782E40003008C /* ItemLoader.swift in Sources */,
 				98D80C3D2A29B25D0003008C /* CheckoutViewModel.swift in Sources */,
