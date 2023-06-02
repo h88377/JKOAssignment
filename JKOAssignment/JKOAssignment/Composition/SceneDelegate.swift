@@ -23,7 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let itemListViewController = makeItemListViewController()
         navigationController.setViewControllers([itemListViewController], animated: false)
-        configureCartNavigationItem(for: itemListViewController)
         
         self.window = window
         window.makeKeyAndVisible()
@@ -41,6 +40,7 @@ private extension SceneDelegate {
             self.navigationController.pushViewController(itemDetailVC, animated: true)
         })
         itemListVC.title = "商品列表"
+        configureCartNavigationItem(for: itemListVC)
         return itemListVC
     }
     
@@ -73,12 +73,18 @@ private extension SceneDelegate {
     func makeCheckoutViewController(with items: [Item]) -> CheckoutViewController {
         let orderSaver: OrderSaver = LocalOrderSaver(storeSaver: coreDataStore ?? NullStore())
         let mainThreadOrderSaver = MainThreadDispatchDecorator(decoratee: orderSaver)
-        let checkoutVC = OrderUIComposer.composedCheckout(with: items, orderSaver: mainThreadOrderSaver)
+        let checkoutVC = OrderUIComposer.composedCheckout(with: items, orderSaver: mainThreadOrderSaver, finish: { [weak self] message in
+            self?.navigationController.popToRootViewController(animated: true)
+            
+            if let rootVC = self?.navigationController.topViewController as? ItemListViewController {
+                rootVC.fadingView.show(message, on: rootVC.view)
+            }
+        })
         checkoutVC.title = "確認訂單"
         return checkoutVC
     }
     
-    func configureCartNavigationItem(for controller: UIViewController) {
+    private func configureCartNavigationItem(for controller: UIViewController) {
         controller.navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "購物車",
             style: .done,
