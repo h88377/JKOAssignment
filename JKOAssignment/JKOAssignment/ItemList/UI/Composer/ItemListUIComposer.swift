@@ -43,8 +43,9 @@ final class ItemListUIComposer {
         return itemListVC
     }
     
-    static func composedItemDetail(with item: Item, itemSaver: CartItemSaver) -> ItemDetailViewController {
+    static func composedItemDetail(with item: Item, itemSaver: CartItemSaver, checkout: @escaping (Item) -> Void) -> ItemDetailViewController {
         let itemDetailVM = ItemDetailViewModel(item: item, itemSaver: itemSaver)
+        itemDetailVM.checkoutHandler = checkout
         let itemDetailVC = ItemDetailViewController(viewModel: itemDetailVM)
         return itemDetailVC
     }

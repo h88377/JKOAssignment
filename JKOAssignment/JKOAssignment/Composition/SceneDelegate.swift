@@ -47,7 +47,12 @@ private extension SceneDelegate {
     func makeItemDetailController(with selectedItem: Item) -> ItemDetailViewController {
         let localItemSaver: CartItemSaver = LocalCartItemSaver(storeSaver: coreDataStore ?? NullStore())
         let mainThreadLocalItemSaver = MainThreadDispatchDecorator(decoratee: localItemSaver)
-        let itemDetailVC = ItemListUIComposer.composedItemDetail(with: selectedItem, itemSaver: mainThreadLocalItemSaver)
+        let itemDetailVC = ItemListUIComposer.composedItemDetail(with: selectedItem, itemSaver: mainThreadLocalItemSaver, checkout: { [weak self] item in
+            guard let self = self else { return }
+            
+            let checkoutVC = self.makeCheckoutViewController(with: [item])
+            self.navigationController.pushViewController(checkoutVC, animated: true)
+        })
         itemDetailVC.title = "商品詳情"
         return itemDetailVC
     }
