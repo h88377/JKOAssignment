@@ -37,12 +37,17 @@ private extension SceneDelegate {
         let itemListVC = ItemListUIComposer.composedItemList(with: mainThreadItemLoader, select: { [weak self] selectedItem in
             guard let self = self else { return }
             
-            let localItemSaver: CartItemSaver = LocalCartItemSaver(storeSaver: self.coreDataStore ?? NullStoreSaver())
-            let mainThreadLocalItemSaver = MainThreadDispatchDecorator(decoratee: localItemSaver)
-            let itemDetailVC = ItemListUIComposer.composedItemDetail(with: selectedItem, itemSaver: mainThreadLocalItemSaver)
+            let itemDetailVC = self.makeItemDetailController(with: selectedItem)
             self.navigationController.pushViewController(itemDetailVC, animated: true)
         })
         return itemListVC
+    }
+    
+    func makeItemDetailController(with selectedItem: Item) -> ItemDetailViewController {
+        let localItemSaver: CartItemSaver = LocalCartItemSaver(storeSaver: self.coreDataStore ?? NullStoreSaver())
+        let mainThreadLocalItemSaver = MainThreadDispatchDecorator(decoratee: localItemSaver)
+        let itemDetailVC = ItemListUIComposer.composedItemDetail(with: selectedItem, itemSaver: mainThreadLocalItemSaver)
+        return itemDetailVC
     }
     
     func makeCartViewController() -> CartViewController {
