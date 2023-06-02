@@ -73,7 +73,13 @@ private extension SceneDelegate {
     func makeCheckoutViewController(with items: [Item]) -> CheckoutViewController {
         let orderSaver: OrderSaver = LocalOrderSaver(storeSaver: coreDataStore ?? NullStore())
         let mainThreadOrderSaver = MainThreadDispatchDecorator(decoratee: orderSaver)
-        let checkoutVC = OrderUIComposer.composedCheckout(with: items, orderSaver: mainThreadOrderSaver)
+        let checkoutVC = OrderUIComposer.composedCheckout(with: items, orderSaver: mainThreadOrderSaver, finish: { [weak self] message in
+            self?.navigationController.popToRootViewController(animated: true)
+            
+            if let rootVC = self?.navigationController.topViewController as? ItemListViewController {
+                rootVC.errorView.show(message, on: rootVC.view)
+            }
+        })
         checkoutVC.title = "確認訂單"
         return checkoutVC
     }

@@ -9,7 +9,7 @@ import Foundation
 
 final class CheckoutViewModel {
     var isOrderSaveLoadingStateOnChanged: Observable<Bool>?
-    var isOrderSavingStateOnChanged: Observable<Void>?
+    var isOrderSavingStateOnChanged: Observable<String>?
     var isOrderSavingErrorStateOnChanged: Observable<String>?
     
     var price: Int {
@@ -38,7 +38,7 @@ final class CheckoutViewModel {
                 self?.isOrderSavingErrorStateOnChanged?(OrderErrorMessage.checkout.rawValue)
                 return
             }
-            self?.isOrderSavingStateOnChanged?(())
+            self?.isOrderSavingStateOnChanged?(OrderSuccessMessage.checkout.rawValue)
         }
     }
 }
