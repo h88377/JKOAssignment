@@ -70,7 +70,7 @@ extension CoreDataStore: OrderStoreSaver {
             do {
                 let managedOrder = ManagedOrder(context: context)
                 managedOrder.items = NSOrderedSet(array: order.items.map {
-                    let managedItem = ManagedItem(context: context)
+                    let managedItem = ManagedOrderItem(context: context)
                     managedItem.name = $0.name
                     managedItem.descriptionContent = $0.description
                     managedItem.price = Int16($0.price)
