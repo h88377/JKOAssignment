@@ -7,12 +7,6 @@
 
 import Foundation
 
-protocol OrderStoreSaver {
-    typealias Result = Error?
-    
-    func insert(order: Order, completion: @escaping (Result) -> Void)
-}
-
 final class LocalOrderSaver: OrderSaver {
     enum SaveError: Error {
         case failed
