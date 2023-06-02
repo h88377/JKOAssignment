@@ -7,12 +7,6 @@
 
 import Foundation
 
-protocol OrderSaver {
-    typealias Result = Error?
-    
-    func save(order: Order, completion: @escaping (Result) -> Void)
-}
-
 final class CheckoutViewModel {
     private let orderSaver: OrderSaver
     
