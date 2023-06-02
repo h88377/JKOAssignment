@@ -36,6 +36,19 @@ final class CheckoutViewController: UIViewController {
         return label
     }()
     
+    private lazy var dataSource: UITableViewDiffableDataSource<Int, CheckoutCellViewModel> = {
+        .init(tableView: tableView) { tableView, indexPath, viewModel in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CheckoutCell.identifier, for: indexPath) as? CheckoutCell else { return UITableViewCell() }
+            
+            cell.nameLabel.text = viewModel.nameText
+            cell.priceLabel.text = viewModel.priceText
+            cell.itemImageView.image = UIImage(systemName: viewModel.imageName)
+            return cell
+        }
+    }()
+    
+    private var checkoutSection: Int { 0 }
+    
     private let viewModel: CheckoutViewModel
     private let cellViewModels: [CheckoutCellViewModel]
     
@@ -55,6 +68,7 @@ final class CheckoutViewController: UIViewController {
         super.viewDidLoad()
         
         setUpUI()
+        configureSnapshot()
     }
     
     // MARK: - Method
@@ -76,5 +90,12 @@ final class CheckoutViewController: UIViewController {
             checkoutButton.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 16),
             checkoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    private func configureSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, CheckoutCellViewModel>()
+        snapshot.appendSections([checkoutSection])
+        snapshot.appendItems(cellViewModels, toSection: checkoutSection)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
