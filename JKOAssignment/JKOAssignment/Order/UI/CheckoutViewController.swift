@@ -23,6 +23,7 @@ final class CheckoutViewController: UIViewController {
         button.backgroundColor = .systemGray6
         button.setTitle("提交訂單", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
+        button.addTarget(self, action: #selector(checkout), for: .touchUpInside)
         
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -97,5 +98,9 @@ final class CheckoutViewController: UIViewController {
         snapshot.appendSections([checkoutSection])
         snapshot.appendItems(cellViewModels, toSection: checkoutSection)
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    @objc private func checkout() {
+        viewModel.checkout()
     }
 }
