@@ -9,7 +9,7 @@ import Foundation
 
 final class CartCellViewModel {
     private let id = UUID()
-    private let item: Item
+    let item: Item
     
     init(item: Item) {
         self.item = item

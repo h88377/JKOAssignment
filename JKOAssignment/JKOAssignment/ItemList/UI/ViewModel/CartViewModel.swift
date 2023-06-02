@@ -13,6 +13,8 @@ final class CartViewModel {
     var isItemsErrorStateOnChange: Observable<String>?
     var isNoItemsReminderStateOnChanged: Observable<String>?
     
+    var checkoutHandler: Observable<[Item]>?
+    
     private let cartLoader: CartItemsLoader
     
     init(cartLoader: CartItemsLoader) {
@@ -34,5 +36,9 @@ final class CartViewModel {
             }
             self?.isItemsLoadingStateOnChanged?(false)
         }
+    }
+    
+    func goToCheckout(with cellViewModels: [CartCellViewModel]) {
+        checkoutHandler?(cellViewModels.map { $0.item })
     }
 }
