@@ -11,6 +11,13 @@ final class CheckoutViewController: UIViewController {
     
     // MARK: - Property
     
+    let indicator: LoadingIndicator = {
+        let indicator = LoadingIndicator()
+        
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+    
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(CheckoutCell.self, forCellReuseIdentifier: CheckoutCell.identifier)
@@ -70,6 +77,7 @@ final class CheckoutViewController: UIViewController {
         super.viewDidLoad()
         
         setUpUI()
+        setUpBindings()
         configureSnapshot()
     }
     
@@ -100,6 +108,18 @@ final class CheckoutViewController: UIViewController {
         snapshot.appendSections([checkoutSection])
         snapshot.appendItems(cellViewModels, toSection: checkoutSection)
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    private func setUpBindings() {
+        viewModel.isOrderSaveLoadingStateOnChanged = { [weak self] isSaving in
+            guard let self = self else { return }
+            
+            if isSaving {
+                self.indicator.show(on: self.view)
+            } else {
+                self.indicator.hide()
+            }
+        }
     }
     
     @objc private func checkout() {
