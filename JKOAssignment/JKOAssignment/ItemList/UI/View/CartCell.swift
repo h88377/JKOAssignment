@@ -64,7 +64,7 @@ final class CartCell: UITableViewCell {
         contentView.addSubviews([checkButton, itemImageView, nameLabel, priceLabel])
         
         let imageHightConstraint = itemImageView.heightAnchor.constraint(equalToConstant: 100)
-        imageHightConstraint.priority = .defaultHigh
+        imageHightConstraint.priority = UILayoutPriority(999)
         checkButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         NSLayoutConstraint.activate([
