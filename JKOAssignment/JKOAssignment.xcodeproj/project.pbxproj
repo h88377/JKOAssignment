@@ -57,6 +57,7 @@
 		98D80C522A29C3AF0003008C /* OrderStoreSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C512A29C3AF0003008C /* OrderStoreSaver.swift */; };
 		98D80C572A29C4890003008C /* ManagedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C562A29C4890003008C /* ManagedItem.swift */; };
 		98D80C592A29C5A00003008C /* ManagedOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C582A29C5A00003008C /* ManagedOrder.swift */; };
+		98D80C5B2A29CF4E0003008C /* ManagedOrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C5A2A29CF4E0003008C /* ManagedOrderItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		98D80C512A29C3AF0003008C /* OrderStoreSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStoreSaver.swift; sourceTree = "<group>"; };
 		98D80C562A29C4890003008C /* ManagedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedItem.swift; sourceTree = "<group>"; };
 		98D80C582A29C5A00003008C /* ManagedOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedOrder.swift; sourceTree = "<group>"; };
+		98D80C5A2A29CF4E0003008C /* ManagedOrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedOrderItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,6 +391,7 @@
 				98D80C1B2A289A1E0003008C /* CoreDataStore.swift */,
 				98D80C562A29C4890003008C /* ManagedItem.swift */,
 				98D80C582A29C5A00003008C /* ManagedOrder.swift */,
+				98D80C5A2A29CF4E0003008C /* ManagedOrderItem.swift */,
 				98D80C1E2A289C860003008C /* JKOStore.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -503,6 +506,7 @@
 				98D80C2A2A28D1800003008C /* CartViewModel.swift in Sources */,
 				98D80C332A298D970003008C /* CartItemsStoreLoader.swift in Sources */,
 				98D80C312A28DB980003008C /* LocalCartItemsLoader.swift in Sources */,
+				98D80C5B2A29CF4E0003008C /* ManagedOrderItem.swift in Sources */,
 				98D80C1C2A289A1E0003008C /* CoreDataStore.swift in Sources */,
 				98D80C2E2A28D30E0003008C /* CartCellViewModel.swift in Sources */,
 				98D80C002A2862EF0003008C /* MainThreadDispatchDecorator.swift in Sources */,
