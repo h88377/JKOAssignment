@@ -77,6 +77,7 @@ final class CheckoutViewController: UIViewController {
     
     private func setUpUI() {
         view.backgroundColor = .white
+        priceLabel.text = "總價格：$ \(viewModel.price)"
         view.addSubviews([tableView, priceLabel, checkoutButton])
     
         NSLayoutConstraint.activate([
@@ -84,7 +85,7 @@ final class CheckoutViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             
-            priceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            priceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             priceLabel.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 16),
             
             checkoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),

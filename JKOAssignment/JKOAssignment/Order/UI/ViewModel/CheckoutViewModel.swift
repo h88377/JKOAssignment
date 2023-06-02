@@ -12,6 +12,10 @@ final class CheckoutViewModel {
     var isOrderSavingStateOnChanged: Observable<Void>?
     var isOrderSavingErrorStateOnChanged: Observable<String>?
     
+    var price: Int {
+        return items.reduce(0) { $0 + $1.price }
+    }
+    
     private let items: [Item]
     private let orderSaver: OrderSaver
     
@@ -23,7 +27,7 @@ final class CheckoutViewModel {
     func checkout() {
         let order = Order(
             items: items,
-            price: items.reduce(0) { $0 + $1.price },
+            price: price,
             timestamp: Date())
         
         isOrderSaveLoadingStateOnChanged?(true)
