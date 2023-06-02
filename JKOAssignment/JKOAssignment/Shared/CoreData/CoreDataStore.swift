@@ -15,12 +15,16 @@ final class CoreDataStore {
         container = try NSPersistentContainer.load(modelName: "JKOStore", in: bundle, storeURL: storeURL)
         context = container.newBackgroundContext()
     }
+    
+    private func perform(_ action: @escaping (NSManagedObjectContext) -> Void) {
+        let context = context
+        context.perform { action(context) }
+    }
 }
 
 extension CoreDataStore: CartItemStoreSaver {
     func insert(_ item: Item, completion: @escaping (CartItemStoreSaver.Result) -> Void) {
-        let context = context
-        context.perform {
+        perform { context in
             do {
                 let managedItem = ManagedItem(context: context)
                 managedItem.name = item.name
@@ -40,8 +44,7 @@ extension CoreDataStore: CartItemStoreSaver {
 
 extension CoreDataStore: CartItemsStoreLoader {
     func retrieve(completion: @escaping (CartItemsStoreLoader.Result) -> Void) {
-        let context = context
-        context.perform {
+        perform { context in
             guard let entityName = ManagedItem.entity().name else { return }
             
             completion(Result {
@@ -63,8 +66,7 @@ extension CoreDataStore: CartItemsStoreLoader {
 
 extension CoreDataStore: OrderStoreSaver {
     func insert(order: Order, completion: @escaping (OrderStoreSaver.Result) -> Void) {
-        let context = context
-        context.perform {
+        perform { context in
             do {
                 let managedOrder = ManagedOrder(context: context)
                 managedOrder.items = NSOrderedSet(array: order.items.map {
