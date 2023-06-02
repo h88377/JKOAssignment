@@ -46,3 +46,11 @@ extension MainThreadDispatchDecorator: CartItemsLoader where T == CartItemsLoade
         }
     }
 }
+
+extension MainThreadDispatchDecorator: OrderSaver where T == OrderSaver {
+    func save(order: Order, completion: @escaping (OrderSaver.Result) -> Void) {
+        decoratee.save(order: order) { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}
