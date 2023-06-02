@@ -116,7 +116,8 @@ final class CartViewController: UIViewController {
             
             checkoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             checkoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            checkoutButton.topAnchor.constraint(equalTo: tableView.bottomAnchor)
+            checkoutButton.topAnchor.constraint(equalTo: tableView.bottomAnchor),
+            checkoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
