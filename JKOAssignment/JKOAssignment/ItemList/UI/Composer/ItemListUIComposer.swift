@@ -29,7 +29,7 @@ final class ItemListUIComposer {
         paginationVM.isItemsPaginationErrorStateOnChange = { [weak itemListVC] message in
             guard let itemListVC = itemListVC else { return }
             
-            itemListVC.errorView.show(message, on: itemListVC.view)
+            itemListVC.fadingView.show(message, on: itemListVC.view)
         }
         
         itemListVM.isItemsRefreshingStateOnChanged = { [weak itemListVC] items in

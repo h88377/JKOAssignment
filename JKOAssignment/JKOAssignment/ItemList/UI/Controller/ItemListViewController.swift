@@ -11,7 +11,7 @@ final class ItemListViewController: UICollectionViewController {
     
     // MARK: - Property
     
-    let errorView: FadingMessageView = {
+    let fadingView: FadingMessageView = {
         let view = FadingMessageView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -97,7 +97,7 @@ final class ItemListViewController: UICollectionViewController {
         viewModel.isItemsRefreshingErrorStateOnChange = { [weak self] message in
             guard let self = self else { return }
             
-            self.errorView.show(message, on: self.view)
+            self.fadingView.show(message, on: self.view)
         }
     }
     

@@ -77,7 +77,7 @@ private extension SceneDelegate {
             self?.navigationController.popToRootViewController(animated: true)
             
             if let rootVC = self?.navigationController.topViewController as? ItemListViewController {
-                rootVC.errorView.show(message, on: rootVC.view)
+                rootVC.fadingView.show(message, on: rootVC.view)
             }
         })
         checkoutVC.title = "確認訂單"
