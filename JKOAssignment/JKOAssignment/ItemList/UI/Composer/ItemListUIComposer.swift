@@ -11,12 +11,10 @@ final class ItemListUIComposer {
     private init() {}
     
     static func composedItemList(with itemLoader: ItemLoader, select: @escaping (Item) -> Void) -> ItemListViewController {
-        let mainThreadItemLoader = MainThreadDispatchDecorator(decoratee: itemLoader)
-        
-        let paginationVM = ItemListPaginationViewModel(itemLoader: mainThreadItemLoader)
+        let paginationVM = ItemListPaginationViewModel(itemLoader: itemLoader)
         let paginationVC = ItemListPaginationViewController(viewModel: paginationVM)
         
-        let itemListVM = ItemListViewModel(itemLoader: mainThreadItemLoader)
+        let itemListVM = ItemListViewModel(itemLoader: itemLoader)
         let itemListVC = ItemListViewController(viewModel: itemListVM, paginationController: paginationVC)
         
         paginationVM.isItemsPaginationStateOnChange = { [weak itemListVC] items in
@@ -53,8 +51,7 @@ final class ItemListUIComposer {
     }
     
     static func composedItemDetail(with item: Item, itemSaver: CartItemSaver) -> ItemDetailViewController {
-        let mainThreadItemSaver = MainThreadDispatchDecorator(decoratee: itemSaver)
-        let itemDetailVM = ItemDetailViewModel(item: item, itemSaver: mainThreadItemSaver)
+        let itemDetailVM = ItemDetailViewModel(item: item, itemSaver: itemSaver)
         let itemDetailVC = ItemDetailViewController(viewModel: itemDetailVM)
         return itemDetailVC
     }

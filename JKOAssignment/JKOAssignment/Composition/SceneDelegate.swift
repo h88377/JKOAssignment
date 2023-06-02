@@ -32,12 +32,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 private extension SceneDelegate {
     func makeItemListViewController() -> ItemListViewController {
-        let itemLoader = StubbedDataItemLoader()
-        let itemListVC = ItemListUIComposer.composedItemList(with: itemLoader, select: { [weak self] selectedItem in
+        let itemLoader: ItemLoader = StubbedDataItemLoader()
+        let mainThreadItemLoader = MainThreadDispatchDecorator(decoratee: itemLoader)
+        let itemListVC = ItemListUIComposer.composedItemList(with: mainThreadItemLoader, select: { [weak self] selectedItem in
             guard let self = self else { return }
             
-            let localItemSaver = LocalCartItemSaver(storeSaver: self.coreDataStore ?? NullStoreSaver())
-            let itemDetailVC = ItemListUIComposer.composedItemDetail(with: selectedItem, itemSaver: localItemSaver)
+            let localItemSaver: CartItemSaver = LocalCartItemSaver(storeSaver: self.coreDataStore ?? NullStoreSaver())
+            let mainThreadLocalItemSaver = MainThreadDispatchDecorator(decoratee: localItemSaver)
+            let itemDetailVC = ItemListUIComposer.composedItemDetail(with: selectedItem, itemSaver: mainThreadLocalItemSaver)
             self.navigationController.pushViewController(itemDetailVC, animated: true)
         })
         return itemListVC
@@ -45,8 +47,8 @@ private extension SceneDelegate {
     
     func makeCartViewController() -> CartViewController {
         let cartLoader: CartItemsLoader = LocalCartItemsLoader(storeLoader: coreDataStore ?? NullStoreLoader())
-        let decoratedCartLoader = MainThreadDispatchDecorator(decoratee: cartLoader)
-        return ItemListUIComposer.composedCart(with: decoratedCartLoader)
+        let mainThreadCartLoader = MainThreadDispatchDecorator(decoratee: cartLoader)
+        return ItemListUIComposer.composedCart(with: mainThreadCartLoader)
     }
     
     func configureCartNavigationItem(for controller: UIViewController) {
