@@ -38,3 +38,11 @@ extension MainThreadDispatchDecorator: CartItemSaver where T == CartItemSaver {
         }
     }
 }
+
+extension MainThreadDispatchDecorator: CartItemsLoader where T == CartItemsLoader {
+    func loadItems(completion: @escaping (CartItemsLoader.Result) -> Void) {
+        decoratee.loadItems { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}
