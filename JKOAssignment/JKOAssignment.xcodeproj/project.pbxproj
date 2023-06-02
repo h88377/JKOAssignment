@@ -45,6 +45,7 @@
 		98D80C312A28DB980003008C /* LocalCartItemsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C302A28DB980003008C /* LocalCartItemsLoader.swift */; };
 		98D80C332A298D970003008C /* CartItemsStoreLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C322A298D970003008C /* CartItemsStoreLoader.swift */; };
 		98D80C352A29ABB90003008C /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C342A29ABB90003008C /* NullStore.swift */; };
+		98D80C372A29AC730003008C /* Cell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C362A29AC730003008C /* Cell+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		98D80C302A28DB980003008C /* LocalCartItemsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCartItemsLoader.swift; sourceTree = "<group>"; };
 		98D80C322A298D970003008C /* CartItemsStoreLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemsStoreLoader.swift; sourceTree = "<group>"; };
 		98D80C342A29ABB90003008C /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
+		98D80C362A29AC730003008C /* Cell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 				98D80C072A286AEE0003008C /* UIView+Extension.swift */,
 				98D80C092A28790F0003008C /* Constants.swift */,
 				98D80C112A287EED0003008C /* Observable.swift */,
+				98D80C362A29AC730003008C /* Cell+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				98D80BEB2A2783130003008C /* ItemRequestCondition.swift in Sources */,
 				98D80C282A28D1600003008C /* CartCell.swift in Sources */,
 				98D80BE92A2782FD0003008C /* Item.swift in Sources */,
+				98D80C372A29AC730003008C /* Cell+Extension.swift in Sources */,
 				98D80BFA2A28410B0003008C /* ItemListPaginationViewController.swift in Sources */,
 				98D80C222A28C2700003008C /* LoadingIndicator.swift in Sources */,
 				98D80BB42A27430C0003008C /* SceneDelegate.swift in Sources */,
