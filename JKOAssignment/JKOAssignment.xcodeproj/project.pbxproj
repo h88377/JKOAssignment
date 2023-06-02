@@ -50,6 +50,7 @@
 		98D80C402A29B3A80003008C /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C3F2A29B3A80003008C /* Order.swift */; };
 		98D80C422A29B3BF0003008C /* OrderSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C412A29B3BF0003008C /* OrderSaver.swift */; };
 		98D80C442A29B3F20003008C /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C432A29B3F20003008C /* CheckoutViewController.swift */; };
+		98D80C472A29B6B80003008C /* CheckoutCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C462A29B6B80003008C /* CheckoutCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		98D80C3F2A29B3A80003008C /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		98D80C412A29B3BF0003008C /* OrderSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSaver.swift; sourceTree = "<group>"; };
 		98D80C432A29B3F20003008C /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		98D80C462A29B6B80003008C /* CheckoutCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +295,7 @@
 		98D80C382A29B1810003008C /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				98D80C452A29B6AF0003008C /* ViewModel */,
 				98D80C3E2A29B39F0003008C /* Feature */,
 				98D80C392A29B1940003008C /* UI */,
 			);
@@ -315,6 +318,14 @@
 				98D80C412A29B3BF0003008C /* OrderSaver.swift */,
 			);
 			path = Feature;
+			sourceTree = "<group>";
+		};
+		98D80C452A29B6AF0003008C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				98D80C462A29B6B80003008C /* CheckoutCellViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,6 +452,7 @@
 				98D80C262A28C6F10003008C /* CartViewController.swift in Sources */,
 				98D80C402A29B3A80003008C /* Order.swift in Sources */,
 				98D80BF82A2840EE0003008C /* ItemListPaginationViewModel.swift in Sources */,
+				98D80C472A29B6B80003008C /* CheckoutCellViewModel.swift in Sources */,
 				98D80BED2A27832B0003008C /* ItemListCell.swift in Sources */,
 				98D80BB22A27430C0003008C /* AppDelegate.swift in Sources */,
 				98D80BFD2A284F500003008C /* StubbedDataItemLoader.swift in Sources */,
