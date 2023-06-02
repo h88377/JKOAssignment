@@ -142,6 +142,12 @@ final class CartViewController: UIViewController {
             self?.tableView.isHidden = true
             self?.checkoutButton.isHidden = true
         }
+        
+        viewModel.isEmptyCartStateOnChanged = { [weak self] message in
+            guard let self = self else { return }
+            
+            self.errorView.show(message, on: self.view)
+        }
     }
     
     @objc private func loadCartItems() {
