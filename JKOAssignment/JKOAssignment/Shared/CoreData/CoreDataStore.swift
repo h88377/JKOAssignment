@@ -82,7 +82,9 @@ extension CoreDataStore: CartItemStoreDeleter {
                     request.predicate = nameAndTimestampPredicate
                     request.fetchLimit = 1
                     
-                    try context.fetch(request).first.map(context.delete)
+                    try context.fetch(request).first
+                        .map(context.delete)
+                        .map(context.save)
                 } catch {
                     capturedError = error
                 }
