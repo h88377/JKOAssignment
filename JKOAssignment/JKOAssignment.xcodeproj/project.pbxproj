@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		98C4F17E2A2DA8CA009C2320 /* CartItemStoreDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F17D2A2DA8CA009C2320 /* CartItemStoreDeleter.swift */; };
+		98C4F1802A2DAD7F009C2320 /* CartItemDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F17F2A2DAD7F009C2320 /* CartItemDeleter.swift */; };
 		98D80BB22A27430C0003008C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BB12A27430C0003008C /* AppDelegate.swift */; };
 		98D80BB42A27430C0003008C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BB32A27430C0003008C /* SceneDelegate.swift */; };
 		98D80BBB2A27430D0003008C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98D80BBA2A27430D0003008C /* Assets.xcassets */; };
@@ -74,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		98C4F17D2A2DA8CA009C2320 /* CartItemStoreDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemStoreDeleter.swift; sourceTree = "<group>"; };
+		98C4F17F2A2DAD7F009C2320 /* CartItemDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemDeleter.swift; sourceTree = "<group>"; };
 		98D80BAE2A27430C0003008C /* JKOAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKOAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D80BB12A27430C0003008C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98D80BB32A27430C0003008C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				98D80BE62A2782E40003008C /* ItemLoader.swift */,
 				98D80C0D2A2879690003008C /* CartItemSaver.swift */,
 				98D80C2B2A28D1B60003008C /* CartItemsLoader.swift */,
+				98C4F17F2A2DAD7F009C2320 /* CartItemDeleter.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				98D80C242A28C2980003008C /* FadingMessageView.swift in Sources */,
 				98D80BE52A2782B10003008C /* ItemListViewModel.swift in Sources */,
 				98D80C172A28956B0003008C /* LocalCartItemSaver.swift in Sources */,
+				98C4F1802A2DAD7F009C2320 /* CartItemDeleter.swift in Sources */,
 				98D80C352A29ABB90003008C /* NullStore.swift in Sources */,
 				98D80C0C2A28794B0003008C /* ItemDetailCell.swift in Sources */,
 				98D80C122A287EED0003008C /* Observable.swift in Sources */,
