@@ -126,6 +126,29 @@ extension CoreDataStore: OrderStoreSaver {
     }
 }
 
+extension CoreDataStore: OrderStoreLoader {
+    func retrieve(completion: @escaping (OrderStoreLoader.Result) -> Void) {
+        perform { context in
+            guard let entityName = ManagedOrder.entity().name else { return }
+            
+            completion(Result {
+                let request: NSFetchRequest<ManagedOrder> = NSFetchRequest(entityName: entityName)
+                let sort = NSSortDescriptor(key: #keyPath(ManagedOrder.timestamp), ascending: false)
+                request.sortDescriptors = [sort]
+                request.returnsObjectsAsFaults = false
+                let managedOrders = try context.fetch(request)
+                return managedOrders.map {
+                    let localItems = $0.items
+                        .compactMap { $0 as? ManagedOrderItem }
+                        .map { LocalOrderItem(name: $0.name, description: $0.descriptionContent, price: Int($0.price), timestamp: $0.timestamp, imageName: $0.imageName) }
+                    let localOrder = LocalOrder(items: localItems, price: Int($0.price), timestamp: $0.timestamp)
+                    return localOrder
+                }
+            })
+        }
+    }
+}
+
 // MARK: - Helper
 
 extension NSPersistentContainer {
