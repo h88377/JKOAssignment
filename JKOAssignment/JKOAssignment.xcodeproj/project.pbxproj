@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		98C2476B2A2DE0240095664A /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2476A2A2DE0240095664A /* OrderItem.swift */; };
 		98C2476D2A2DE2440095664A /* LocalItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2476C2A2DE2440095664A /* LocalItem.swift */; };
+		98C2476F2A2DE2AD0095664A /* OrderHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2476E2A2DE2AD0095664A /* OrderHistoryViewModel.swift */; };
 		98C4F17E2A2DA8CA009C2320 /* CartItemStoreDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F17D2A2DA8CA009C2320 /* CartItemStoreDeleter.swift */; };
 		98C4F1802A2DAD7F009C2320 /* CartItemDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F17F2A2DAD7F009C2320 /* CartItemDeleter.swift */; };
 		98C4F1822A2DADF4009C2320 /* LocalCartItemDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F1812A2DADF4009C2320 /* LocalCartItemDeleter.swift */; };
@@ -86,6 +87,7 @@
 /* Begin PBXFileReference section */
 		98C2476A2A2DE0240095664A /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		98C2476C2A2DE2440095664A /* LocalItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalItem.swift; sourceTree = "<group>"; };
+		98C2476E2A2DE2AD0095664A /* OrderHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewModel.swift; sourceTree = "<group>"; };
 		98C4F17D2A2DA8CA009C2320 /* CartItemStoreDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemStoreDeleter.swift; sourceTree = "<group>"; };
 		98C4F17F2A2DAD7F009C2320 /* CartItemDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemDeleter.swift; sourceTree = "<group>"; };
 		98C4F1812A2DADF4009C2320 /* LocalCartItemDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCartItemDeleter.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 			children = (
 				98D80C3C2A29B25D0003008C /* CheckoutViewModel.swift */,
 				98D80C462A29B6B80003008C /* CheckoutCellViewModel.swift */,
+				98C2476E2A2DE2AD0095664A /* OrderHistoryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				98D80C082A286AEE0003008C /* UIView+Extension.swift in Sources */,
 				98D80BE22A2776AA0003008C /* ItemListViewController.swift in Sources */,
 				98D80C192A2899CB0003008C /* CartItemStoreSaver.swift in Sources */,
+				98C2476F2A2DE2AD0095664A /* OrderHistoryViewModel.swift in Sources */,
 				98D80C2A2A28D1800003008C /* CartViewModel.swift in Sources */,
 				98C4F18C2A2DC87B009C2320 /* LocalOrderLoader.swift in Sources */,
 				98D80C5E2A29CFAE0003008C /* OrderUIComposer.swift in Sources */,
