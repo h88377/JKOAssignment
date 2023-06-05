@@ -21,12 +21,6 @@ struct LocalOrderItem {
     let imageName: String
 }
 
-protocol OrderStoreLoader {
-    typealias Result = Swift.Result<[LocalOrder], Error>
-    
-    func retrieve(completion: @escaping (Result) -> Void)
-}
-
 final class LocalOrderLoader: OrderLoader {
     enum Error: Swift.Error {
         case failed
