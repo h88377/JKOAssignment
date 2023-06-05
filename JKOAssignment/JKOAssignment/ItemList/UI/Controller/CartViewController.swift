@@ -52,8 +52,8 @@ final class CartViewController: UIViewController {
         return button
     }()
     
-    private lazy var dataSource: UITableViewDiffableDataSource<Int, CartCellViewModel> = {
-        .init(tableView: tableView) { tableView, indexPath, viewModel in
+    private lazy var dataSource: CartDataSource = {
+        .init(deleteHandler: viewModel.deleteCartItem, tableView: tableView) { tableView, indexPath, viewModel in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CartCell.identifier, for: indexPath) as? CartCell else { return UITableViewCell() }
             
             cell.nameLabel.text = viewModel.nameText
@@ -148,6 +148,16 @@ final class CartViewController: UIViewController {
             
             self.errorView.show(message, on: self.view)
         }
+        
+        viewModel.isItemDeleteStateOnChanged = { [weak self] _ in
+            self?.loadCartItems()
+        }
+        
+        viewModel.isItemDeleteErrorStateOnChanged = { [weak self] message in
+            guard let self = self else { return }
+            
+            self.errorView.show(message, on: self.view)
+        }
     }
     
     @objc private func loadCartItems() {
@@ -161,5 +171,26 @@ final class CartViewController: UIViewController {
             .filter { $0.isSelected }
         
         viewModel.goToCheckout(with: selectedCellVMs)
+    }
+}
+
+final class CartDataSource: UITableViewDiffableDataSource<Int, CartCellViewModel> {
+    private let deleteHandler: (CartCellViewModel) -> Void
+    
+    init(deleteHandler: @escaping (CartCellViewModel) -> Void, tableView: UITableView, cellProvider: @escaping UITableViewDiffableDataSource<Int, CartCellViewModel>.CellProvider) {
+        self.deleteHandler = deleteHandler
+        super.init(tableView: tableView, cellProvider: cellProvider)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let cellViewModel = itemIdentifier(for: indexPath) else { return }
+            
+            deleteHandler(cellViewModel)
+        }
     }
 }
