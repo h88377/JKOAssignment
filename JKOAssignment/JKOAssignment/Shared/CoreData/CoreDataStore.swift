@@ -23,7 +23,7 @@ final class CoreDataStore {
 }
 
 extension CoreDataStore: CartItemStoreSaver {
-    func insert(_ item: Item, completion: @escaping (CartItemStoreSaver.Result) -> Void) {
+    func insert(_ item: LocalItem, completion: @escaping (CartItemStoreSaver.Result) -> Void) {
         perform { context in
             do {
                 let managedItem = ManagedItem(context: context)

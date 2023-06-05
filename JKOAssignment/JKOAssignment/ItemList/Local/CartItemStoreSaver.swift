@@ -7,8 +7,16 @@
 
 import Foundation
 
+struct LocalItem {
+    let name: String
+    let description: String
+    let price: Int
+    let timestamp: Date
+    let imageName: String
+}
+
 protocol CartItemStoreSaver {
     typealias Result = Error?
     
-    func insert(_ item: Item, completion: @escaping (Result) -> Void)
+    func insert(_ item: LocalItem, completion: @escaping (Result) -> Void)
 }
