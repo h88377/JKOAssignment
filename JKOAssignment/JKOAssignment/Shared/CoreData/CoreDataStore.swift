@@ -65,6 +65,36 @@ extension CoreDataStore: CartItemsStoreLoader {
     }
 }
 
+extension CoreDataStore: CartItemStoreDeleter {
+    func delete(items: [LocalItem], completion: @escaping (CartItemStoreDeleter.Result) -> Void) {
+        perform { context in
+            guard let entityName = ManagedItem.entity().name else { return }
+            
+            var capturedError: Error?
+            for item in items {
+                do {
+                    let request: NSFetchRequest<ManagedItem> = NSFetchRequest(entityName: entityName)
+                    let namePredicate = NSPredicate(format: "name == %@", item.name)
+                    let timestampPredicate = NSPredicate(format: "timestamp == %@", item.timestamp as CVarArg)
+                    let nameAndTimestampPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [namePredicate, timestampPredicate])
+                    request.predicate = nameAndTimestampPredicate
+                    request.fetchLimit = 1
+                    
+                    try context.fetch(request).first.map(context.delete)
+                } catch {
+                    capturedError = error
+                }
+            }
+            
+            if let capturedError = capturedError {
+                completion(.some(capturedError))
+            } else {
+                completion(.none)
+            }
+        }
+    }
+}
+
 extension CoreDataStore: OrderStoreSaver {
     func insert(order: Order, completion: @escaping (OrderStoreSaver.Result) -> Void) {
         perform { context in
