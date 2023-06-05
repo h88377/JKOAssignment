@@ -30,6 +30,6 @@ final class LocalCartItemSaver: CartItemSaver {
 
 private extension Item {
     func toLocal() -> LocalItem {
-        return LocalItem(name: name, description: description, price: price, timestamp: timestamp, imageName: imageName)
+        return LocalItem(name: name, description: description, price: price, timestamp: Date(), imageName: imageName)
     }
 }
