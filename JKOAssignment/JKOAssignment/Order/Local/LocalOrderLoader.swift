@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct LocalOrder {
-    let items: [LocalOrderItem]
-    let price: Int
-    let timestamp: Date
-}
-
 struct LocalOrderItem {
     let name: String
     let description: String
