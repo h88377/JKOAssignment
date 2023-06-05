@@ -50,8 +50,8 @@ final class ItemListUIComposer {
         return itemDetailVC
     }
     
-    static func composedCart(with cartLoader: CartItemsLoader, checkout: @escaping ([Item]) -> Void) -> CartViewController {
-        let cartVM = CartViewModel(cartLoader: cartLoader)
+    static func composedCart(with cartLoader: CartItemsLoader, cartDeleter: CartItemDeleter, checkout: @escaping ([Item]) -> Void) -> CartViewController {
+        let cartVM = CartViewModel(cartLoader: cartLoader, cartDeleter: cartDeleter)
         let cartVC = CartViewController(viewModel: cartVM)
         
         cartVM.isItemsStateOnChanged = { [weak cartVC] items in

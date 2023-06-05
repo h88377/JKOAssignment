@@ -14,12 +14,17 @@ final class CartViewModel {
     var isNoItemsReminderStateOnChanged: Observable<String>?
     var isEmptyCartStateOnChanged: Observable<String>?
     
+    var isItemDeleteStateOnChanged: Observable<Void>?
+    var isItemDeleteErrorStateOnChanged: Observable<String>?
+    
     var checkoutHandler: Observable<[Item]>?
     
     private let cartLoader: CartItemsLoader
+    private let cartDeleter: CartItemDeleter
     
-    init(cartLoader: CartItemsLoader) {
+    init(cartLoader: CartItemsLoader, cartDeleter: CartItemDeleter) {
         self.cartLoader = cartLoader
+        self.cartDeleter = cartDeleter
     }
     
     func loadCartItems() {
@@ -36,6 +41,16 @@ final class CartViewModel {
                 self?.isItemsErrorStateOnChange?(ItemListErrorMessage.loadCart.rawValue)
             }
             self?.isItemsLoadingStateOnChanged?(false)
+        }
+    }
+    
+    func deleteCartItem(with cellViewModel: CartCellViewModel) {
+        cartDeleter.delete(item: cellViewModel.item) { [weak self] error in
+            if let _ = error {
+                self?.isItemDeleteErrorStateOnChanged?(ItemListErrorMessage.deleteCartItem.rawValue)
+            } else {
+                self?.isItemDeleteStateOnChanged?(())
+            }
         }
     }
     

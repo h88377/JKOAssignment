@@ -22,8 +22,10 @@ final class CoreDataStore {
     }
 }
 
+// MARK: - Item
+
 extension CoreDataStore: CartItemStoreSaver {
-    func insert(_ item: Item, completion: @escaping (CartItemStoreSaver.Result) -> Void) {
+    func insert(_ item: LocalItem, completion: @escaping (CartItemStoreSaver.Result) -> Void) {
         perform { context in
             do {
                 let managedItem = ManagedItem(context: context)
@@ -49,20 +51,55 @@ extension CoreDataStore: CartItemsStoreLoader {
             
             completion(Result {
                 let request: NSFetchRequest<ManagedItem> = NSFetchRequest(entityName: entityName)
+                let sort = NSSortDescriptor(key: #keyPath(ManagedItem.timestamp), ascending: false)
+                request.sortDescriptors = [sort]
                 request.returnsObjectsAsFaults = false
                 let managedItems = try context.fetch(request)
                 return managedItems.map {
-                    Item(
-                        name: $0.name,
-                        description: $0.descriptionContent,
-                        price: Int($0.price),
-                        timestamp: $0.timestamp,
-                        imageName: $0.imageName)
+                    Item(name: $0.name,
+                         description: $0.descriptionContent,
+                         price: Int($0.price),
+                         timestamp: $0.timestamp,
+                         imageName: $0.imageName)
                 }
             })
         }
     }
 }
+
+extension CoreDataStore: CartItemStoreDeleter {
+    func delete(items: [LocalItem], completion: @escaping (CartItemStoreDeleter.Result) -> Void) {
+        perform { context in
+            guard let entityName = ManagedItem.entity().name else { return }
+            
+            var capturedError: Error?
+            for item in items {
+                do {
+                    let request: NSFetchRequest<ManagedItem> = NSFetchRequest(entityName: entityName)
+                    let namePredicate = NSPredicate(format: "name == %@", item.name)
+                    let timestampPredicate = NSPredicate(format: "timestamp == %@", item.timestamp as CVarArg)
+                    let nameAndTimestampPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [namePredicate, timestampPredicate])
+                    request.predicate = nameAndTimestampPredicate
+                    request.fetchLimit = 1
+                    
+                    try context.fetch(request).first
+                        .map(context.delete)
+                        .map(context.save)
+                } catch {
+                    capturedError = error
+                }
+            }
+            
+            if let capturedError = capturedError {
+                completion(.some(capturedError))
+            } else {
+                completion(.none)
+            }
+        }
+    }
+}
+
+// MARK: - Order
 
 extension CoreDataStore: OrderStoreSaver {
     func insert(order: Order, completion: @escaping (OrderStoreSaver.Result) -> Void) {
@@ -88,6 +125,8 @@ extension CoreDataStore: OrderStoreSaver {
         }
     }
 }
+
+// MARK: - Helper
 
 extension NSPersistentContainer {
     enum LoadingError: Error {

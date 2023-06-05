@@ -52,8 +52,8 @@ final class CartViewController: UIViewController {
         return button
     }()
     
-    private lazy var dataSource: UITableViewDiffableDataSource<Int, CartCellViewModel> = {
-        .init(tableView: tableView) { tableView, indexPath, viewModel in
+    private lazy var dataSource: CartDataSource = {
+        .init(deleteHandler: viewModel.deleteCartItem, tableView: tableView) { tableView, indexPath, viewModel in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CartCell.identifier, for: indexPath) as? CartCell else { return UITableViewCell() }
             
             cell.nameLabel.text = viewModel.nameText
@@ -144,6 +144,16 @@ final class CartViewController: UIViewController {
         }
         
         viewModel.isEmptyCartStateOnChanged = { [weak self] message in
+            guard let self = self else { return }
+            
+            self.errorView.show(message, on: self.view)
+        }
+        
+        viewModel.isItemDeleteStateOnChanged = { [weak self] _ in
+            self?.loadCartItems()
+        }
+        
+        viewModel.isItemDeleteErrorStateOnChanged = { [weak self] message in
             guard let self = self else { return }
             
             self.errorView.show(message, on: self.view)

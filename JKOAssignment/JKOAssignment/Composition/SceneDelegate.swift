@@ -60,7 +60,9 @@ private extension SceneDelegate {
     func makeCartViewController() -> CartViewController {
         let cartLoader: CartItemsLoader = LocalCartItemsLoader(storeLoader: coreDataStore ?? NullStore())
         let mainThreadCartLoader = MainThreadDispatchDecorator(decoratee: cartLoader)
-        let cartVC = ItemListUIComposer.composedCart(with: mainThreadCartLoader, checkout: { [weak self] items in
+        let cartDeleter: CartItemDeleter = LocalCartItemDeleter(storeDeleter: coreDataStore ?? NullStore())
+        let mainThreadCartDeleter = MainThreadDispatchDecorator(decoratee: cartDeleter)
+        let cartVC = ItemListUIComposer.composedCart(with: mainThreadCartLoader, cartDeleter: mainThreadCartDeleter, checkout: { [weak self] items in
             guard let self = self else { return }
             
             let checkoutVC = self.makeCheckoutViewController(with: items)
@@ -71,8 +73,9 @@ private extension SceneDelegate {
     }
     
     func makeCheckoutViewController(with items: [Item]) -> CheckoutViewController {
-        let orderSaver: OrderSaver = LocalOrderSaver(storeSaver: coreDataStore ?? NullStore())
-        let mainThreadOrderSaver = MainThreadDispatchDecorator(decoratee: orderSaver)
+        let orderSaver = LocalOrderSaver(storeSaver: coreDataStore ?? NullStore())
+        let orderSaverWithCartDeleter: OrderSaver = OrderSaverWithCartDeleterDecorator(decoratee: orderSaver, cartDeleter: coreDataStore ?? NullStore())
+        let mainThreadOrderSaver = MainThreadDispatchDecorator(decoratee: orderSaverWithCartDeleter)
         let checkoutVC = OrderUIComposer.composedCheckout(with: items, orderSaver: mainThreadOrderSaver, finish: { [weak self] message in
             self?.navigationController.popToRootViewController(animated: true)
             
