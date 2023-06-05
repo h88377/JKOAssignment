@@ -7,14 +7,6 @@
 
 import Foundation
 
-struct LocalOrderItem {
-    let name: String
-    let description: String
-    let price: Int
-    let timestamp: Date
-    let imageName: String
-}
-
 final class LocalOrderLoader: OrderLoader {
     enum Error: Swift.Error {
         case failed

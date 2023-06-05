@@ -16,6 +16,7 @@
 		98C4F18C2A2DC87B009C2320 /* LocalOrderLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F18B2A2DC87B009C2320 /* LocalOrderLoader.swift */; };
 		98C4F18E2A2DDBCB009C2320 /* OrderStoreLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F18D2A2DDBCB009C2320 /* OrderStoreLoader.swift */; };
 		98C4F1902A2DDC43009C2320 /* LocalOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F18F2A2DDC43009C2320 /* LocalOrder.swift */; };
+		98C4F1922A2DDC59009C2320 /* LocalOrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F1912A2DDC59009C2320 /* LocalOrderItem.swift */; };
 		98D80BB22A27430C0003008C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BB12A27430C0003008C /* AppDelegate.swift */; };
 		98D80BB42A27430C0003008C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BB32A27430C0003008C /* SceneDelegate.swift */; };
 		98D80BBB2A27430D0003008C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98D80BBA2A27430D0003008C /* Assets.xcassets */; };
@@ -90,6 +91,7 @@
 		98C4F18B2A2DC87B009C2320 /* LocalOrderLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalOrderLoader.swift; sourceTree = "<group>"; };
 		98C4F18D2A2DDBCB009C2320 /* OrderStoreLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStoreLoader.swift; sourceTree = "<group>"; };
 		98C4F18F2A2DDC43009C2320 /* LocalOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalOrder.swift; sourceTree = "<group>"; };
+		98C4F1912A2DDC59009C2320 /* LocalOrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalOrderItem.swift; sourceTree = "<group>"; };
 		98D80BAE2A27430C0003008C /* JKOAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKOAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D80BB12A27430C0003008C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98D80BB32A27430C0003008C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				98C4F18B2A2DC87B009C2320 /* LocalOrderLoader.swift */,
 				98C4F18D2A2DDBCB009C2320 /* OrderStoreLoader.swift */,
 				98C4F18F2A2DDC43009C2320 /* LocalOrder.swift */,
+				98C4F1912A2DDC59009C2320 /* LocalOrderItem.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				98D80BED2A27832B0003008C /* ItemListCell.swift in Sources */,
 				98D80BB22A27430C0003008C /* AppDelegate.swift in Sources */,
 				98D80BFD2A284F500003008C /* StubbedDataItemLoader.swift in Sources */,
+				98C4F1922A2DDC59009C2320 /* LocalOrderItem.swift in Sources */,
 				98D80C202A289C860003008C /* JKOStore.xcdatamodeld in Sources */,
 				98D80C442A29B3F20003008C /* CheckoutViewController.swift in Sources */,
 				98D80C422A29B3BF0003008C /* OrderSaver.swift in Sources */,
