@@ -10,6 +10,7 @@
 		98C4F17E2A2DA8CA009C2320 /* CartItemStoreDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F17D2A2DA8CA009C2320 /* CartItemStoreDeleter.swift */; };
 		98C4F1802A2DAD7F009C2320 /* CartItemDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F17F2A2DAD7F009C2320 /* CartItemDeleter.swift */; };
 		98C4F1822A2DADF4009C2320 /* LocalCartItemDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F1812A2DADF4009C2320 /* LocalCartItemDeleter.swift */; };
+		98C4F1842A2DBEFF009C2320 /* CartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F1832A2DBEFF009C2320 /* CartDataSource.swift */; };
 		98D80BB22A27430C0003008C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BB12A27430C0003008C /* AppDelegate.swift */; };
 		98D80BB42A27430C0003008C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BB32A27430C0003008C /* SceneDelegate.swift */; };
 		98D80BBB2A27430D0003008C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98D80BBA2A27430D0003008C /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 		98C4F17D2A2DA8CA009C2320 /* CartItemStoreDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemStoreDeleter.swift; sourceTree = "<group>"; };
 		98C4F17F2A2DAD7F009C2320 /* CartItemDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemDeleter.swift; sourceTree = "<group>"; };
 		98C4F1812A2DADF4009C2320 /* LocalCartItemDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCartItemDeleter.swift; sourceTree = "<group>"; };
+		98C4F1832A2DBEFF009C2320 /* CartDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartDataSource.swift; sourceTree = "<group>"; };
 		98D80BAE2A27430C0003008C /* JKOAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKOAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D80BB12A27430C0003008C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98D80BB32A27430C0003008C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				98D80C092A28790F0003008C /* Constants.swift */,
 				98D80C112A287EED0003008C /* Observable.swift */,
 				98D80C362A29AC730003008C /* Cell+Extension.swift */,
+				98C4F1832A2DBEFF009C2320 /* CartDataSource.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				98D80C172A28956B0003008C /* LocalCartItemSaver.swift in Sources */,
 				98C4F1802A2DAD7F009C2320 /* CartItemDeleter.swift in Sources */,
 				98D80C352A29ABB90003008C /* NullStore.swift in Sources */,
+				98C4F1842A2DBEFF009C2320 /* CartDataSource.swift in Sources */,
 				98D80C0C2A28794B0003008C /* ItemDetailCell.swift in Sources */,
 				98D80C122A287EED0003008C /* Observable.swift in Sources */,
 				98D80C052A2867060003008C /* ItemDetailViewController.swift in Sources */,
