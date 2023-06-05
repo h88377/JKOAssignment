@@ -22,6 +22,8 @@ final class CoreDataStore {
     }
 }
 
+// MARK: - Item
+
 extension CoreDataStore: CartItemStoreSaver {
     func insert(_ item: LocalItem, completion: @escaping (CartItemStoreSaver.Result) -> Void) {
         perform { context in
@@ -95,6 +97,8 @@ extension CoreDataStore: CartItemStoreDeleter {
     }
 }
 
+// MARK: - Order
+
 extension CoreDataStore: OrderStoreSaver {
     func insert(order: Order, completion: @escaping (OrderStoreSaver.Result) -> Void) {
         perform { context in
@@ -119,6 +123,8 @@ extension CoreDataStore: OrderStoreSaver {
         }
     }
 }
+
+// MARK: - Helper
 
 extension NSPersistentContainer {
     enum LoadingError: Error {
