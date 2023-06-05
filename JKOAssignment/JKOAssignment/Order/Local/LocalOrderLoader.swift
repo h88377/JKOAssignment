@@ -38,7 +38,7 @@ private extension Array where Element == LocalOrder {
 }
 
 private extension Array where Element == LocalOrderItem {
-    func toModel() -> [Item] {
-        return map { Item(name: $0.name, description: $0.description, price: $0.price, timestamp: $0.timestamp, imageName: $0.imageName) }
+    func toModel() -> [OrderItem] {
+        return map { OrderItem(name: $0.name, description: $0.description, price: $0.price, timestamp: $0.timestamp, imageName: $0.imageName) }
     }
 }

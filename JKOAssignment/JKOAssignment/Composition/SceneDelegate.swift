@@ -50,7 +50,7 @@ private extension SceneDelegate {
         let itemDetailVC = ItemListUIComposer.composedItemDetail(with: selectedItem, itemSaver: mainThreadLocalItemSaver, checkout: { [weak self] item in
             guard let self = self else { return }
             
-            let checkoutVC = self.makeCheckoutViewController(with: [item])
+            let checkoutVC = self.makeCheckoutViewController(with: [OrderItem(name: item.name, description: item.description, price: item.price, timestamp: item.timestamp, imageName: item.imageName)])
             self.navigationController.pushViewController(checkoutVC, animated: true)
         })
         itemDetailVC.title = "商品詳情"
@@ -65,14 +65,14 @@ private extension SceneDelegate {
         let cartVC = ItemListUIComposer.composedCart(with: mainThreadCartLoader, cartDeleter: mainThreadCartDeleter, checkout: { [weak self] items in
             guard let self = self else { return }
             
-            let checkoutVC = self.makeCheckoutViewController(with: items)
+            let checkoutVC = self.makeCheckoutViewController(with: items.map { OrderItem(name: $0.name, description: $0.description, price: $0.price, timestamp: $0.timestamp, imageName: $0.imageName)} )
             self.navigationController.pushViewController(checkoutVC, animated: true)
         })
         cartVC.title = "購物車"
         return cartVC
     }
     
-    func makeCheckoutViewController(with items: [Item]) -> CheckoutViewController {
+    func makeCheckoutViewController(with items: [OrderItem]) -> CheckoutViewController {
         let orderSaver = LocalOrderSaver(storeSaver: coreDataStore ?? NullStore())
         let orderSaverWithCartDeleter: OrderSaver = OrderSaverWithCartDeleterDecorator(decoratee: orderSaver, cartDeleter: coreDataStore ?? NullStore())
         let mainThreadOrderSaver = MainThreadDispatchDecorator(decoratee: orderSaverWithCartDeleter)

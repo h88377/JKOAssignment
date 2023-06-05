@@ -21,16 +21,15 @@ final class OrderSaverWithCartDeleterDecorator: OrderSaver {
             if let error = error {
                 completion(.some(error))
             } else {
-                let localItems = order.items.map { $0.toLocal() }
+                let localItems = order.items.map { $0.toLocalItem() }
                 self?.cartDeleter.delete(items: localItems, completion: completion)
             }
-            
         }
     }
 }
 
-private extension Item {
-    func toLocal() -> LocalItem {
+private extension OrderItem {
+    func toLocalItem() -> LocalItem {
         return LocalItem(name: name, description: description, price: price, timestamp: timestamp, imageName: imageName)
     }
 }

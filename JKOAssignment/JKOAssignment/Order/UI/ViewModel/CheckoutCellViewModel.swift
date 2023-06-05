@@ -9,9 +9,9 @@ import Foundation
 
 final class CheckoutCellViewModel {
     private let id = UUID()
-    private let item: Item
+    private let item: OrderItem
     
-    init(item: Item) {
+    init(item: OrderItem) {
         self.item = item
     }
     
