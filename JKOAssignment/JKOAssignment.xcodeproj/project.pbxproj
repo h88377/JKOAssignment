@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		98C4F17E2A2DA8CA009C2320 /* CartItemStoreDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F17D2A2DA8CA009C2320 /* CartItemStoreDeleter.swift */; };
 		98C4F1802A2DAD7F009C2320 /* CartItemDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F17F2A2DAD7F009C2320 /* CartItemDeleter.swift */; };
+		98C4F1822A2DADF4009C2320 /* LocalCartItemDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F1812A2DADF4009C2320 /* LocalCartItemDeleter.swift */; };
 		98D80BB22A27430C0003008C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BB12A27430C0003008C /* AppDelegate.swift */; };
 		98D80BB42A27430C0003008C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BB32A27430C0003008C /* SceneDelegate.swift */; };
 		98D80BBB2A27430D0003008C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98D80BBA2A27430D0003008C /* Assets.xcassets */; };
@@ -76,6 +77,7 @@
 /* Begin PBXFileReference section */
 		98C4F17D2A2DA8CA009C2320 /* CartItemStoreDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemStoreDeleter.swift; sourceTree = "<group>"; };
 		98C4F17F2A2DAD7F009C2320 /* CartItemDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemDeleter.swift; sourceTree = "<group>"; };
+		98C4F1812A2DADF4009C2320 /* LocalCartItemDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCartItemDeleter.swift; sourceTree = "<group>"; };
 		98D80BAE2A27430C0003008C /* JKOAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKOAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D80BB12A27430C0003008C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98D80BB32A27430C0003008C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				98D80C182A2899CB0003008C /* CartItemStoreSaver.swift */,
 				98D80C302A28DB980003008C /* LocalCartItemsLoader.swift */,
 				98D80C322A298D970003008C /* CartItemsStoreLoader.swift */,
+				98C4F1812A2DADF4009C2320 /* LocalCartItemDeleter.swift */,
 				98C4F17D2A2DA8CA009C2320 /* CartItemStoreDeleter.swift */,
 			);
 			path = Local;
@@ -540,6 +543,7 @@
 				98D80C0C2A28794B0003008C /* ItemDetailCell.swift in Sources */,
 				98D80C122A287EED0003008C /* Observable.swift in Sources */,
 				98D80C052A2867060003008C /* ItemDetailViewController.swift in Sources */,
+				98C4F1822A2DADF4009C2320 /* LocalCartItemDeleter.swift in Sources */,
 				98D80C262A28C6F10003008C /* CartViewController.swift in Sources */,
 				98D80C402A29B3A80003008C /* Order.swift in Sources */,
 				98D80C592A29C5A00003008C /* ManagedOrder.swift in Sources */,
