@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98C2476B2A2DE0240095664A /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2476A2A2DE0240095664A /* OrderItem.swift */; };
 		98C4F17E2A2DA8CA009C2320 /* CartItemStoreDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F17D2A2DA8CA009C2320 /* CartItemStoreDeleter.swift */; };
 		98C4F1802A2DAD7F009C2320 /* CartItemDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F17F2A2DAD7F009C2320 /* CartItemDeleter.swift */; };
 		98C4F1822A2DADF4009C2320 /* LocalCartItemDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4F1812A2DADF4009C2320 /* LocalCartItemDeleter.swift */; };
@@ -82,6 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		98C2476A2A2DE0240095664A /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		98C4F17D2A2DA8CA009C2320 /* CartItemStoreDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemStoreDeleter.swift; sourceTree = "<group>"; };
 		98C4F17F2A2DAD7F009C2320 /* CartItemDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemDeleter.swift; sourceTree = "<group>"; };
 		98C4F1812A2DADF4009C2320 /* LocalCartItemDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCartItemDeleter.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				98D80C3F2A29B3A80003008C /* Order.swift */,
+				98C2476A2A2DE0240095664A /* OrderItem.swift */,
 				98D80C412A29B3BF0003008C /* OrderSaver.swift */,
 				98C4F1872A2DC7DA009C2320 /* OrderLoader.swift */,
 			);
@@ -555,6 +558,7 @@
 				98C4F1902A2DDC43009C2320 /* LocalOrder.swift in Sources */,
 				98D80C002A2862EF0003008C /* MainThreadDispatchDecorator.swift in Sources */,
 				98D80C502A29C2320003008C /* LocalOrderSaver.swift in Sources */,
+				98C2476B2A2DE0240095664A /* OrderItem.swift in Sources */,
 				98D80C522A29C3AF0003008C /* OrderStoreSaver.swift in Sources */,
 				98D80C102A28798D0003008C /* ItemDetailViewModel.swift in Sources */,
 				98D80C0E2A2879690003008C /* CartItemSaver.swift in Sources */,
