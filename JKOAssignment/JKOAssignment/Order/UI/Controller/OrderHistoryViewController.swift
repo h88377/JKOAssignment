@@ -16,6 +16,13 @@ final class OrderHistoryViewController: UITableViewController {
         return label
     }()
     
+    let errorView: FadingMessageView = {
+        let view = FadingMessageView()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let viewModel: OrderHistoryViewModel
     
     init(viewModel: OrderHistoryViewModel) {
@@ -50,6 +57,12 @@ final class OrderHistoryViewController: UITableViewController {
         viewModel.isEmptyOrderStateOnChanged = { [weak self] message in
             self?.noOrdersReminder.text = message
             self?.tableView.isHidden = true
+        }
+        
+        viewModel.isOrdersRefreshingErrorStateOnChange = { [weak self] message in
+            guard let self = self else { return }
+            
+            self.errorView.show(message, on: self.view)
         }
     }
     
