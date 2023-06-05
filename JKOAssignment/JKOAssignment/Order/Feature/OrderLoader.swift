@@ -10,5 +10,5 @@ import Foundation
 protocol OrderLoader {
     typealias Result = Swift.Result<[Order], Error>
     
-    func loadOrders(completion: (Result) -> Void)
+    func loadOrders(completion: @escaping (Result) -> Void)
 }
