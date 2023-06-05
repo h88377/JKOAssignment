@@ -8,6 +8,14 @@
 import UIKit
 
 final class OrderHistoryViewController: UITableViewController {
+    let noOrdersReminder: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private let viewModel: OrderHistoryViewModel
     
     init(viewModel: OrderHistoryViewModel) {
@@ -22,12 +30,27 @@ final class OrderHistoryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpUI()
         setUpBindings()
         loadOrders()
     }
     
+    private func setUpUI() {
+        view.insertSubview(noOrdersReminder, belowSubview: tableView)
+        
+        NSLayoutConstraint.activate([
+            noOrdersReminder.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noOrdersReminder.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
     private func setUpBindings() {
         tableView.refreshControl = binded(refreshView: UIRefreshControl())
+        
+        viewModel.isEmptyOrderStateOnChanged = { [weak self] message in
+            self?.noOrdersReminder.text = message
+            self?.tableView.isHidden = true
+        }
     }
     
     private func binded(refreshView: UIRefreshControl) -> UIRefreshControl {
