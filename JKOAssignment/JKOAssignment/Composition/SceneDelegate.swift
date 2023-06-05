@@ -73,8 +73,9 @@ private extension SceneDelegate {
     }
     
     func makeCheckoutViewController(with items: [Item]) -> CheckoutViewController {
-        let orderSaver: OrderSaver = LocalOrderSaver(storeSaver: coreDataStore ?? NullStore())
-        let mainThreadOrderSaver = MainThreadDispatchDecorator(decoratee: orderSaver)
+        let orderSaver = LocalOrderSaver(storeSaver: coreDataStore ?? NullStore())
+        let orderSaverWithCartDeleter: OrderSaver = OrderSaverWithCartDeleterDecorator(decoratee: orderSaver, cartDeleter: coreDataStore ?? NullStore())
+        let mainThreadOrderSaver = MainThreadDispatchDecorator(decoratee: orderSaverWithCartDeleter)
         let checkoutVC = OrderUIComposer.composedCheckout(with: items, orderSaver: mainThreadOrderSaver, finish: { [weak self] message in
             self?.navigationController.popToRootViewController(animated: true)
             
