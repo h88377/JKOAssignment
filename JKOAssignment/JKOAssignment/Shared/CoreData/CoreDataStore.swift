@@ -49,15 +49,16 @@ extension CoreDataStore: CartItemsStoreLoader {
             
             completion(Result {
                 let request: NSFetchRequest<ManagedItem> = NSFetchRequest(entityName: entityName)
+                let sort = NSSortDescriptor(key: #keyPath(ManagedItem.timestamp), ascending: false)
+                request.sortDescriptors = [sort]
                 request.returnsObjectsAsFaults = false
                 let managedItems = try context.fetch(request)
                 return managedItems.map {
-                    Item(
-                        name: $0.name,
-                        description: $0.descriptionContent,
-                        price: Int($0.price),
-                        timestamp: $0.timestamp,
-                        imageName: $0.imageName)
+                    Item(name: $0.name,
+                         description: $0.descriptionContent,
+                         price: Int($0.price),
+                         timestamp: $0.timestamp,
+                         imageName: $0.imageName)
                 }
             })
         }
