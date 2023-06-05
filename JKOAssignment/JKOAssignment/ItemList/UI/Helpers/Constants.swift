@@ -13,6 +13,7 @@ enum ItemListErrorMessage: String {
     case addToCart = "加入購物車失敗"
     case loadCart = "加載購物車失敗"
     case noSelectedItemsInCart = "請先選擇要結帳的商品"
+    case deleteCartItem = "刪除購物車商品失敗"
 }
 
 enum ItemListSuccessMessage: String {
