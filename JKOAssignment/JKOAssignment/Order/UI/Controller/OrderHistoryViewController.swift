@@ -88,7 +88,7 @@ final class OrderHistoryViewController: UITableViewController {
     private func configureTableView() {
         tableView.backgroundColor = .systemGray6
         tableView.register(OrderHistoryCell.self, forCellReuseIdentifier: OrderHistoryCell.identifier)
-        tableView.register(OrderHistoryHeaderView.self, forHeaderFooterViewReuseIdentifier: OrderHistoryHeaderView.identifier)
+        tableView.register(OrderHistoryFooterView.self, forHeaderFooterViewReuseIdentifier: OrderHistoryFooterView.identifier)
         tableView.refreshControl = binded(refreshView: UIRefreshControl())
     }
     
@@ -109,12 +109,12 @@ final class OrderHistoryViewController: UITableViewController {
         viewModel.loadOrders()
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: OrderHistoryHeaderView.identifier) as? OrderHistoryHeaderView else { return nil }
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: OrderHistoryFooterView.identifier) as? OrderHistoryFooterView else { return nil }
         
         let section = dataSource.sectionIdentifier(for: section)
-        headerView.timestampLabel.text = section?.timestampText
-        headerView.priceLabel.text = section?.priceText
-        return headerView
+        footerView.timestampLabel.text = section?.timestampText
+        footerView.priceLabel.text = section?.priceText
+        return footerView
     }
 }

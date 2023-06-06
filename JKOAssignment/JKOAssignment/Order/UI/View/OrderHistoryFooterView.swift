@@ -7,8 +7,8 @@
 
 import UIKit
 
-final class OrderHistoryHeaderView: UITableViewHeaderFooterView {
-    static let identifier = "\(OrderHistoryHeaderView.self)"
+final class OrderHistoryFooterView: UITableViewHeaderFooterView {
+    static let identifier = "\(OrderHistoryFooterView.self)"
     
     let timestampLabel: UILabel = {
         let label = UILabel()
@@ -38,13 +38,13 @@ final class OrderHistoryHeaderView: UITableViewHeaderFooterView {
         addSubviews([timestampLabel, priceLabel])
         
         NSLayoutConstraint.activate([
-            priceLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            priceLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            priceLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            timestampLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            timestampLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            timestampLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             
-            timestampLabel.topAnchor.constraint(equalTo: priceLabel.topAnchor),
-            timestampLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            timestampLabel.bottomAnchor.constraint(equalTo: priceLabel.bottomAnchor)
+            priceLabel.topAnchor.constraint(equalTo: timestampLabel.topAnchor),
+            priceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            priceLabel.bottomAnchor.constraint(equalTo: timestampLabel.bottomAnchor)
         ])
     }
 }
