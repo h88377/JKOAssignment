@@ -22,7 +22,7 @@ final class OrderHistoryCellSectionViewModel {
     }
     
     var timestampText: String {
-        return dateFormatter.string(from: order.timestamp)
+        return "建立時間：\(dateFormatter.string(from: order.timestamp))"
     }
     
     var itemViewModels: [OrderHistoryCellItemViewModel] {
