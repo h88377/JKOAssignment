@@ -23,6 +23,27 @@ final class OrderHistoryViewController: UITableViewController {
         return view
     }()
     
+    private lazy var dataSource: UITableViewDiffableDataSource<Int, OrderHistoryCellViewModel> = {
+        .init(tableView: tableView) { tableView, indexPath, viewModel in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: OrderHistoryCell.identifier, for: indexPath) as? OrderHistoryCell else { return UITableViewCell() }
+            
+            var itemViews = [UIView]()
+            viewModel.itemsDetals.forEach { detail in
+                let detailView = OrderHistoryItemView()
+                detailView.imageView.image = UIImage(systemName: detail.imageName)
+                detailView.priceLabel.text = detail.priceText
+                detailView.nameLabel.text = detail.nameText
+                
+                itemViews.append(detailView)
+            }
+
+            cell.configureItems(with: itemViews)
+            return cell
+        }
+    }()
+    
+    private var ordersSection: Int { 0 }
+    
     private let viewModel: OrderHistoryViewModel
     
     init(viewModel: OrderHistoryViewModel) {
@@ -38,8 +59,16 @@ final class OrderHistoryViewController: UITableViewController {
         super.viewDidLoad()
         
         setUpUI()
+        configureTableView()
         setUpBindings()
         loadOrders()
+    }
+    
+    func set(_ newItems: [OrderHistoryCellViewModel]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, OrderHistoryCellViewModel>()
+        snapshot.appendSections([ordersSection])
+        snapshot.appendItems(newItems, toSection: ordersSection)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
     
     private func setUpUI() {
@@ -52,8 +81,6 @@ final class OrderHistoryViewController: UITableViewController {
     }
     
     private func setUpBindings() {
-        tableView.refreshControl = binded(refreshView: UIRefreshControl())
-        
         viewModel.isEmptyOrderStateOnChanged = { [weak self] message in
             self?.noOrdersReminder.text = message
             self?.tableView.isHidden = true
@@ -64,6 +91,11 @@ final class OrderHistoryViewController: UITableViewController {
             
             self.errorView.show(message, on: self.view)
         }
+    }
+    
+    private func configureTableView() {
+        tableView.register(OrderHistoryCell.self, forCellReuseIdentifier: OrderHistoryCell.identifier)
+        tableView.refreshControl = binded(refreshView: UIRefreshControl())
     }
     
     private func binded(refreshView: UIRefreshControl) -> UIRefreshControl {
