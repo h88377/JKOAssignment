@@ -8,6 +8,9 @@
 import UIKit
 
 final class OrderHistoryViewController: UIViewController {
+    
+    // MARK: - Property
+    
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(OrderHistoryCell.self, forCellReuseIdentifier: OrderHistoryCell.identifier)
@@ -45,6 +48,8 @@ final class OrderHistoryViewController: UIViewController {
     
     private let viewModel: OrderHistoryViewModel
     
+    // MARK: - Life cycle
+    
     init(viewModel: OrderHistoryViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -62,6 +67,8 @@ final class OrderHistoryViewController: UIViewController {
         setUpBindings()
         loadOrders()
     }
+    
+    // MARK: - Method
     
     func set(_ sections: [OrderHistoryCellSectionViewModel]) {
         var snapshot = NSDiffableDataSourceSnapshot<OrderHistoryCellSectionViewModel, OrderHistoryCellItemViewModel>()
