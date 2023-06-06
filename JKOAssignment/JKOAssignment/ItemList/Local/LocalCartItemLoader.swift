@@ -12,9 +12,9 @@ final class LocalCartItemLoader: CartItemsLoader {
         case failed
     }
     
-    private let storeLoader: CartItemsStoreLoader
+    private let storeLoader: CartItemStoreLoader
     
-    init(storeLoader: CartItemsStoreLoader) {
+    init(storeLoader: CartItemStoreLoader) {
         self.storeLoader = storeLoader
     }
     

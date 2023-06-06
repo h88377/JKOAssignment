@@ -44,8 +44,8 @@ extension CoreDataStore: CartItemStoreSaver {
     }
 }
 
-extension CoreDataStore: CartItemsStoreLoader {
-    func retrieve(completion: @escaping (CartItemsStoreLoader.Result) -> Void) {
+extension CoreDataStore: CartItemStoreLoader {
+    func retrieve(completion: @escaping (CartItemStoreLoader.Result) -> Void) {
         perform { context in
             guard let entityName = ManagedItem.entity().name else { return }
             
