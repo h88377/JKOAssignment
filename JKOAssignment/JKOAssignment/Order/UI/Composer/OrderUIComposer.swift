@@ -37,6 +37,8 @@ final class OrderUIComposer {
         
         viewModel.isOrdersRefreshingStateOnChanged = { [weak controller] orders in
             let cellSectionVMs = orders.map { OrderHistoryCellSectionViewModel(order: $0, dateFormatter: dateFormatter) }
+            let lastIndex = orders.count - 1
+            controller?.resetPage(with: orders[lastIndex].timestamp)
             controller?.set(cellSectionVMs)
         }
         return controller

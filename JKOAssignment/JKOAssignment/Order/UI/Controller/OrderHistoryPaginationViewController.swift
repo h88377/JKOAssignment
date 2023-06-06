@@ -17,8 +17,8 @@ final class OrderHistoryPaginationViewController {
         self.setUpBinding()
     }
     
-    func resetPage() {
-        viewModel.resetPage()
+    func resetPage(with date: Date) {
+        viewModel.resetPage(with: date)
     }
      
     func paginate(on scrollView: UIScrollView) {

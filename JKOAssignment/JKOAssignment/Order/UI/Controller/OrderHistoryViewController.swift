@@ -90,6 +90,10 @@ final class OrderHistoryViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
+    func resetPage(with date: Date) {
+        paginationController.resetPage(with: date)
+    }
+    
     private func setUpUI() {
         view.backgroundColor = .white
         view.addSubview(tableView)
@@ -142,7 +146,6 @@ final class OrderHistoryViewController: UIViewController {
     @objc private func loadOrders() {
         guard !paginationController.isPaginating else { return }
         
-        paginationController.resetPage()
         viewModel.loadOrders()
     }
 }
