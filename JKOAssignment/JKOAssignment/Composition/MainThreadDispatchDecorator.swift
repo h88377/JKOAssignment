@@ -68,8 +68,8 @@ extension MainThreadDispatchDecorator: OrderSaver where T == OrderSaver {
 }
 
 extension MainThreadDispatchDecorator: OrderLoader where T == OrderLoader {
-    func loadOrders(completion: @escaping (OrderLoader.Result) -> Void) {
-        decoratee.loadOrders { [weak self] result in
+    func loadOrders(before date: Date, completion: @escaping (OrderLoader.Result) -> Void) {
+        decoratee.loadOrders(before: date) { [weak self] result in
             self?.dispatch { completion(result) }
         }
     }

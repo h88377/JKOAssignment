@@ -21,7 +21,7 @@ final class OrderHistoryViewModel {
     
     func loadOrders() {
         isOrdersRefreshLoadingStateOnChanged?(true)
-        orderLoader.loadOrders { [weak self] result in
+        orderLoader.loadOrders(before: Date()) { [weak self] result in
             switch result {
             case let .success(orders) where orders.isEmpty:
                 self?.isEmptyOrderStateOnChanged?(OrderReminderMessage.noOrder.rawValue)

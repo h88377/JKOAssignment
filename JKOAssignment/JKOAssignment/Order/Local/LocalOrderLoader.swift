@@ -18,7 +18,7 @@ final class LocalOrderLoader: OrderLoader {
         self.storeLoader = storeLoader
     }
     
-    func loadOrders(completion: @escaping (OrderLoader.Result) -> Void) {
+    func loadOrders(before date: Date, completion: @escaping (OrderLoader.Result) -> Void) {
         storeLoader.retrieve { result in
             switch result {
             case let .success(localOrders):
