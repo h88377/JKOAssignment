@@ -26,7 +26,7 @@ final class OrderUIComposer {
         
         paginationVM.isOrdersPaginationStateOnChange = { [weak controller] orders in
             let sectionVMs = orders.map { OrderHistoryCellSectionViewModel(order: $0, dateFormatter: dateFormatter) }
-            controller?.set(sectionVMs)
+            controller?.append(sectionVMs)
         }
         
         paginationVM.isOrdersPaginationErrorStateOnChange = { [weak controller] message in
