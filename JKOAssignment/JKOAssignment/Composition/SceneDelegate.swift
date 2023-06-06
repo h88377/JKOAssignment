@@ -8,12 +8,14 @@
 import UIKit
 import CoreData
 
+typealias JKOStore = CartItemStoreSaver & CartItemStoreLoader & CartItemStoreDeleter & OrderStoreSaver & OrderStoreLoader
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
     private lazy var navigationController = UINavigationController()
-    private lazy var coreDataStore = configureCoreDataStore()
+    private lazy var jkoStore: JKOStore = configureCoreDataStore() ?? NullStore()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -46,7 +48,7 @@ private extension SceneDelegate {
     }
     
     func makeItemDetailController(with selectedItem: Item) -> ItemDetailViewController {
-        let localItemSaver: CartItemSaver = LocalCartItemSaver(storeSaver: coreDataStore ?? NullStore())
+        let localItemSaver: CartItemSaver = LocalCartItemSaver(storeSaver: jkoStore)
         let mainThreadLocalItemSaver = MainThreadDispatchDecorator(decoratee: localItemSaver)
         let itemDetailVC = ItemListUIComposer.composedItemDetail(with: selectedItem, itemSaver: mainThreadLocalItemSaver, checkout: { [weak self] item in
             guard let self = self else { return }
@@ -59,9 +61,9 @@ private extension SceneDelegate {
     }
     
     func makeCartViewController() -> CartViewController {
-        let cartLoader: CartItemLoader = LocalCartItemLoader(storeLoader: coreDataStore ?? NullStore())
+        let cartLoader: CartItemLoader = LocalCartItemLoader(storeLoader: jkoStore)
         let mainThreadCartLoader = MainThreadDispatchDecorator(decoratee: cartLoader)
-        let cartDeleter: CartItemDeleter = LocalCartItemDeleter(storeDeleter: coreDataStore ?? NullStore())
+        let cartDeleter: CartItemDeleter = LocalCartItemDeleter(storeDeleter: jkoStore)
         let mainThreadCartDeleter = MainThreadDispatchDecorator(decoratee: cartDeleter)
         let cartVC = ItemListUIComposer.composedCart(with: mainThreadCartLoader, cartDeleter: mainThreadCartDeleter, checkout: { [weak self] items in
             guard let self = self else { return }
@@ -74,8 +76,8 @@ private extension SceneDelegate {
     }
     
     func makeCheckoutViewController(with items: [OrderItem]) -> CheckoutViewController {
-        let orderSaver = LocalOrderSaver(storeSaver: coreDataStore ?? NullStore())
-        let orderSaverWithCartDeleter: OrderSaver = OrderSaverWithCartDeleterDecorator(decoratee: orderSaver, cartDeleter: coreDataStore ?? NullStore())
+        let orderSaver = LocalOrderSaver(storeSaver: jkoStore)
+        let orderSaverWithCartDeleter: OrderSaver = OrderSaverWithCartDeleterDecorator(decoratee: orderSaver, cartDeleter: jkoStore)
         let mainThreadOrderSaver = MainThreadDispatchDecorator(decoratee: orderSaverWithCartDeleter)
         let checkoutVC = OrderUIComposer.composedCheckout(with: items, orderSaver: mainThreadOrderSaver, finish: { [weak self] message in
             self?.navigationController.popToRootViewController(animated: true)
@@ -89,7 +91,7 @@ private extension SceneDelegate {
     }
     
     func makeOrderHistoryViewController() -> OrderHistoryViewController {
-        let orderLoader: OrderLoader = LocalOrderLoader(storeLoader: coreDataStore ?? NullStore())
+        let orderLoader: OrderLoader = LocalOrderLoader(storeLoader: jkoStore)
         let mainThreadOrderLoader = MainThreadDispatchDecorator(decoratee: orderLoader)
         let orderHistoryVC = OrderUIComposer.composedOrderHistory(with: mainThreadOrderLoader, dateFormatter: DateFormatter.shortDateTimeFormatter)
         orderHistoryVC.title = "歷史訂單紀錄"
