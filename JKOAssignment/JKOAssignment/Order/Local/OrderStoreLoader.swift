@@ -10,5 +10,5 @@ import Foundation
 protocol OrderStoreLoader {
     typealias Result = Swift.Result<[LocalOrder], Error>
     
-    func retrieve(completion: @escaping (Result) -> Void)
+    func retrieve(before date: Date, completion: @escaping (Result) -> Void)
 }

@@ -13,5 +13,5 @@ final class NullStore: CartItemStoreSaver, CartItemsStoreLoader, CartItemStoreDe
     func delete(items: [LocalItem], completion: @escaping (CartItemStoreDeleter.Result) -> Void) {}
     
     func insert(order: Order, completion: @escaping (OrderStoreSaver.Result) -> Void) {}
-    func retrieve(completion: @escaping (OrderStoreLoader.Result) -> Void) {}
+    func retrieve(before date: Date, completion: @escaping (OrderStoreLoader.Result) -> Void) {}
 }

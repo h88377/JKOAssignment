@@ -127,14 +127,17 @@ extension CoreDataStore: OrderStoreSaver {
 }
 
 extension CoreDataStore: OrderStoreLoader {
-    func retrieve(completion: @escaping (OrderStoreLoader.Result) -> Void) {
+    func retrieve(before date: Date, completion: @escaping (OrderStoreLoader.Result) -> Void) {
         perform { context in
             guard let entityName = ManagedOrder.entity().name else { return }
             
             completion(Result {
                 let request: NSFetchRequest<ManagedOrder> = NSFetchRequest(entityName: entityName)
+                let predicate = NSPredicate(format: "timestamp <= %@", date as CVarArg)
                 let sort = NSSortDescriptor(key: #keyPath(ManagedOrder.timestamp), ascending: false)
+                request.predicate = predicate
                 request.sortDescriptors = [sort]
+                request.fetchLimit = 3
                 request.returnsObjectsAsFaults = false
                 let managedOrders = try context.fetch(request)
                 return managedOrders.map {
