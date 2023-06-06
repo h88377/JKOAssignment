@@ -226,7 +226,7 @@
 			children = (
 				98D80BFE2A2862C50003008C /* Composition */,
 				98D80C542A29C42E0003008C /* Shared */,
-				98D80BE32A2782930003008C /* ItemList */,
+				98D80BE32A2782930003008C /* Item */,
 				98D80C382A29B1810003008C /* Order */,
 				98D80BBA2A27430D0003008C /* Assets.xcassets */,
 				98D80BBC2A27430D0003008C /* LaunchScreen.storyboard */,
@@ -235,7 +235,7 @@
 			path = JKOAssignment;
 			sourceTree = "<group>";
 		};
-		98D80BE32A2782930003008C /* ItemList */ = {
+		98D80BE32A2782930003008C /* Item */ = {
 			isa = PBXGroup;
 			children = (
 				98D80C152A2895610003008C /* Local */,
@@ -243,7 +243,7 @@
 				98D80BF22A27839F0003008C /* Feature */,
 				98D80BEE2A2783500003008C /* UI */,
 			);
-			path = ItemList;
+			path = Item;
 			sourceTree = "<group>";
 		};
 		98D80BEE2A2783500003008C /* UI */ = {
