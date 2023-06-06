@@ -91,7 +91,7 @@ private extension SceneDelegate {
     func makeOrderHistoryViewController() -> OrderHistoryViewController {
         let orderLoader: OrderLoader = LocalOrderLoader(storeLoader: coreDataStore ?? NullStore())
         let mainThreadOrderLoader = MainThreadDispatchDecorator(decoratee: orderLoader)
-        let orderHistoryVC = OrderUIComposer.composedOrderHistory(with: mainThreadOrderLoader)
+        let orderHistoryVC = OrderUIComposer.composedOrderHistory(with: mainThreadOrderLoader, dateFormatter: DateFormatter.shortDateTimeFormatter)
         orderHistoryVC.title = "歷史訂單紀錄"
         return orderHistoryVC
     }
@@ -126,4 +126,14 @@ private extension SceneDelegate {
         let coreDataStore = try? CoreDataStore(storeURL: NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("JKOStore.sqlite"))
         return coreDataStore
     }
+}
+
+private extension DateFormatter {
+    static let shortDateTimeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        
+        return formatter
+    }()
 }

@@ -10,13 +10,19 @@ import Foundation
 final class OrderHistoryCellSectionViewModel {
     private let id = UUID()
     private let order: Order
+    private let dateFormatter: DateFormatter
     
-    init(order: Order) {
+    init(order: Order, dateFormatter: DateFormatter) {
         self.order = order
+        self.dateFormatter = dateFormatter
     }
     
     var priceText: String {
         return "總價格：$ \(order.price)"
+    }
+    
+    var timestampText: String {
+        return dateFormatter.string(from: order.timestamp)
     }
     
     var itemViewModels: [OrderHistoryCellItemViewModel] {
