@@ -170,7 +170,9 @@
 		98C247802A2F8A230095664A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				98C247812A2F8A2E0095664A /* UI */,
+				98D80C072A286AEE0003008C /* UIView+Extension.swift */,
+				98D80C112A287EED0003008C /* Observable.swift */,
+				98D80C362A29AC730003008C /* Cell+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -178,9 +180,7 @@
 		98C247812A2F8A2E0095664A /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				98D80C072A286AEE0003008C /* UIView+Extension.swift */,
-				98D80C112A287EED0003008C /* Observable.swift */,
-				98D80C362A29AC730003008C /* Cell+Extension.swift */,
+				98C247802A2F8A230095664A /* Helpers */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -428,8 +428,8 @@
 		98D80C542A29C42E0003008C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				98C247812A2F8A2E0095664A /* UI */,
 				98D80C552A29C44E0003008C /* CoreData */,
-				98C247802A2F8A230095664A /* Helpers */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
