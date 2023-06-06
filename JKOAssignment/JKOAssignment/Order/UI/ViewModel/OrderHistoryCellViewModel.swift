@@ -19,27 +19,8 @@ final class OrderHistoryCellViewModel {
         return "總價格：$ \(order.price)"
     }
     
-    var items: (itemsNameText: [String], itemsPriceText: [String], itemsImageName: [String]) {
-        return (order.items.map { $0.name },
-                order.items.map { "$ \($0.price)" },
-                order.items.map { $0.imageName })
-        
-    }
-    
     var itemsDetals: [(nameText: String, priceText: String, imageName: String)] {
         return order.items.map { ($0.name, "$ \($0.price)", $0.imageName) }
-    }
-    
-    var itemsNameText: [String] {
-        return order.items.map { $0.name }
-    }
-    
-    var itemsPriceText: [String] {
-        return order.items.map { "$ \($0.price)" }
-    }
-    
-    var itemsimageName: [String] {
-        return order.items.map { $0.imageName }
     }
 }
 
