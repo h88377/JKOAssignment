@@ -133,7 +133,7 @@ extension CoreDataStore: OrderStoreLoader {
             
             completion(Result {
                 let request: NSFetchRequest<ManagedOrder> = NSFetchRequest(entityName: entityName)
-                let predicate = NSPredicate(format: "timestamp <= %@", date as CVarArg)
+                let predicate = NSPredicate(format: "timestamp < %@", date as CVarArg)
                 let sort = NSSortDescriptor(key: #keyPath(ManagedOrder.timestamp), ascending: false)
                 request.predicate = predicate
                 request.sortDescriptors = [sort]
