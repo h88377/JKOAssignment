@@ -45,8 +45,9 @@ final class OrderHistoryCell: UITableViewCell {
     private func setUpUI() {
         contentView.addSubviews([itemImageView, nameLabel, priceLabel])
         
-        let imageHightConstraint = itemImageView.heightAnchor.constraint(equalToConstant: 50)
+        let imageHightConstraint = itemImageView.heightAnchor.constraint(equalToConstant: 40)
         imageHightConstraint.priority = UILayoutPriority(999)
+        nameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         
         NSLayoutConstraint.activate([
             itemImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
@@ -57,10 +58,9 @@ final class OrderHistoryCell: UITableViewCell {
             
             nameLabel.topAnchor.constraint(equalTo: itemImageView.topAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: itemImageView.trailingAnchor, constant: 8),
-            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
-            priceLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            priceLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+            priceLabel.leadingAnchor.constraint(greaterThanOrEqualTo: nameLabel.trailingAnchor, constant: 8),
+            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             priceLabel.bottomAnchor.constraint(equalTo: itemImageView.bottomAnchor)
         ])
     }
