@@ -41,7 +41,7 @@ private extension SceneDelegate {
         })
         itemListVC.title = "商品列表"
         configureCartNavigationItem(for: itemListVC)
-        configureOrderHistoryItem(for: itemListVC)
+        configureOrderHistoryButton(for: itemListVC)
         return itemListVC
     }
     
@@ -104,12 +104,20 @@ private extension SceneDelegate {
             action: #selector(goToCart))
     }
     
-    private func configureOrderHistoryItem(for controller: UIViewController) {
-        controller.navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: "訂單記錄",
-            style: .done,
-            target: self,
-            action: #selector(goToOrderHistory))
+    private func configureOrderHistoryButton(for controller: ItemListViewController) {
+        let button = UIButton()
+        button.setTitle("訂單紀錄", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        button.backgroundColor = .darkGray
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(goToOrderHistory), for: .touchUpInside)
+        controller.view.insertSubview(button, aboveSubview: controller.collectionView)
+        
+        NSLayoutConstraint.activate([
+            button.trailingAnchor.constraint(equalTo: controller.view.trailingAnchor, constant: -16),
+            button.bottomAnchor.constraint(equalTo: controller.view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            button.widthAnchor.constraint(equalToConstant: 100)
+        ])
     }
     
     @objc private func goToCart() {
