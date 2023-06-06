@@ -17,4 +17,14 @@ final class OrderUIComposer {
         let controller = CheckoutViewController(viewModel: viewModel, cellViewModels: cellVMs)
         return controller
     }
+    
+    static func composedOrderHistory(with orderLoader: OrderLoader) -> OrderHistoryViewController {
+        let viewModel = OrderHistoryViewModel(orderLoader: orderLoader)
+        let controller = OrderHistoryViewController(viewModel: viewModel)
+        viewModel.isOrdersRefreshingStateOnChanged = { [weak controller] orders in
+            let cellVMs = orders.map { OrderHistoryCellViewModel(order: $0) }
+            controller?.set(cellVMs)
+        }
+        return controller
+    }
 }
