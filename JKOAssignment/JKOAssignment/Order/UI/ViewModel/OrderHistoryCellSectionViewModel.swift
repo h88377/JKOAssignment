@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class OrderHistoryCellViewModel {
+final class OrderHistoryCellSectionViewModel {
     private let id = UUID()
     private let order: Order
     
@@ -24,8 +24,8 @@ final class OrderHistoryCellViewModel {
     }
 }
 
-extension OrderHistoryCellViewModel: Hashable {
-    static func == (lhs: OrderHistoryCellViewModel, rhs: OrderHistoryCellViewModel) -> Bool {
+extension OrderHistoryCellSectionViewModel: Hashable {
+    static func == (lhs: OrderHistoryCellSectionViewModel, rhs: OrderHistoryCellSectionViewModel) -> Bool {
         return lhs.id == rhs.id
     }
     

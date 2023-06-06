@@ -23,7 +23,7 @@ final class OrderHistoryViewController: UITableViewController {
         return view
     }()
     
-    private lazy var dataSource: UITableViewDiffableDataSource<Int, OrderHistoryCellViewModel> = {
+    private lazy var dataSource: UITableViewDiffableDataSource<Int, OrderHistoryCellSectionViewModel> = {
         .init(tableView: tableView) { tableView, indexPath, viewModel in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: OrderHistoryCell.identifier, for: indexPath) as? OrderHistoryCell else { return UITableViewCell() }
             
@@ -64,8 +64,8 @@ final class OrderHistoryViewController: UITableViewController {
         loadOrders()
     }
     
-    func set(_ newItems: [OrderHistoryCellViewModel]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, OrderHistoryCellViewModel>()
+    func set(_ newItems: [OrderHistoryCellSectionViewModel]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, OrderHistoryCellSectionViewModel>()
         snapshot.appendSections([ordersSection])
         snapshot.appendItems(newItems, toSection: ordersSection)
         dataSource.apply(snapshot, animatingDifferences: false)

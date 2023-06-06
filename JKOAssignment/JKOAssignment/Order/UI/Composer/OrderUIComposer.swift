@@ -22,7 +22,7 @@ final class OrderUIComposer {
         let viewModel = OrderHistoryViewModel(orderLoader: orderLoader)
         let controller = OrderHistoryViewController(viewModel: viewModel)
         viewModel.isOrdersRefreshingStateOnChanged = { [weak controller] orders in
-            let cellVMs = orders.map { OrderHistoryCellViewModel(order: $0) }
+            let cellVMs = orders.map { OrderHistoryCellSectionViewModel(order: $0) }
             controller?.set(cellVMs)
         }
         return controller
