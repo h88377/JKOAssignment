@@ -35,7 +35,6 @@ final class OrderHistoryHeaderView: UITableViewHeaderFooterView {
     }
     
     private func setUpUI() {
-        backgroundColor = .white
         addSubviews([timestampLabel, priceLabel])
         
         NSLayoutConstraint.activate([
