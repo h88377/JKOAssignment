@@ -180,6 +180,7 @@
 			children = (
 				98D80C072A286AEE0003008C /* UIView+Extension.swift */,
 				98D80C112A287EED0003008C /* Observable.swift */,
+				98D80C362A29AC730003008C /* Cell+Extension.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -318,7 +319,6 @@
 			isa = PBXGroup;
 			children = (
 				98D80C092A28790F0003008C /* Constants.swift */,
-				98D80C362A29AC730003008C /* Cell+Extension.swift */,
 				98C4F1832A2DBEFF009C2320 /* CartDataSource.swift */,
 			);
 			path = Helpers;
