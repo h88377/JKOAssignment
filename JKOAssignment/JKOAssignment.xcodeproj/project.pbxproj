@@ -424,8 +424,8 @@
 			isa = PBXGroup;
 			children = (
 				98D80C4F2A29C2320003008C /* LocalOrderSaver.swift */,
-				98D80C512A29C3AF0003008C /* OrderStoreSaver.swift */,
 				98C4F18B2A2DC87B009C2320 /* LocalOrderLoader.swift */,
+				98D80C512A29C3AF0003008C /* OrderStoreSaver.swift */,
 				98C4F18D2A2DDBCB009C2320 /* OrderStoreLoader.swift */,
 				98C4F18F2A2DDC43009C2320 /* LocalOrder.swift */,
 				98C4F1912A2DDC59009C2320 /* LocalOrderItem.swift */,
