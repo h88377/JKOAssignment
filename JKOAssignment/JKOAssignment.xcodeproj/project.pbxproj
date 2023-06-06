@@ -180,9 +180,18 @@
 		98C247812A2F8A2E0095664A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				98C247822A2F8AD80095664A /* View */,
 				98C247802A2F8A230095664A /* Helpers */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		98C247822A2F8AD80095664A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				98D80C212A28C2700003008C /* LoadingIndicator.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		98D80BA52A27430C0003008C = {
@@ -255,7 +264,6 @@
 				98D80BEC2A27832B0003008C /* ItemListCell.swift */,
 				98D80C0B2A28794B0003008C /* ItemDetailCell.swift */,
 				98D80C272A28D1600003008C /* CartCell.swift */,
-				98D80C212A28C2700003008C /* LoadingIndicator.swift */,
 				98D80C232A28C2980003008C /* FadingMessageView.swift */,
 			);
 			path = View;
