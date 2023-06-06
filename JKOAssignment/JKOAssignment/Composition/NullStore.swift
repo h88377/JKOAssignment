@@ -7,10 +7,11 @@
 
 import Foundation
 
-final class NullStore: CartItemStoreSaver, CartItemsStoreLoader, CartItemStoreDeleter, OrderStoreSaver {
+final class NullStore: CartItemStoreSaver, CartItemsStoreLoader, CartItemStoreDeleter, OrderStoreSaver, OrderStoreLoader {
     func insert(_ item: LocalItem, completion: @escaping (CartItemStoreSaver.Result) -> Void) {}
     func retrieve(completion: @escaping (CartItemsStoreLoader.Result) -> Void) {}
     func delete(items: [LocalItem], completion: @escaping (CartItemStoreDeleter.Result) -> Void) {}
     
     func insert(order: Order, completion: @escaping (OrderStoreSaver.Result) -> Void) {}
+    func retrieve(completion: @escaping (OrderStoreLoader.Result) -> Void) {}
 }
