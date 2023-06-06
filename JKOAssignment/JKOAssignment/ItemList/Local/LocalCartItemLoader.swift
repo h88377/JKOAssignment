@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class LocalCartItemLoader: CartItemsLoader {
+final class LocalCartItemLoader: CartItemLoader {
     enum LoadError: Swift.Error {
         case failed
     }
@@ -18,7 +18,7 @@ final class LocalCartItemLoader: CartItemsLoader {
         self.storeLoader = storeLoader
     }
     
-    func loadItems(completion: @escaping (CartItemsLoader.Result) -> Void) {
+    func loadItems(completion: @escaping (CartItemLoader.Result) -> Void) {
         storeLoader.retrieve { result in
             switch result {
             case let .success(items):

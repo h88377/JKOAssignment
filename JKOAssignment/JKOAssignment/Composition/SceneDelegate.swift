@@ -59,7 +59,7 @@ private extension SceneDelegate {
     }
     
     func makeCartViewController() -> CartViewController {
-        let cartLoader: CartItemsLoader = LocalCartItemLoader(storeLoader: coreDataStore ?? NullStore())
+        let cartLoader: CartItemLoader = LocalCartItemLoader(storeLoader: coreDataStore ?? NullStore())
         let mainThreadCartLoader = MainThreadDispatchDecorator(decoratee: cartLoader)
         let cartDeleter: CartItemDeleter = LocalCartItemDeleter(storeDeleter: coreDataStore ?? NullStore())
         let mainThreadCartDeleter = MainThreadDispatchDecorator(decoratee: cartDeleter)

@@ -19,10 +19,10 @@ final class CartViewModel {
     
     var checkoutHandler: Observable<[Item]>?
     
-    private let cartLoader: CartItemsLoader
+    private let cartLoader: CartItemLoader
     private let cartDeleter: CartItemDeleter
     
-    init(cartLoader: CartItemsLoader, cartDeleter: CartItemDeleter) {
+    init(cartLoader: CartItemLoader, cartDeleter: CartItemDeleter) {
         self.cartLoader = cartLoader
         self.cartDeleter = cartDeleter
     }
