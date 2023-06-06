@@ -38,7 +38,7 @@ final class OrderHistoryViewController: UITableViewController {
     
     init(viewModel: OrderHistoryViewModel) {
         self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
+        super.init(style: .grouped)
     }
     
     required init?(coder: NSCoder) {
