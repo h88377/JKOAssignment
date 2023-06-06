@@ -37,6 +37,7 @@ final class OrderHistoryPaginationViewModel {
                 
             case let .success(orders):
                 self?.isOrdersPaginationStateOnChange?(orders)
+                self?.oldestOrder = orders.last
                 
             case .failure:
                 self?.currentPage -= 1
