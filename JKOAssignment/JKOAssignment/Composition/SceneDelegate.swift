@@ -87,6 +87,12 @@ private extension SceneDelegate {
         return checkoutVC
     }
     
+    func makeOrderHistoryViewController() -> OrderHistoryViewController {
+        let orderLoader: OrderLoader = LocalOrderLoader(storeLoader: coreDataStore ?? NullStore())
+        let mainThreadOrderLoader = MainThreadDispatchDecorator(decoratee: orderLoader)
+        return OrderUIComposer.composedOrderHistory(with: mainThreadOrderLoader)
+    }
+    
     private func configureCartNavigationItem(for controller: UIViewController) {
         controller.navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "購物車",
