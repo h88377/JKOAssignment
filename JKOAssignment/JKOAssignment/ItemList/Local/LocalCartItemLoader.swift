@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class LocalCartItemsLoader: CartItemsLoader {
+final class LocalCartItemLoader: CartItemsLoader {
     enum LoadError: Swift.Error {
         case failed
     }
