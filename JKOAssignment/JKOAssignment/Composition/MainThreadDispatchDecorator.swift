@@ -23,6 +23,8 @@ final class MainThreadDispatchDecorator<T> {
     }
 }
 
+// MARK: - Item
+
 extension MainThreadDispatchDecorator: ItemLoader where T == ItemLoader {
     func load(with condition: ItemRequestCondition, completion: @escaping (ItemLoader.Result) -> Void) {
         decoratee.load(with: condition) { [weak self] result in
@@ -55,9 +57,19 @@ extension MainThreadDispatchDecorator: CartItemDeleter where T == CartItemDelete
     }
 }
 
+// MARK: - Order
+
 extension MainThreadDispatchDecorator: OrderSaver where T == OrderSaver {
     func save(order: Order, completion: @escaping (OrderSaver.Result) -> Void) {
         decoratee.save(order: order) { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}
+
+extension MainThreadDispatchDecorator: OrderLoader where T == OrderLoader {
+    func loadOrders(completion: @escaping (OrderLoader.Result) -> Void) {
+        decoratee.loadOrders { [weak self] result in
             self?.dispatch { completion(result) }
         }
     }
