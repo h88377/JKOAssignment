@@ -167,8 +167,7 @@ extension OrderHistoryViewController: UITableViewDelegate {
 
 extension OrderHistoryViewController {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let snapshot = dataSource.snapshot()
-        guard tableView.refreshControl?.isRefreshing != true, !snapshot.sectionIdentifiers.isEmpty else { return }
+        guard tableView.refreshControl?.isRefreshing != true else { return }
 
         paginationController.paginate(on: scrollView)
     }
