@@ -13,7 +13,7 @@ final class OrderHistoryPaginationViewModel {
     var isOrdersPaginationErrorStateOnChange: Observable<String>?
     
     private var currentPage = 0
-    private var oldestOrder: Order?
+    private var youngestOrder: Order?
     private let orderLoader: OrderLoader
     
     init(orderLoader: OrderLoader) {
@@ -25,11 +25,11 @@ final class OrderHistoryPaginationViewModel {
     }
     
     func loadNextPage() {
-        guard let oldestOrder = oldestOrder else { return }
+        guard let youngestOrder = youngestOrder else { return }
         
         currentPage += 1
         isOrdersPaginationLoadingStateOnChange?(true)
-        orderLoader.loadOrders(before: oldestOrder.timestamp) { [weak self] result in
+        orderLoader.loadOrders(before: youngestOrder.timestamp) { [weak self] result in
             switch result {
             case let .success(orders) where orders.isEmpty:
                 self?.currentPage -= 1
@@ -37,7 +37,7 @@ final class OrderHistoryPaginationViewModel {
                 
             case let .success(orders):
                 self?.isOrdersPaginationStateOnChange?(orders)
-                self?.oldestOrder = orders.last
+                self?.youngestOrder = orders.last
                 
             case .failure:
                 self?.currentPage -= 1
