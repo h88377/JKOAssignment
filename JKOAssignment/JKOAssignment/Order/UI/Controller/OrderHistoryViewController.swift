@@ -86,6 +86,7 @@ final class OrderHistoryViewController: UITableViewController {
     }
     
     private func configureTableView() {
+        tableView.backgroundColor = .systemGray6
         tableView.register(OrderHistoryCell.self, forCellReuseIdentifier: OrderHistoryCell.identifier)
         tableView.register(OrderHistoryHeaderView.self, forHeaderFooterViewReuseIdentifier: OrderHistoryHeaderView.identifier)
         tableView.refreshControl = binded(refreshView: UIRefreshControl())
