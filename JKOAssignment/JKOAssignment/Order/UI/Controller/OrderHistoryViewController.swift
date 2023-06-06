@@ -140,6 +140,9 @@ final class OrderHistoryViewController: UIViewController {
     }
     
     @objc private func loadOrders() {
+        guard !paginationController.isPaginating else { return }
+        
+        paginationController.resetPage()
         viewModel.loadOrders()
     }
 }
