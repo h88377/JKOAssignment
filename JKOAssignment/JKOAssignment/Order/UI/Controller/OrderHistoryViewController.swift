@@ -7,7 +7,16 @@
 
 import UIKit
 
-final class OrderHistoryViewController: UITableViewController {
+final class OrderHistoryViewController: UIViewController {
+    let tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.register(OrderHistoryCell.self, forCellReuseIdentifier: OrderHistoryCell.identifier)
+        tableView.register(OrderHistoryFooterView.self, forHeaderFooterViewReuseIdentifier: OrderHistoryFooterView.identifier)
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
     let noOrdersReminder: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -38,7 +47,7 @@ final class OrderHistoryViewController: UITableViewController {
     
     init(viewModel: OrderHistoryViewModel) {
         self.viewModel = viewModel
-        super.init(style: .grouped)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -64,9 +73,16 @@ final class OrderHistoryViewController: UITableViewController {
     }
     
     private func setUpUI() {
+        view.backgroundColor = .white
+        view.addSubview(tableView)
         view.insertSubview(noOrdersReminder, belowSubview: tableView)
         
         NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
             noOrdersReminder.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             noOrdersReminder.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
@@ -87,8 +103,8 @@ final class OrderHistoryViewController: UITableViewController {
     
     private func configureTableView() {
         tableView.backgroundColor = .systemGray6
-        tableView.register(OrderHistoryCell.self, forCellReuseIdentifier: OrderHistoryCell.identifier)
-        tableView.register(OrderHistoryFooterView.self, forHeaderFooterViewReuseIdentifier: OrderHistoryFooterView.identifier)
+        tableView.delegate = self
+        tableView.dataSource = self.dataSource
         tableView.refreshControl = binded(refreshView: UIRefreshControl())
     }
     
@@ -108,8 +124,12 @@ final class OrderHistoryViewController: UITableViewController {
     @objc private func loadOrders() {
         viewModel.loadOrders()
     }
-    
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+}
+
+// MARK: - UITableViewDelegate
+
+extension OrderHistoryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         guard let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: OrderHistoryFooterView.identifier) as? OrderHistoryFooterView else { return nil }
         
         let section = dataSource.sectionIdentifier(for: section)
