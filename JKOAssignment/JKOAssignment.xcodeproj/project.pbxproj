@@ -31,7 +31,6 @@
 		98D80BB42A27430C0003008C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BB32A27430C0003008C /* SceneDelegate.swift */; };
 		98D80BBB2A27430D0003008C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98D80BBA2A27430D0003008C /* Assets.xcassets */; };
 		98D80BBE2A27430D0003008C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98D80BBC2A27430D0003008C /* LaunchScreen.storyboard */; };
-		98D80BC92A27430D0003008C /* JKOAssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BC82A27430D0003008C /* JKOAssignmentTests.swift */; };
 		98D80BE22A2776AA0003008C /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BE12A2776AA0003008C /* ItemListViewController.swift */; };
 		98D80BE52A2782B10003008C /* ItemListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BE42A2782B10003008C /* ItemListViewModel.swift */; };
 		98D80BE72A2782E40003008C /* ItemLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80BE62A2782E40003008C /* ItemLoader.swift */; };
@@ -81,16 +80,6 @@
 		98D80C5E2A29CFAE0003008C /* OrderUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D80C5D2A29CFAE0003008C /* OrderUIComposer.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		98D80BC52A27430D0003008C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 98D80BA62A27430C0003008C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 98D80BAD2A27430C0003008C;
-			remoteInfo = JKOAssignment;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		98C2476A2A2DE0240095664A /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		98C2476C2A2DE2440095664A /* LocalItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalItem.swift; sourceTree = "<group>"; };
@@ -118,8 +107,6 @@
 		98D80BBA2A27430D0003008C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		98D80BBD2A27430D0003008C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98D80BBF2A27430D0003008C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		98D80BC42A27430D0003008C /* JKOAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JKOAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		98D80BC82A27430D0003008C /* JKOAssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKOAssignmentTests.swift; sourceTree = "<group>"; };
 		98D80BE12A2776AA0003008C /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		98D80BE42A2782B10003008C /* ItemListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewModel.swift; sourceTree = "<group>"; };
 		98D80BE62A2782E40003008C /* ItemLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemLoader.swift; sourceTree = "<group>"; };
@@ -177,13 +164,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		98D80BC12A27430D0003008C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -191,7 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				98D80BB02A27430C0003008C /* JKOAssignment */,
-				98D80BC72A27430D0003008C /* JKOAssignmentTests */,
 				98D80BAF2A27430C0003008C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -200,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				98D80BAE2A27430C0003008C /* JKOAssignment.app */,
-				98D80BC42A27430D0003008C /* JKOAssignmentTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -217,14 +195,6 @@
 				98D80BBF2A27430D0003008C /* Info.plist */,
 			);
 			path = JKOAssignment;
-			sourceTree = "<group>";
-		};
-		98D80BC72A27430D0003008C /* JKOAssignmentTests */ = {
-			isa = PBXGroup;
-			children = (
-				98D80BC82A27430D0003008C /* JKOAssignmentTests.swift */,
-			);
-			path = JKOAssignmentTests;
 			sourceTree = "<group>";
 		};
 		98D80BE32A2782930003008C /* ItemList */ = {
@@ -488,24 +458,6 @@
 			productReference = 98D80BAE2A27430C0003008C /* JKOAssignment.app */;
 			productType = "com.apple.product-type.application";
 		};
-		98D80BC32A27430D0003008C /* JKOAssignmentTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 98D80BDB2A27430D0003008C /* Build configuration list for PBXNativeTarget "JKOAssignmentTests" */;
-			buildPhases = (
-				98D80BC02A27430D0003008C /* Sources */,
-				98D80BC12A27430D0003008C /* Frameworks */,
-				98D80BC22A27430D0003008C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				98D80BC62A27430D0003008C /* PBXTargetDependency */,
-			);
-			name = JKOAssignmentTests;
-			productName = JKOAssignmentTests;
-			productReference = 98D80BC42A27430D0003008C /* JKOAssignmentTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -518,10 +470,6 @@
 				TargetAttributes = {
 					98D80BAD2A27430C0003008C = {
 						CreatedOnToolsVersion = 14.2;
-					};
-					98D80BC32A27430D0003008C = {
-						CreatedOnToolsVersion = 14.2;
-						TestTargetID = 98D80BAD2A27430C0003008C;
 					};
 				};
 			};
@@ -539,7 +487,6 @@
 			projectRoot = "";
 			targets = (
 				98D80BAD2A27430C0003008C /* JKOAssignment */,
-				98D80BC32A27430D0003008C /* JKOAssignmentTests */,
 			);
 		};
 /* End PBXProject section */
@@ -551,13 +498,6 @@
 			files = (
 				98D80BBE2A27430D0003008C /* LaunchScreen.storyboard in Resources */,
 				98D80BBB2A27430D0003008C /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		98D80BC22A27430D0003008C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,23 +580,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		98D80BC02A27430D0003008C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				98D80BC92A27430D0003008C /* JKOAssignmentTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		98D80BC62A27430D0003008C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 98D80BAD2A27430C0003008C /* JKOAssignment */;
-			targetProxy = 98D80BC52A27430D0003008C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		98D80BBC2A27430D0003008C /* LaunchScreen.storyboard */ = {
@@ -842,46 +766,6 @@
 			};
 			name = Release;
 		};
-		98D80BDC2A27430D0003008C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6D8CRTN6K7;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.waynecheng.JKOAssignmentTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JKOAssignment.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JKOAssignment";
-			};
-			name = Debug;
-		};
-		98D80BDD2A27430D0003008C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6D8CRTN6K7;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.waynecheng.JKOAssignmentTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JKOAssignment.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JKOAssignment";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -899,15 +783,6 @@
 			buildConfigurations = (
 				98D80BD92A27430D0003008C /* Debug */,
 				98D80BDA2A27430D0003008C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		98D80BDB2A27430D0003008C /* Build configuration list for PBXNativeTarget "JKOAssignmentTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				98D80BDC2A27430D0003008C /* Debug */,
-				98D80BDD2A27430D0003008C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
