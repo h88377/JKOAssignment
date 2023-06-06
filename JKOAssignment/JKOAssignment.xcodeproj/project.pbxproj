@@ -167,6 +167,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		98C247802A2F8A230095664A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				98C247812A2F8A2E0095664A /* UI */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		98C247812A2F8A2E0095664A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				98D80C072A286AEE0003008C /* UIView+Extension.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		98D80BA52A27430C0003008C = {
 			isa = PBXGroup;
 			children = (
@@ -300,7 +316,6 @@
 		98D80C062A286AE20003008C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				98D80C072A286AEE0003008C /* UIView+Extension.swift */,
 				98D80C092A28790F0003008C /* Constants.swift */,
 				98D80C112A287EED0003008C /* Observable.swift */,
 				98D80C362A29AC730003008C /* Cell+Extension.swift */,
@@ -414,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				98D80C552A29C44E0003008C /* CoreData */,
+				98C247802A2F8A230095664A /* Helpers */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
