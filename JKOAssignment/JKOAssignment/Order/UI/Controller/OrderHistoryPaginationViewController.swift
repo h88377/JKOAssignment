@@ -28,8 +28,14 @@ final class OrderHistoryPaginationViewController {
         let contentHeight = scrollView.contentSize.height
         let frameHeight = scrollView.frame.height
         
-        if offsetY > (contentHeight - frameHeight) {
+        switch contentHeight < frameHeight {
+        case true where offsetY > 0:
             viewModel.loadNextPage()
+            
+        case false where offsetY > (contentHeight - frameHeight):
+            viewModel.loadNextPage()
+            
+        default: break
         }
     }
     
