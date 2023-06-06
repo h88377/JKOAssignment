@@ -23,26 +23,16 @@ final class OrderHistoryViewController: UITableViewController {
         return view
     }()
     
-    private lazy var dataSource: UITableViewDiffableDataSource<Int, OrderHistoryCellSectionViewModel> = {
+    private lazy var dataSource: UITableViewDiffableDataSource<OrderHistoryCellSectionViewModel, OrderHistoryCellItemViewModel> = {
         .init(tableView: tableView) { tableView, indexPath, viewModel in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: OrderHistoryCell.identifier, for: indexPath) as? OrderHistoryCell else { return UITableViewCell() }
             
-            var itemViews = [UIView]()
-            viewModel.itemsDetals.forEach { detail in
-                let detailView = OrderHistoryItemView()
-                detailView.imageView.image = UIImage(systemName: detail.imageName)
-                detailView.priceLabel.text = detail.priceText
-                detailView.nameLabel.text = detail.nameText
-                
-                itemViews.append(detailView)
-            }
-
-            cell.configureItems(with: itemViews)
+            cell.priceLabel.text = viewModel.priceText
+            cell.nameLabel.text = viewModel.nameText
+            cell.itemImageView.image = UIImage(systemName: viewModel.imageName)
             return cell
         }
     }()
-    
-    private var ordersSection: Int { 0 }
     
     private let viewModel: OrderHistoryViewModel
     
@@ -64,10 +54,12 @@ final class OrderHistoryViewController: UITableViewController {
         loadOrders()
     }
     
-    func set(_ newItems: [OrderHistoryCellSectionViewModel]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, OrderHistoryCellSectionViewModel>()
-        snapshot.appendSections([ordersSection])
-        snapshot.appendItems(newItems, toSection: ordersSection)
+    func set(_ sections: [OrderHistoryCellSectionViewModel]) {
+        var snapshot = NSDiffableDataSourceSnapshot<OrderHistoryCellSectionViewModel, OrderHistoryCellItemViewModel>()
+        snapshot.appendSections(sections)
+        sections.forEach { section in
+            snapshot.appendItems(section.itemViewModels, toSection: section)
+        }
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     

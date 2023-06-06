@@ -19,8 +19,8 @@ final class OrderHistoryCellSectionViewModel {
         return "總價格：$ \(order.price)"
     }
     
-    var itemsDetals: [(nameText: String, priceText: String, imageName: String)] {
-        return order.items.map { ($0.name, "$ \($0.price)", $0.imageName) }
+    var itemViewModels: [OrderHistoryCellItemViewModel] {
+        return order.items.map { OrderHistoryCellItemViewModel(item: $0) }
     }
 }
 

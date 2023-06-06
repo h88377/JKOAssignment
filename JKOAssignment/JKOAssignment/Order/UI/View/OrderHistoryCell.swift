@@ -8,6 +8,14 @@
 import UIKit
 
 final class OrderHistoryCell: UITableViewCell {
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let priceLabel: UILabel = {
         let label = UILabel()
         
@@ -15,20 +23,19 @@ final class OrderHistoryCell: UITableViewCell {
         return label
     }()
     
-    let verticalStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.alignment = .fill
-        stackView.axis = .vertical
-        stackView.spacing = 8
-        stackView.distribution = .fillEqually
+    let itemImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         setUpUI()
+        selectionStyle = .none
     }
     
     required init?(coder: NSCoder) {
@@ -36,26 +43,25 @@ final class OrderHistoryCell: UITableViewCell {
     }
     
     private func setUpUI() {
-        contentView.addSubviews([priceLabel, verticalStackView])
+        contentView.addSubviews([itemImageView, nameLabel, priceLabel])
+        
+        let imageHightConstraint = itemImageView.heightAnchor.constraint(equalToConstant: 50)
+        imageHightConstraint.priority = UILayoutPriority(999)
         
         NSLayoutConstraint.activate([
-            verticalStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            verticalStackView.trailingAnchor.constraint(equalTo: priceLabel.leadingAnchor, constant: 8),
-            verticalStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            verticalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            itemImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            itemImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            itemImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            itemImageView.widthAnchor.constraint(equalTo: itemImageView.heightAnchor),
+            imageHightConstraint,
             
-            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            priceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+            nameLabel.topAnchor.constraint(equalTo: itemImageView.topAnchor),
+            nameLabel.leadingAnchor.constraint(equalTo: itemImageView.trailingAnchor, constant: 8),
+            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            
+            priceLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            priceLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+            priceLabel.bottomAnchor.constraint(equalTo: itemImageView.bottomAnchor)
         ])
-    }
-    
-    func configureItems(with views: [UIView]) {
-        verticalStackView.addArrangedSubviews(with: views)
-    }
-}
-
-private extension UIStackView {
-    func addArrangedSubviews(with views: [UIView]) {
-        views.forEach(addArrangedSubview)
     }
 }
