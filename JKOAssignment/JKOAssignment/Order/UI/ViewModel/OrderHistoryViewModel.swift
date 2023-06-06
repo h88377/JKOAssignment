@@ -13,15 +13,17 @@ final class OrderHistoryViewModel {
     var isEmptyOrderStateOnChanged: Observable<String>?
     var isOrdersRefreshingErrorStateOnChange: Observable<String>?
     
+    private let currentDate: () -> Date
     private let orderLoader: OrderLoader
     
-    init(orderLoader: OrderLoader) {
+    init(currentDate: @escaping () -> Date, orderLoader: OrderLoader) {
+        self.currentDate = currentDate
         self.orderLoader = orderLoader
     }
     
     func loadOrders() {
         isOrdersRefreshLoadingStateOnChanged?(true)
-        orderLoader.loadOrders(before: Date()) { [weak self] result in
+        orderLoader.loadOrders(before: currentDate()) { [weak self] result in
             switch result {
             case let .success(orders) where orders.isEmpty:
                 self?.isEmptyOrderStateOnChanged?(OrderReminderMessage.noOrder.rawValue)

@@ -19,7 +19,7 @@ final class OrderUIComposer {
     }
     
     static func composedOrderHistory(with orderLoader: OrderLoader, dateFormatter: DateFormatter) -> OrderHistoryViewController {
-        let viewModel = OrderHistoryViewModel(orderLoader: orderLoader)
+        let viewModel = OrderHistoryViewModel(currentDate: Date.init, orderLoader: orderLoader)
         let controller = OrderHistoryViewController(viewModel: viewModel)
         viewModel.isOrdersRefreshingStateOnChanged = { [weak controller] orders in
             let cellSectionVMs = orders.map { OrderHistoryCellSectionViewModel(order: $0, dateFormatter: dateFormatter) }
