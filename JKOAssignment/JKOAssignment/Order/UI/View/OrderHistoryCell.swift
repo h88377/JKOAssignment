@@ -49,8 +49,8 @@ final class OrderHistoryCell: UITableViewCell {
         ])
     }
     
-    func configureItems(with horizontalStackViews: [UIStackView]) {
-        verticalStackView.addArrangedSubviews(with: horizontalStackViews)
+    func configureItems(with views: [UIView]) {
+        verticalStackView.addArrangedSubviews(with: views)
     }
 }
 
