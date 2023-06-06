@@ -47,11 +47,13 @@ final class OrderHistoryViewController: UIViewController {
     }()
     
     private let viewModel: OrderHistoryViewModel
+    private let paginationController: OrderHistoryPaginationViewController
     
     // MARK: - Life cycle
     
-    init(viewModel: OrderHistoryViewModel) {
+    init(viewModel: OrderHistoryViewModel, paginationController: OrderHistoryPaginationViewController) {
         self.viewModel = viewModel
+        self.paginationController = paginationController
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -77,6 +79,15 @@ final class OrderHistoryViewController: UIViewController {
             snapshot.appendItems(section.itemViewModels, toSection: section)
         }
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    func append(_ sections: [OrderHistoryCellSectionViewModel]) {
+        var snapshot = dataSource.snapshot()
+        snapshot.appendSections(sections)
+        sections.forEach { section in
+            snapshot.appendItems(section.itemViewModels, toSection: section)
+        }
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     private func setUpUI() {
@@ -143,5 +154,16 @@ extension OrderHistoryViewController: UITableViewDelegate {
         footerView.timestampLabel.text = section?.timestampText
         footerView.priceLabel.text = section?.priceText
         return footerView
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension OrderHistoryViewController {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let snapshot = dataSource.snapshot()
+        guard tableView.refreshControl?.isRefreshing != true, !snapshot.sectionIdentifiers.isEmpty else { return }
+
+        paginationController.paginate(on: scrollView)
     }
 }
