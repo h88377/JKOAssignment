@@ -19,11 +19,23 @@ final class LocalOrderSaver: OrderSaver {
     }
     
     func save(order: Order, completion: @escaping (OrderSaver.Result) -> Void) {
-        storeSaver.insert(order: order) { error in
+        storeSaver.insert(order: order.toLocal()) { error in
             guard error == nil else {
                 return completion(.some(SaveError.failed))
             }
             completion(.none)
         }
+    }
+}
+
+private extension Order {
+    func toLocal() -> LocalOrder {
+        return LocalOrder(items: items.toLocal(), price: price, timestamp: timestamp)
+    }
+}
+
+private extension Array where Element == OrderItem {
+    func toLocal() -> [LocalOrderItem] {
+        return map { LocalOrderItem(name: $0.name, description: $0.description, price: $0.price, timestamp: $0.timestamp, imageName: $0.imageName) }
     }
 }

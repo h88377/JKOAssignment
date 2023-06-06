@@ -12,6 +12,6 @@ final class NullStore: JKOStore {
     func retrieve(completion: @escaping (CartItemStoreLoader.Result) -> Void) {}
     func delete(items: [LocalItem], completion: @escaping (CartItemStoreDeleter.Result) -> Void) {}
     
-    func insert(order: Order, completion: @escaping (OrderStoreSaver.Result) -> Void) {}
+    func insert(order: LocalOrder, completion: @escaping (OrderStoreSaver.Result) -> Void) {}
     func retrieve(before date: Date, completion: @escaping (OrderStoreLoader.Result) -> Void) {}
 }

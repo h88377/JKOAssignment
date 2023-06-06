@@ -102,7 +102,7 @@ extension CoreDataStore: CartItemStoreDeleter {
 // MARK: - Order
 
 extension CoreDataStore: OrderStoreSaver {
-    func insert(order: Order, completion: @escaping (OrderStoreSaver.Result) -> Void) {
+    func insert(order: LocalOrder, completion: @escaping (OrderStoreSaver.Result) -> Void) {
         perform { context in
             do {
                 let managedOrder = ManagedOrder(context: context)
