@@ -41,6 +41,7 @@ private extension SceneDelegate {
         })
         itemListVC.title = "商品列表"
         configureCartNavigationItem(for: itemListVC)
+        configureOrderHistoryItem(for: itemListVC)
         return itemListVC
     }
     
@@ -90,7 +91,9 @@ private extension SceneDelegate {
     func makeOrderHistoryViewController() -> OrderHistoryViewController {
         let orderLoader: OrderLoader = LocalOrderLoader(storeLoader: coreDataStore ?? NullStore())
         let mainThreadOrderLoader = MainThreadDispatchDecorator(decoratee: orderLoader)
-        return OrderUIComposer.composedOrderHistory(with: mainThreadOrderLoader)
+        let orderHistoryVC = OrderUIComposer.composedOrderHistory(with: mainThreadOrderLoader)
+        orderHistoryVC.title = "歷史訂單紀錄"
+        return orderHistoryVC
     }
     
     private func configureCartNavigationItem(for controller: UIViewController) {
@@ -101,9 +104,22 @@ private extension SceneDelegate {
             action: #selector(goToCart))
     }
     
+    private func configureOrderHistoryItem(for controller: UIViewController) {
+        controller.navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: "訂單記錄",
+            style: .done,
+            target: self,
+            action: #selector(goToOrderHistory))
+    }
+    
     @objc private func goToCart() {
         let cartVC = makeCartViewController()
         navigationController.pushViewController(cartVC, animated: true)
+    }
+    
+    @objc private func goToOrderHistory() {
+        let orderHistoryVC = makeOrderHistoryViewController()
+        navigationController.pushViewController(orderHistoryVC, animated: true)
     }
     
     private func configureCoreDataStore() -> CoreDataStore? {
