@@ -56,7 +56,7 @@ Drag and drop the file on the website of the [`Draw.io`](https://app.diagrams.ne
 ## Requirements
 > Xcode 13 or later  
 > iOS 15.0 or later  
-> Swift 4 or later
+> Swift 5 or later
 
 ## Contact
 Wayne Cheng｜h88377@gmail.com   
