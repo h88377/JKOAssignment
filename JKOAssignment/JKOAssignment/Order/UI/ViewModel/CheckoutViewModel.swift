@@ -16,10 +16,10 @@ final class CheckoutViewModel {
         return items.reduce(0) { $0 + $1.price }
     }
     
-    private let items: [Item]
+    private let items: [OrderItem]
     private let orderSaver: OrderSaver
     
-    init(items: [Item], orderSaver: OrderSaver) {
+    init(items: [OrderItem], orderSaver: OrderSaver) {
         self.items = items
         self.orderSaver = orderSaver
     }

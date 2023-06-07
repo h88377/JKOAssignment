@@ -23,6 +23,8 @@ final class MainThreadDispatchDecorator<T> {
     }
 }
 
+// MARK: - Item
+
 extension MainThreadDispatchDecorator: ItemLoader where T == ItemLoader {
     func load(with condition: ItemRequestCondition, completion: @escaping (ItemLoader.Result) -> Void) {
         decoratee.load(with: condition) { [weak self] result in
@@ -39,8 +41,8 @@ extension MainThreadDispatchDecorator: CartItemSaver where T == CartItemSaver {
     }
 }
 
-extension MainThreadDispatchDecorator: CartItemsLoader where T == CartItemsLoader {
-    func loadItems(completion: @escaping (CartItemsLoader.Result) -> Void) {
+extension MainThreadDispatchDecorator: CartItemLoader where T == CartItemLoader {
+    func loadItems(completion: @escaping (CartItemLoader.Result) -> Void) {
         decoratee.loadItems { [weak self] result in
             self?.dispatch { completion(result) }
         }
@@ -55,9 +57,19 @@ extension MainThreadDispatchDecorator: CartItemDeleter where T == CartItemDelete
     }
 }
 
+// MARK: - Order
+
 extension MainThreadDispatchDecorator: OrderSaver where T == OrderSaver {
     func save(order: Order, completion: @escaping (OrderSaver.Result) -> Void) {
         decoratee.save(order: order) { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}
+
+extension MainThreadDispatchDecorator: OrderLoader where T == OrderLoader {
+    func loadOrders(before date: Date, completion: @escaping (OrderLoader.Result) -> Void) {
+        decoratee.loadOrders(before: date) { [weak self] result in
             self?.dispatch { completion(result) }
         }
     }

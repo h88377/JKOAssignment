@@ -44,8 +44,8 @@ extension CoreDataStore: CartItemStoreSaver {
     }
 }
 
-extension CoreDataStore: CartItemsStoreLoader {
-    func retrieve(completion: @escaping (CartItemsStoreLoader.Result) -> Void) {
+extension CoreDataStore: CartItemStoreLoader {
+    func retrieve(completion: @escaping (CartItemStoreLoader.Result) -> Void) {
         perform { context in
             guard let entityName = ManagedItem.entity().name else { return }
             
@@ -102,7 +102,7 @@ extension CoreDataStore: CartItemStoreDeleter {
 // MARK: - Order
 
 extension CoreDataStore: OrderStoreSaver {
-    func insert(order: Order, completion: @escaping (OrderStoreSaver.Result) -> Void) {
+    func insert(order: LocalOrder, completion: @escaping (OrderStoreSaver.Result) -> Void) {
         perform { context in
             do {
                 let managedOrder = ManagedOrder(context: context)
@@ -126,30 +126,28 @@ extension CoreDataStore: OrderStoreSaver {
     }
 }
 
-// MARK: - Helper
-
-extension NSPersistentContainer {
-    enum LoadingError: Error {
-        case modelNotFound
-        case failedToLoadPersistentStore(Error)
-    }
-    
-    static func load(modelName: String, in bundle: Bundle, storeURL: URL) throws -> NSPersistentContainer {
-        guard let modelURL = bundle.url(forResource: modelName, withExtension: "momd"), let model = NSManagedObjectModel(contentsOf: modelURL) else {
-            throw LoadingError.modelNotFound
+extension CoreDataStore: OrderStoreLoader {
+    func retrieve(before date: Date, completion: @escaping (OrderStoreLoader.Result) -> Void) {
+        perform { context in
+            guard let entityName = ManagedOrder.entity().name else { return }
+            
+            completion(Result {
+                let request: NSFetchRequest<ManagedOrder> = NSFetchRequest(entityName: entityName)
+                let predicate = NSPredicate(format: "timestamp < %@", date as CVarArg)
+                let sort = NSSortDescriptor(key: #keyPath(ManagedOrder.timestamp), ascending: false)
+                request.predicate = predicate
+                request.sortDescriptors = [sort]
+                request.fetchLimit = 3
+                request.returnsObjectsAsFaults = false
+                let managedOrders = try context.fetch(request)
+                return managedOrders.map {
+                    let localItems = $0.items
+                        .compactMap { $0 as? ManagedOrderItem }
+                        .map { LocalOrderItem(name: $0.name, description: $0.descriptionContent, price: Int($0.price), timestamp: $0.timestamp, imageName: $0.imageName) }
+                    let localOrder = LocalOrder(items: localItems, price: Int($0.price), timestamp: $0.timestamp)
+                    return localOrder
+                }
+            })
         }
-        
-        let container = NSPersistentContainer(name: modelName, managedObjectModel: model)
-        let description = NSPersistentStoreDescription(url: storeURL)
-        container.persistentStoreDescriptions = [description]
-        
-        var loadError: Error?
-        container.loadPersistentStores { _, error in
-            loadError = error
-        }
-        
-        try loadError.map { throw LoadingError.failedToLoadPersistentStore($0) }
-        
-        return container
     }
 }

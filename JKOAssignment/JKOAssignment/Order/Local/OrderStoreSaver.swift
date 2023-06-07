@@ -10,5 +10,5 @@ import Foundation
 protocol OrderStoreSaver {
     typealias Result = Error?
     
-    func insert(order: Order, completion: @escaping (Result) -> Void)
+    func insert(order: LocalOrder, completion: @escaping (Result) -> Void)
 }

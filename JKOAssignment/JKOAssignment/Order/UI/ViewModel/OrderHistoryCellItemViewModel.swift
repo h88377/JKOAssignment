@@ -1,13 +1,13 @@
 //
-//  CheckoutCellViewModel.swift
+//  OrderHistoryCellItemViewModel.swift
 //  JKOAssignment
 //
-//  Created by 鄭昭韋 on 2023/6/2.
+//  Created by 鄭昭韋 on 2023/6/6.
 //
 
 import Foundation
 
-final class CheckoutCellViewModel {
+final class OrderHistoryCellItemViewModel {
     private let id = UUID()
     private let item: OrderItem
     
@@ -26,14 +26,10 @@ final class CheckoutCellViewModel {
     var imageName: String {
         return item.imageName
     }
-    
-    var price: Int {
-        return item.price
-    }
 }
 
-extension CheckoutCellViewModel: Hashable {
-    static func == (lhs: CheckoutCellViewModel, rhs: CheckoutCellViewModel) -> Bool {
+extension OrderHistoryCellItemViewModel: Hashable {
+    static func == (lhs: OrderHistoryCellItemViewModel, rhs: OrderHistoryCellItemViewModel) -> Bool {
         return lhs.id == rhs.id
     }
     
@@ -41,3 +37,4 @@ extension CheckoutCellViewModel: Hashable {
         hasher.combine(id)
     }
 }
+

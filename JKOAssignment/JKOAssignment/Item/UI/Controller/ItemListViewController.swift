@@ -138,8 +138,7 @@ extension ItemListViewController {
 
 extension ItemListViewController {
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let snapshot = dataSource.snapshot()
-        guard collectionView.refreshControl?.isRefreshing != true, !snapshot.itemIdentifiers.isEmpty else { return }
+        guard collectionView.refreshControl?.isRefreshing != true else { return }
             
         paginationController.paginate(on: scrollView)
     }

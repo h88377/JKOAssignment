@@ -8,7 +8,7 @@
 import Foundation
 
 struct Order {
-    let items: [Item]
+    let items: [OrderItem]
     let price: Int
     let timestamp: Date
 }

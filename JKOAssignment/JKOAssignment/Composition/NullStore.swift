@@ -7,10 +7,11 @@
 
 import Foundation
 
-final class NullStore: CartItemStoreSaver, CartItemsStoreLoader, CartItemStoreDeleter, OrderStoreSaver {
+final class NullStore: JKOStore {
     func insert(_ item: LocalItem, completion: @escaping (CartItemStoreSaver.Result) -> Void) {}
-    func retrieve(completion: @escaping (CartItemsStoreLoader.Result) -> Void) {}
+    func retrieve(completion: @escaping (CartItemStoreLoader.Result) -> Void) {}
     func delete(items: [LocalItem], completion: @escaping (CartItemStoreDeleter.Result) -> Void) {}
     
-    func insert(order: Order, completion: @escaping (OrderStoreSaver.Result) -> Void) {}
+    func insert(order: LocalOrder, completion: @escaping (OrderStoreSaver.Result) -> Void) {}
+    func retrieve(before date: Date, completion: @escaping (OrderStoreLoader.Result) -> Void) {}
 }
