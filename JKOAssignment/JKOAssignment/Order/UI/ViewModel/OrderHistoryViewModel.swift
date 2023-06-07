@@ -32,7 +32,7 @@ final class OrderHistoryViewModel {
                 self?.isOrdersRefreshingStateOnChanged?(orders)
                 
             case .failure:
-                self?.isOrdersRefreshingErrorStateOnChange?("")
+                self?.isOrdersRefreshingErrorStateOnChange?(OrderErrorMessage.orderHistory.rawValue)
             }
             self?.isOrdersRefreshLoadingStateOnChanged?(false)
         }
