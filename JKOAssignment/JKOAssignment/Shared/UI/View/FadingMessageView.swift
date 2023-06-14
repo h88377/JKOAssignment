@@ -68,6 +68,7 @@ final class FadingMessageView: UIView {
     }
     
     private func setUpUI() {
+        alpha = 0
         backgroundColor = .darkGray
         
         addSubview(messageLabel)
