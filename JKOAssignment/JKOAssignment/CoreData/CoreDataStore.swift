@@ -56,7 +56,7 @@ extension CoreDataStore: CartItemStoreLoader {
                 request.returnsObjectsAsFaults = false
                 let managedItems = try context.fetch(request)
                 return managedItems.map {
-                    Item(name: $0.name,
+                    LocalItem(name: $0.name,
                          description: $0.descriptionContent,
                          price: Int($0.price),
                          timestamp: $0.timestamp,

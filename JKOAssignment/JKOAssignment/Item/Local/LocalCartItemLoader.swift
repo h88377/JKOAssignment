@@ -22,11 +22,17 @@ final class LocalCartItemLoader: CartItemLoader {
         storeLoader.retrieve { result in
             switch result {
             case let .success(items):
-                completion(.success(items))
+                completion(.success(items.toModel()))
                 
             case .failure:
                 completion(.failure(LoadError.failed))
             }
         }
+    }
+}
+
+private extension Array where Element == LocalItem {
+    func toModel() -> [Item] {
+        return map { Item(name: $0.name, description: $0.description, price: $0.price, timestamp: $0.timestamp, imageName: $0.imageName) }
     }
 }

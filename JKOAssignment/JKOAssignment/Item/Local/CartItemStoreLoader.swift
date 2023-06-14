@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CartItemStoreLoader {
-    typealias Result = Swift.Result<[Item], Error>
+    typealias Result = Swift.Result<[LocalItem], Error>
     
     func retrieve(completion: @escaping (Result) -> Void)
 }
